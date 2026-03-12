@@ -1,0 +1,91 @@
+<div class="auth-container" [class.register-mode]="isRegister">
+  <div class="auth-slider">
+
+    <!-- TELA LOGIN -->
+    <div class="auth-page">
+      <section class="hero-section">
+        <img src="assets/fundo/cad.jpeg" class="hero-image" />
+        <div class="diagonal-divider"></div>
+      </section>
+
+      <section class="form-section">
+        <div class="form-wrapper">
+          <div class="home">
+            <a (click)="irPara('home')"><mat-icon>arrow_back</mat-icon> Voltar para a home</a>
+          </div>
+
+
+          <div class="brand">
+            <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
+          </div>
+
+          <h1>Entrar</h1>
+
+          <form class="forms">
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Senha" />
+
+            <button type="button" class="btn-primary">Entrar</button>
+
+            <div class="divider">ou</div>
+
+            <button type="button" class="btn-google">
+              Entrar com Google
+            </button>
+
+            <p class="login-text">
+              Não tem conta?
+              <a class="link-action" id="btn" (click)="toggle()">Criar conta</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- TELA CADASTRO -->
+    <div class="auth-page reverse">
+      <section class="form-section">
+        <div class="form-wrapper">
+
+          <div class="home">
+            <a (click)="irPara('home')"><mat-icon>arrow_back</mat-icon> Voltar para a home</a>
+          </div>
+
+          <div class="brand">
+            <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
+          </div>
+
+          <h1>Criar conta</h1>
+
+          <form class="forms">
+            <input type="text" placeholder="Nome completo" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Senha" />
+            <input type="password" placeholder="Confirmar senha" />
+
+            <button type="button" class="btn-primary">Criar conta</button>
+
+            <div class="divider">ou</div>
+
+            <button type="button" class="btn-google">
+              Entrar com Google
+            </button>
+
+            <p class="login-text">
+              Já tem conta?
+              <a class="link-action" id="btn" (click)="toggle()">Entrar</a>
+            </p>
+
+
+          </form>
+        </div>
+      </section>
+
+      <section class="hero-section">
+        <img src="assets/fundo/card.jpeg" class="hero-image" />
+        <div class="diagonal-divider"></div>
+      </section>
+    </div>
+
+  </div>
+</div>
