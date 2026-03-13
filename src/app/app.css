@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 350px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  color: white;
+  text-align: center;
+}
+
+.btn{
+  width: 141px;
+  border-radius: 10px;
+  height: 67px;
+}
+
+.botoes1{
+  padding-top: 25px;
+}
+
+.botoes{
+  padding-top: 25px;
+}
