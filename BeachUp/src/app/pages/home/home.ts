@@ -1,5 +1,3 @@
-/* Typescript com rotas e funções do projeto */
-
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatAnchor } from '@angular/material/button';
