@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #9e0707;
+}
+
+.cadastrar{
+    width: 350px;
+    padding: 30px;
+
+    background: rgb(250, 123, 4);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
