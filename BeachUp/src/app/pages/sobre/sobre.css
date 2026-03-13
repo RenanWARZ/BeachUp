@@ -1,0 +1,289 @@
+:host {
+  display: block;
+}
+
+.sobre {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff8f1 0%, #ffffff 55%, #f7fbff 100%);
+  padding: 60px 20px;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+
+.hero-logo {
+  width: 120px;
+  height: auto;
+  margin: 16px auto 20px;
+  display: block;
+  object-fit: contain;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 122, 0, 0.12);
+  color: #d96a00;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  color: #0f3c66;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #5b6675;
+}
+
+.bloco {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+  align-items: stretch;
+}
+
+.texto,
+.projeto-card,
+.valor-card,
+.card-equipe {
+  background: #ffffff;
+  border: 1px solid rgba(15, 60, 102, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 60, 102, 0.08);
+  border-radius: 22px;
+
+}
+
+.encerramento {
+  background: linear-gradient(314deg, #00000091 0%, #ff8000 100%);
+  border: 1px solid rgba(15, 60, 102, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 60, 102, 0.08);
+  border-radius: 22px;
+  text-align: center;
+  padding: 40px 28px;
+}
+
+.texto {
+  padding: 34px;
+}
+
+.secao-tag {
+  display: inline-block;
+  color: #ff7a00;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.texto h2,
+.titulo-secao h2,
+.texto-equipe h3 {
+  font-size: 30px;
+  color: #0f3c66;
+  margin-bottom: 16px;
+}
+
+.texto p,
+.titulo-secao p,
+.texto-equipe p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5b6675;
+  margin-bottom: 12px;
+}
+
+.projeto-card {
+  padding: 34px 28px;
+  background: linear-gradient(156deg, #00000091 0%, #ff8100 100%);
+  color: white;
+  display: ruby;
+}
+
+.projeto-card h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.projeto-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  padding-top: 22px;
+}
+
+.titulo-secao {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 30px;
+}
+
+.equipe {
+  margin-bottom: 60px;
+}
+
+.card-equipe {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 28px;
+}
+
+.foto-equipe img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  border-radius: 18px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.texto-equipe h3 {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.texto-equipe p:last-child {
+  margin-bottom: 0;
+}
+
+.valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.valor-card {
+  padding: 28px;
+}
+
+.valor-card h3 {
+  font-size: 22px;
+  color: #0f3c66;
+  margin-bottom: 12px;
+
+}
+
+.valor-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #607080;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.encerramento p {
+  max-width: 700px;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 60px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.btn-start {
+  margin-top: 30px;
+  background: #ff8c00 !important;
+  color: white !important;
+  border-radius: 999px !important;
+  padding: 10px 24px !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+  transition: transform 5s ease;
+  border: none;
+}
+
+.btn-start:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2)
+}
+
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .bloco {
+    grid-template-columns: 1fr;
+  }
+
+  .card-equipe {
+    grid-template-columns: 1fr;
+  }
+
+  .valores {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .sobre {
+    padding: 40px 16px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .texto,
+  .projeto-card,
+  .valor-card,
+  .encerramento,
+  .card-equipe {
+    padding: 24px;
+  }
+
+  .texto h2,
+  .titulo-secao h2,
+  .texto-equipe h3 {
+    font-size: 24px;
+  }
+
+  .brand-name {
+    font-size: 24px;
+  }
+}
