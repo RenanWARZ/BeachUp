@@ -1,10 +1,16 @@
 package BackAnd.BeachUp.UsuarioController;
 
+import BackAnd.BeachUp.DTO.AutenticacaoDTO;
+import BackAnd.BeachUp.DTO.LoginResponseDTO;
 import BackAnd.BeachUp.DTO.UsuarioCadastroDTO;
 import BackAnd.BeachUp.DTO.UsuarioResponseDTO;
 import BackAnd.BeachUp.UsuarioModel.Usuario;
+import BackAnd.BeachUp.UsuarioService.TokenService;
 import BackAnd.BeachUp.UsuarioService.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +22,23 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    @PostMapping
+    @Autowired
+    private TokenService tokenService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @PostMapping ("/login")
+    public ResponseEntity login(@RequestBody AutenticacaoDTO data){
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(),data.senha());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
+    }
+
+    @PostMapping("/cadastro")
     public UsuarioResponseDTO create(@RequestBody UsuarioCadastroDTO dto){
         return service.create(dto);
     }

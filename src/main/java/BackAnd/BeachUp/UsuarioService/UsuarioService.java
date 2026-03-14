@@ -6,6 +6,9 @@ import BackAnd.BeachUp.DTO.UsuarioResponseDTO;
 import BackAnd.BeachUp.UsuarioModel.Usuario;
 import BackAnd.BeachUp.UsuarioRepository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return repository.findByEmail(email)
+                .orElseThrow(()-> new RuntimeException("Usuário não encontrado"));
+    }
 
     @Autowired
     private  UsuarioRepository repository;
@@ -90,4 +99,6 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         repository.delete(usuario);
     }
+
+
 }
