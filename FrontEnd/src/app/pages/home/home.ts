@@ -11,7 +11,6 @@ import { NavigationService } from '../../shared/services/navigation';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-
 export class Home {
   constructor(public navigation: NavigationService) {}
 
