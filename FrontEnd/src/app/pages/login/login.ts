@@ -9,6 +9,7 @@ import { MatIcon } from "@angular/material/icon";
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
+
 export class Login {
   isRegister = false;
 
