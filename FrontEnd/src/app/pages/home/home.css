@@ -1,4 +1,14 @@
-html,body {
+/* CORES GLOBAIS DO CSS HOME */
+:root {
+  --background: #000;
+}
+
+.hero-overla {
+  filter: blur(8px);
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
@@ -23,14 +33,32 @@ html,body {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  transform: scale(1.2);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, .55);
   z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #d9770665);
+  backdrop-filter: blur(12px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-blur-transition {
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #d9770665);
+  backdrop-filter: blur(12px);
 }
 
 .hero-topbar {
@@ -72,6 +100,17 @@ html,body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.topbar-cta {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topbar-cta:hover {
+  background: #ff9500b5;
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .menu-btn {
@@ -167,7 +206,7 @@ html,body {
 }
 
 .menu-lateral {
-  background: black;
+  background-color: #000000af;
   color: white;
   width: 310px !important;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
@@ -181,6 +220,7 @@ html,body {
 }
 
 .menu-brand {
+  --background: #0f0b14;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -286,9 +326,10 @@ html,body {
   }
 }
 
-#funcionalidades{
-  scroll-margin-top: 80px; /* Ajuste de tela e altura que irá mandar */
+#funcionalidades {
+  scroll-margin-top: 80px;
 }
+
 .features-section,
 .how-section,
 .about-section,
@@ -306,7 +347,7 @@ html,body {
 }
 
 .stats-section {
-  /* background: linear-gradient(135deg, #1a1a1a, #111111); */
+  background-color: var(--background);
   padding: 25px;
 }
 
@@ -318,13 +359,13 @@ html,body {
   padding-top: 30px;
 }
 
-.section-header{
+.section-header {
   max-width: 780px;
   margin: 0 auto 54px;
   text-align: center;
 }
 
-.section-header p{
+.section-header p {
   color: white !important;
 }
 
@@ -357,7 +398,6 @@ html,body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-
 }
 
 .feature-card {
@@ -369,7 +409,7 @@ html,body {
   transition: 0.45s ease;
 }
 
-.feature-card h3{
+.feature-card h3 {
   color: white !important;
 }
 
@@ -483,7 +523,6 @@ html,body {
 }
 
 .about-box {
-  /* background: linear-gradient(180deg, #fff8ee 0%, #ffffff 100%); */
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 22px 18px;
@@ -513,7 +552,7 @@ html,body {
 }
 
 .status-card {
-  background: rgba(255, 255, 255, 0.06);
+  background-color: var(--background);
   border-radius: 10px;
   padding: 34px 22px;
   text-align: center;
@@ -543,7 +582,6 @@ html,body {
 .plan-card {
   position: relative;
   width: 340px;
-  /* background: white; */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 36px 28px;
@@ -558,13 +596,12 @@ html,body {
 
 .plan-card.featured {
   position: relative;
-    width: 340px;
-    /* background: white; */
-    border: 2px solid #ff8c00;
-    border-radius: 15px;
-    padding: 36px 28px;
-    box-shadow: var(--shadow);
-    transition: 0.35s ease;
+  width: 340px;
+  border: 2px solid #ff8c00;
+  border-radius: 15px;
+  padding: 36px 28px;
+  box-shadow: var(--shadow);
+  transition: 0.35s ease;
 }
 
 .plan-tag {
@@ -623,8 +660,7 @@ html,body {
 }
 
 .plan-btn.secondary {
-  /* background: #cecece !important; */
-  color: var(--primary-dark) !important;
+  color: white !important;
 }
 
 .testimonials-grid {
@@ -634,7 +670,6 @@ html,body {
 }
 
 .testimonial-card {
-  /* background: linear-gradient(180deg, #fffaf4 0%, #ffffff 100%); */
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 28px 24px;
@@ -680,7 +715,8 @@ html,body {
   border: 1px solid rgba(255, 140, 0, 0.14);
 }
 
-.cta-box .section-badge, .section-badge {
+.cta-box .section-badge,
+.section-badge {
   background: rgba(255, 140, 0, 0.14);
   color: #ffb347 !important;
 }

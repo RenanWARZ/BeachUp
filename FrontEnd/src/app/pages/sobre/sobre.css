@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -6,9 +7,24 @@ html,body {
   display: block;
 }
 
+.card-btn {
+  background: rgba(255, 122, 0, 0.12);
+  color: #d96a00;
+  border-radius: 15px;
+  padding: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-btn:hover {
+  background: #ff9500b5;
+  color: white;
+  transform: scale(1.08); /* aumenta levemente */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 .sobre {
   min-height: 100vh;
-  background: linear-gradient(180deg, #fff8f1 0%, #ffffff 55%, #f7fbff 100%);
+  background: black;
   padding: 60px 20px;
   color: #1f2937;
 }
@@ -25,10 +41,10 @@ html,body {
 }
 
 .hero-logo {
-  width: 120px;
+  width: 180px;
   height: auto;
-  margin: 16px auto 20px;
-  display: block;
+  margin-left: 40%;
+  display: flex;
   object-fit: contain;
 }
 
@@ -46,7 +62,7 @@ html,body {
 .hero h1 {
   font-size: 42px;
   line-height: 1.2;
-  color: #0f3c66;
+  color: #d96a00;
   margin-bottom: 18px;
   font-weight: 700;
 }
@@ -54,7 +70,7 @@ html,body {
 .hero p {
   font-size: 18px;
   line-height: 1.7;
-  color: #5b6675;
+  color: white;
 }
 
 .bloco {
@@ -69,9 +85,8 @@ html,body {
 .projeto-card,
 .valor-card,
 .card-equipe {
-  background: #ffffff;
   border: 1px solid rgba(15, 60, 102, 0.08);
-  box-shadow: 0 10px 30px rgba(15, 60, 102, 0.08);
+  box-shadow: 0 18px 36px rgba(217, 119, 6, 0.16);
   border-radius: 22px;
 
 }
@@ -91,7 +106,10 @@ html,body {
 
 .secao-tag {
   display: inline-block;
-  color: #ff7a00;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 122, 0, 0.12);
+  color: #d96a00;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -103,7 +121,7 @@ html,body {
 .titulo-secao h2,
 .texto-equipe h3 {
   font-size: 30px;
-  color: #0f3c66;
+  color: #d96a00;
   margin-bottom: 16px;
 }
 
@@ -112,7 +130,7 @@ html,body {
 .texto-equipe p {
   font-size: 16px;
   line-height: 1.8;
-  color: #5b6675;
+  color: white;
   margin-bottom: 12px;
 }
 

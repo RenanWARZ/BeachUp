@@ -1,13 +1,16 @@
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="assets/video/video1.mp4" type="video/mp4" />
-  </video>
 
-  <!-- <iframe class="hero-video" src="https://www.youtube.com/embed/mLecn-MI7IU?autoplay=1&mute=1&loop=1&playlist=mLecn-MI7IU" title="YouTube video player" frameborder="0"
+  <!-- <iframe class="hero-video" title="YouTube video player"
+     src="https://uploadnow.io/pt/share?utm_source=wsCRjXX"  frameborder="0"
     allow="autoplay; encrypted-media" allowfullscreen>
   </iframe> -->
 
-  <div class="hero-overlay"></div>
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="https://raw.githubusercontent.com/RenanWARZ/Project2/main/video.mp4" type="video/mp4" />
+    Seu navegador não suporta o vídeo.
+  </video>
+
+<div class="hero-overlay-bottom"></div>
 
   <div class="hero-topbar">
     <div class="topbar-left">
@@ -98,6 +101,8 @@
   </div>
 </section>
 
+<div class="hero-blur-transition"></div>
+
 <section id="recursos" class="features-section">
   <div class="section-header">
     <span class="section-badge">Recursos</span>
@@ -106,7 +111,7 @@
         Organize campeonatos, gerencie quadras, acompanhe rankings e conecte jogadores
         em um único ecossistema digital.
       </b></p>
-  </div>
+    </div>
 
   <div class="features-grid">
     <div class="feature-card">
@@ -354,9 +359,9 @@
     </div>
 
     <div class="footer-links">
-      <h3 id="#contatos" >Navegação</h3>
+      <h3 id="contatos">Navegação</h3>
       <a routerLink="/"><i class="bi bi-house"></i> Home</a>
-      <a routerLink="/sobre"><i class="bi bi-info-circle-fill"></i> Sobre</a>
+      <a (click)="irPara('/sobre')"><i class="bi bi-info-circle-fill"></i> Sobre</a>
       <a (click)="irPara('/login')"><i class="bi bi-people"></i> Login</a>
     </div>
 
