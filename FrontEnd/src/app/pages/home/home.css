@@ -8,8 +8,7 @@
   filter: blur(8px);
 }
 
-html,
-body {
+html,body {
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
@@ -331,6 +330,54 @@ body {
   scroll-margin-top: 80px;
 }
 
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.scroll-indicator a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+  animation: subirDescer 3.0s infinite ease-in-out;
+  transition: 0.3s ease;
+}
+
+.scroll-indicator a:hover {
+  color: #ff8c00;
+  transform: scale(1.08);
+}
+
+.scroll-indicator i {
+  font-size: 26px;
+}
+
+@keyframes subirDescer {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+}
+
 .features-section,
 .how-section,
 .stats-section,
@@ -359,10 +406,14 @@ body {
 
 .cta-section {
   padding-top: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .location-section {
   padding-top: 30px;
+  justify-content: center;
+  display: flex;
 }
 
 .section-header {
@@ -385,6 +436,116 @@ body {
   font-weight: 800;
   letter-spacing: 0.4px;
   margin-bottom: 18px;
+}
+
+.plans-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  position: relative;
+  width: 340px;
+  border-radius: 18px;
+  padding: 40px 28px;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.35s ease;
+  color: white;
+  overflow: hidden;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+.plan-card h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.plan-price {
+  font-size: 34px;
+  font-weight: bold;
+  margin: 10px 0 20px;
+}
+
+.plan-price span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.plan-card ul li {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.plan-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.plan-btn.secondary {
+  background: transparent;
+  border: 1px solid #555;
+  color: white;
+}
+
+.plan-btn.secondary:hover {
+  background: #333;
+}
+
+.plan-card.featured {
+  border: 1px solid transparent;
+  transition: all 0.35s ease;
+  background: linear-gradient(#111, #111) padding-box,
+    linear-gradient(135deg, #ff8c00, #ffcc00) border-box;
+  transform: scale(1.05);
+}
+
+.plan-card.featured:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 165, 0, 0.4);
+}
+
+.plan-card.featured h3 {
+  color: #ffcc00;
+}
+
+.plan-tag {
+  position: absolute;
+  top: 16px;
+  right: -40px;
+  background: linear-gradient(135deg, #ff8c00, #ffcc00);
+  color: black;
+  padding: 6px 50px;
+  font-size: 12px;
+  font-weight: bold;
+  transform: rotate(45deg);
+}
+
+.plan-btn.primary {
+  background: linear-gradient(135deg, #ff8c00, #ffcc00);
+  color: black;
+  border: none;
+}
+
+.plan-btn.primary:hover {
+  filter: brightness(1.1);
 }
 
 .sobre {
@@ -675,33 +836,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 28px;
+  gap: 80px;
   flex-wrap: wrap;
-}
-
-.plan-card {
-  position: relative;
-  width: 340px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 28px;
-  box-shadow: var(--shadow);
-  transition: 0.35s ease;
-}
-
-.plan-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-.plan-card.featured {
-  position: relative;
-  width: 340px;
-  border: 2px solid #ff8c00;
-  border-radius: 15px;
-  padding: 36px 28px;
-  box-shadow: var(--shadow);
-  transition: 0.35s ease;
 }
 
 .plan-tag {
@@ -803,13 +939,14 @@ body {
 }
 
 .cta-box {
-  background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+  background: linear-gradient(135deg, #1b1b1ba2, #1b1b1ba2);
   color: white;
   text-align: center;
   border-radius: 34px;
   padding: 70px 30px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(255, 140, 0, 0.14);
+  width: 60%;
 }
 
 .cta-box .section-badge,
@@ -954,13 +1091,5 @@ body {
   .avaliacao-grid,
   .sobre-boxes {
     grid-template-columns: 2fr;
-  }
-
-  .plan-card {
-    width: 100%;
-  }
-
-  .plan-card.featured {
-    width: 100%;
   }
 }
