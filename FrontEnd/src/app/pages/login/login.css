@@ -116,8 +116,7 @@ form {
   gap: 12px;
 }
 
-input,
-select {
+input,select {
   height: 50px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -126,10 +125,9 @@ select {
   padding: 0 12px;
 }
 
-.btn-primary {
+.btn-default {
   height: 55px;
   background: #ff6a00 !important;
-  border: none;
   border-radius: 10px;
   color: white;
   font-weight: bold;
@@ -137,18 +135,22 @@ select {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.btn-primary:hover {
+.btn-default:hover {
   transform: scale(1.03);
   background-color: #a54500;
 }
 
 .btn-google {
   height: 55px;
-  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   color: white;
   cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-google:hover{
+  transform: scale(1.03);
 }
 
 .divider {
@@ -230,7 +232,18 @@ select {
   padding-right: 40px;
 }
 
-.eye-btn {
+.eye-btn-login {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff6a00;
+}
+
+.eye-btn-cadastrar {
   position: absolute;
   right: 10px;
   top: 50%;

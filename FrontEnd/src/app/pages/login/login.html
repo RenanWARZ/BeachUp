@@ -24,11 +24,11 @@
 
           <h1>Entrar</h1>
 
-          <form class="forms">
+          <form class="forms" (ngSubmit)="login()">
             <input type="email" placeholder="Email" [(ngModel)]="email" name="email" />
             <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" />
 
-            <button type="button" class="btn-primary">Entrar</button>
+            <button type="button" class="btn-default" (click)="login()">Entrar</button>
 
             <div class="divider">ou</div>
 
@@ -74,16 +74,15 @@
 
             <div class="input-password">
               <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha" name="senha" />
-              <button type="button" (click)="toggleSenha()" class="eye-btn">
-                <mat-icon>{{ mostrarSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+              <button *ngIf="senha && senha.length > 0" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
+                <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
 
             <div class="input-password">
-              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar Senha"
-                [(ngModel)]="confirmarSenha" name="confirmarSenha" />
-              <button type="button" (click)="toggleSenha()" class="eye-btn">
-                <mat-icon>{{ mostrarSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar Senha" [(ngModel)]="confirmarSenha" name="confirmarSenha" />
+              <button *ngIf="senha && senha.length > 0" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
+                <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
 
@@ -95,13 +94,13 @@
               </button>
             </div>
 
-            <button type="submit" class="btn-primary">{{ isRegister ? 'Cadastrar' : 'Entrar' }}</button>
+            <button type="submit" class="btn-default">{{ isRegister ? 'Cadastrar' : 'Entrar' }}</button>
 
             <div class="divider">ou</div>
 
             <button class="btn-google">
               <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo">
-              Entrar com Google
+              Cadastrar com Google
             </button>
 
             <p class="login-text">

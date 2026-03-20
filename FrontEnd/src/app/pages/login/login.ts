@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../shared/services/navigation';
-import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -8,7 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatIconModule, FormsModule, CommonModule,RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
@@ -37,6 +36,11 @@ export class Login implements OnInit {
 
   toggle() {
     this.isRegister = !this.isRegister;
+
+    this.nome = '';
+    this.email = '';
+    this.senha = '';
+    this.confirmarSenha = '';
   }
 
   irPara(rota: string) {
@@ -51,17 +55,24 @@ export class Login implements OnInit {
     }
 
     console.log('Nome: ', this.nome);
-    console.log('Senha: ', this.senha);
     console.log('Email: ', this.email);
+    console.log('Senha: ', this.senha);
     console.log('Confirmar Senha: ', this.confirmarSenha);
   }
 
   toggleSenha() {
-    this.mostrarSenha = !this.mostrarSenha;
+    if (this.senha && this.senha.length > 0) {
+      this.mostrarSenha = !this.mostrarSenha;
+    }
   }
 
   alerta() {
     this.fecharAlerta = false;
-    this.confirmarSenha = '';
+    this.confirmarSenha = this.senha;
+  }
+
+  login() {
+    console.log('Email: ', this.email);
+    console.log('Senha: ', this.senha);
   }
 }
