@@ -1,0 +1,151 @@
+.home-top-login {
+  position: absolute;
+  top: 20px;
+  left: 28%;
+  z-index: 10;
+}
+
+.home-top-login a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff6a00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.home-top-login i {
+  font-size: 25px;
+}
+
+.home-top-login a:hover {
+  color: #ff4500;
+}
+
+.titulo {
+  color: #ff8c00;
+  margin-top: 75px;
+}
+
+.quadra-container {
+  background: #0d0d0d;
+  color: white;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.hero-section {
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  margin-top: 12px;
+  font-size: 24px;
+  color: #ff8c00;
+}
+
+
+.carousel-preview {
+  height: 160px;
+  width: 100%;
+  border-radius: 14px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ff8c00;
+  color: #777;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+
+.form-section {
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.form input,
+.form textarea {
+  background: #1a1a1a;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.form textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+.horarios {
+  display: flex;
+  gap: 10px;
+}
+
+.horarios input {
+  flex: 1;
+}
+
+
+.upload-box {
+  border: 2px dashed #ff8c00;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  background: rgba(255, 122, 0, 0.1);
+}
+
+
+.form button {
+  background: #ff8c00;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #e66800;
+}
+
+
+.form input:focus,
+.form textarea:focus {
+  outline: 2px solid #ff8c00;
+}
+
+
+@media (min-width: 768px) {
+  .carousel-preview {
+    height: 200px;
+  }
+}
