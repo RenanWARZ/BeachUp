@@ -25,6 +25,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.POST, "/jogador/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/jogador/cadastro").permitAll()
                         .requestMatchers(HttpMethod.POST, "/contratante/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/contratante/cadastro").permitAll()
                         .anyRequest().authenticated()

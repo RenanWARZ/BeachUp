@@ -1,5 +1,6 @@
 package BackAnd.BeachUp.UsuarioService;
 
+import BackAnd.BeachUp.UsuarioModel.JogadorModel;
 import BackAnd.BeachUp.UsuarioModel.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -32,6 +33,22 @@ public class TokenService {
             throw new RuntimeException("Erro ao gerar token", exception);
         }
     }
+
+    public String generateToken(JogadorModel jogadorModel) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            String token = JWT.create()
+                    .withIssuer("auth-api")
+                    .withSubject(jogadorModel.getEmail())
+                    .withExpiresAt(genExpirationDate())
+                    .sign(algorithm);
+            return token;
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("Erro ao gerar token", exception);
+        }
+    }
+
+
 
     public String validarToken (String token){
         try {
