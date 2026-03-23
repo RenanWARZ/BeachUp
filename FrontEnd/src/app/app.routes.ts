@@ -3,9 +3,10 @@ import { Home } from './pages/home/home';
 import { Sobre } from './pages/sobre/sobre';
 import { Login } from './pages/login/login';
 import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
-
+import { Pagamento } from './pages/pagamento/pagamento';
 
 export const routes: Routes = [
+  {path: 'pagamento', component:Pagamento},
   {path: 'cadastroQuadra', component:CadastroQuadra},
   { path: '', component: Home },
   { path: 'sobre', component: Sobre },
