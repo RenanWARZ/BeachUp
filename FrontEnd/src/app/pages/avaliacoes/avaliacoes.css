@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: #ffffff;
+}
+
+.avaliacao-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(circle at top, rgba(255, 140, 0, 0.18), transparent 35%),
+    linear-gradient(135deg, #0f0f0f, #1a1a1a 60%, #111111);
+}
+
+.avaliacao-card {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  color: #111111;
+  border-radius: 22px;
+  padding: 36px 32px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  border-top: 6px solid #ff7a00;
+}
+
+.avaliacao-tag {
+  display: inline-block;
+  background-color: #111111;
+  color: #ff7a00;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #111111;
+}
+
+.subtitulo {
+  margin: 10px 0 28px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555555;
+}
+
+.estrelas {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.estrelas input {
+  display: none;
+}
+
+.estrelas label {
+  cursor: pointer;
+  font-size: 42px;
+  color: #d1d1d1;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.estrelas label::before {
+  content: "★";
+}
+
+.estrelas label:hover,
+.estrelas label:hover~label {
+  color: #ffb347;
+  transform: scale(1.08);
+}
+
+.estrelas input:checked~label {
+  color: #ff7a00;
+}
+
+.comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label-comentario {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.comentario textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: none;
+  border: 1px solid #dcdcdc;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  background-color: #fafafa;
+  color: #111111;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comentario textarea:focus {
+  border-color: #ff7a00;
+  box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.15);
+}
+
+.comentario textarea::placeholder {
+  color: #8b8b8b;
+}
+
+.comentario button {
+  margin-top: 8px;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #ff7a00, #ff9f43);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 10px 24px rgba(255, 122, 0, 0.28);
+}
+
+.comentario button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(255, 122, 0, 0.35);
+}
+
+.comentario button:active {
+  transform: scale(0.98);
+}
+
+home-top-login {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  margin-bottom: 10px;
+  z-index: 1000;
+}
+
+.home-top-login a {
+  display: flex;
+  padding-bottom: 15px;
+  align-items: center;
+  gap: 6px;
+  color: #ff6a00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.home-top-login i {
+  font-size: 25px;
+}
+
+.home-top-login a:hover {
+  color: #ff4500;
+}
+
+@media (max-width: 600px) {
+  .avaliacao-card {
+    padding: 28px 20px;
+  }
+
+  .titulo {
+    font-size: 26px;
+  }
+
+  .estrelas label {
+    font-size: 36px;
+  }
+}

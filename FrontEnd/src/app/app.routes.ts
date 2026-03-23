@@ -5,9 +5,11 @@ import { Login } from './pages/login/login';
 import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
 import { Pagamento } from './pages/pagamento/pagamento';
 import { Telaredirecionamento } from './pages/telaredirecionamento/telaredirecionamento';
+import { Avaliacoes } from './pages/avaliacoes/avaliacoes';
 
 export const routes: Routes = [
-  { path: 'Telaredirecionamento', component: Telaredirecionamento },
+  { path: 'telaredirecionamento', component: Telaredirecionamento },
+  { path: 'avaliacoes', component: Avaliacoes },
   { path: 'pagamento', component: Pagamento },
   { path: 'cadastroQuadra', component: CadastroQuadra },
   { path: '', component: Home },
