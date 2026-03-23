@@ -1,0 +1,185 @@
+.payment-section {
+  min-height: 100vh;
+  background: #0b0b0b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.payment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  width: 100%;
+  gap: 40px;
+}
+
+.payment-left h2 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.payment-left p {
+  color: #ccc;
+}
+
+.plan-highlight {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 14px;
+  background: #111;
+  border: 1px solid #222;
+}
+
+.plan-highlight .price {
+  font-size: 1.8rem;
+  color: #ff8c00;
+  font-weight: bold;
+}
+
+.payment-card {
+  background: #111;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #222;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.method {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.method.active {
+  background: #ff8c00;
+  color: #000;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #0f0f0f;
+  color: #fff;
+  outline: none;
+}
+
+.form-group input:focus {
+  border: 1px solid #ff8c00;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-pay {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  background: #ff8c00;
+  color: #000;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.2s;
+}
+
+.btn-pay:hover {
+  background: #ffa733;
+}
+
+.secure {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #aaa;
+}
+
+.pix-area {
+  text-align: center;
+}
+
+.qr-code img {
+  width: 180px;
+  margin: 20px 0;
+}
+
+.pix-key {
+  display: flex;
+  margin-top: 15px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pix-key input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.pix-key button {
+  padding: 10px;
+  background: #ff8c00;
+  border: none;
+  cursor: pointer;
+}
+
+.home-top-login {
+  position: fixed;
+  top: 20px;
+  left: 350px;
+  z-index: 1000;
+}
+
+.home-top-login a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff6a00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.home-top-login i {
+  font-size: 25px;
+}
+
+.home-top-login a:hover {
+  color: #ff4500;
+}
+
+@media (max-width: 768px) {
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
+}
