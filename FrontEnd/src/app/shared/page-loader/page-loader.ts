@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
-import { Injectable, signal } from '@angular/core';
+import { MatIcon } from "@angular/material/icon";
+
 
 @Component({
   selector: 'app-page-loader',
@@ -12,17 +12,4 @@ import { Injectable, signal } from '@angular/core';
 })
 export class PageLoader {
   @Input() isVisible = false;
-}
-
-@Injectable({ providedIn: 'root' })
-export class LoaderService {
-  loading = signal(false);
-
-  show() {
-    this.loading.set(true);
-  }
-
-  hide() {
-    this.loading.set(false);
-  }
 }

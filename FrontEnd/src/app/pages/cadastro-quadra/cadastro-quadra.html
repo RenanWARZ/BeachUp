@@ -1,0 +1,39 @@
+<div class="quadra-container">
+  <div class="home-top-login">
+    <a (click)="irPara('home')" title="Voltar ao menu">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+  </div>
+
+  <div class="titulo">
+    <h1>Cadastre sua Quadra</h1>
+  </div>
+
+  <section class="hero-section">
+    <div class="carousel-preview">
+      <span>Pré-visualização das fotos</span>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <form class="form">
+      <label class="upload-box">
+        <span>📸 Adicionar fotos da quadra</span>
+        <input type="file" multiple hidden />
+      </label>
+
+      <input type="text" placeholder="Nome da quadra" />
+
+      <textarea placeholder="Descrição da quadra (estrutura, iluminação, areia, etc)"></textarea>
+
+      <div class="horarios">
+        <input type="time" />
+        <input type="time" />
+      </div>
+
+      <input type="number" placeholder="Valor por hora (R$)" />
+
+      <button type="button">Publicar Quadra</button>
+    </form>
+  </section>
+</div>

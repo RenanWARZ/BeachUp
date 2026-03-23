@@ -1,35 +1,39 @@
 <div class="auth-container" [class.register-mode]="isRegister">
   <div class="auth-slider">
 
-    <!-- TELA LOGIN -->
+    <!-- ================= LOGIN ================= -->
     <div class="auth-page">
+
       <section class="hero-section">
         <img src="assets/fundo/cad.jpeg" class="hero-image" />
         <div class="diagonal-divider"></div>
       </section>
 
       <section class="form-section">
+
+        <div class="home-top-login">
+          <a (click)="irPara('home')" title="Voltar ao menu">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </a>
+        </div>
+
         <div class="form-wrapper">
-          <div class="home">
-            <a (click)="irPara('home')"><mat-icon>arrow_back</mat-icon> Voltar para a home</a>
-          </div>
-
-
           <div class="brand">
             <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
           </div>
 
           <h1>Entrar</h1>
 
-          <form class="forms">
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Senha" />
+          <form class="forms" (ngSubmit)="login()">
+            <input type="email" placeholder="Email" [(ngModel)]="email" name="email" />
+            <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" />
 
-            <button type="button" class="btn-primary">Entrar</button>
+            <button type="button" class="btn-default" (click)="login()">Entrar</button>
 
             <div class="divider">ou</div>
 
-            <button type="button" class="btn-google">
+            <button class="btn-google">
+              <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo">
               Entrar com Google
             </button>
 
@@ -38,37 +42,65 @@
               <a class="link-action" id="btn" (click)="toggle()">Criar conta</a>
             </p>
           </form>
+
         </div>
       </section>
+
     </div>
 
-    <!-- TELA CADASTRO -->
+    <!-- ================= CADASTRO ================= -->
     <div class="auth-page reverse">
+
+
       <section class="form-section">
+        <div class="home-top-cadastro">
+          <a (click)="irPara('home')" title="Voltar ao menu">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </a>
+        </div>
+
         <div class="form-wrapper">
-
-          <div class="home">
-            <a (click)="irPara('home')"><mat-icon>arrow_back</mat-icon> Voltar para a home</a>
-          </div>
-
           <div class="brand">
             <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
           </div>
 
           <h1>Criar conta</h1>
 
-          <form class="forms">
-            <input type="text" placeholder="Nome completo" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Senha" />
-            <input type="password" placeholder="Confirmar senha" />
+          <form class="forms" (ngSubmit)="submit()">
 
-            <button type="button" class="btn-primary">Criar conta</button>
+            <input type="text" placeholder="Nome completo" [(ngModel)]="nome" name="nome" *ngIf="isRegister"
+              [hidden]="!isRegister" />
+            <input type="email" placeholder="Email" [(ngModel)]="email" name="email" />
+
+            <div class="input-password">
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha" name="senha" />
+              <button *ngIf="senha && senha.length > 0" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
+                <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+              </button>
+            </div>
+
+            <div class="input-password">
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar Senha" [(ngModel)]="confirmarSenha" name="confirmarSenha" />
+              <button *ngIf="senha && senha.length > 0" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
+                <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+              </button>
+            </div>
+
+            <div *ngIf="senha !== confirmarSenha && confirmarSenha"
+              class="alert alert-danger alert-dismissible fade show" role="alert">
+              As senhas não coincidem
+              <button type="button" (click)="alerta()" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <button type="submit" class="btn-default">{{ isRegister ? 'Cadastrar' : 'Entrar' }}</button>
 
             <div class="divider">ou</div>
 
-            <button type="button" class="btn-google">
-              Entrar com Google
+            <button class="btn-google">
+              <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo">
+              Cadastrar com Google
             </button>
 
             <p class="login-text">
@@ -76,8 +108,8 @@
               <a class="link-action" id="btn" (click)="toggle()">Entrar</a>
             </p>
 
-
           </form>
+
         </div>
       </section>
 
@@ -85,6 +117,7 @@
         <img src="assets/fundo/card.jpeg" class="hero-image" />
         <div class="diagonal-divider"></div>
       </section>
+
     </div>
 
   </div>

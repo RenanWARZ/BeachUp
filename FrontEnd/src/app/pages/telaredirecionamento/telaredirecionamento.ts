@@ -2,22 +2,17 @@ import { Component } from '@angular/core';
 import { NavigationService } from '../../shared/services/navigation';
 
 @Component({
-  selector: 'app-sobre',
-  standalone: true,
+  selector: 'app-telaredirecionamento',
   imports: [],
-  templateUrl: './sobre.html',
-  styleUrl: './sobre.css',
+  templateUrl: './telaredirecionamento.html',
+  styleUrl: './telaredirecionamento.css',
 })
-export class Sobre {
-  isRegister = false;
 
-   toggle() {
-     this.isRegister = !this.isRegister;
-   }
-
+export class Telaredirecionamento {
    constructor(public navigation: NavigationService){}
 
        irPara(rota: string) {
      this.navigation.irPara(rota);
    }
+   
 }

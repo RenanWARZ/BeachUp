@@ -73,21 +73,32 @@ public class UsuarioService implements UserDetailsService {
     public UsuarioResponseDTO putById(Long id, UsuarioCadastroDTO dto){
 
         Usuario usuario = repository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Usuario não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
 
-        if (!dto.getSenha().equals(dto.getConfirmarSenha())){
-            throw new RuntimeException("Senha inválida");
+        if (dto.getNome() != null) {
+            usuario.setNome(dto.getNome());
         }
 
-        repository.findByEmail(dto.getEmail())
-                .filter(u ->!u.getId().equals(id))
-                .ifPresent(u->{
-                    throw new RuntimeException("Email já cadastrado");
-                });
-        usuario.setNome(dto.getNome());
-        usuario.setEmail(dto.getEmail());
-        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
-        usuario.setCnpj(dto.getCnpj());
+        if (dto.getEmail() != null) {
+            repository.findByEmail(dto.getEmail())
+                    .filter(u -> !u.getId().equals(id))
+                    .ifPresent(u -> {
+                        throw new RuntimeException("Email já cadastrado");
+                    });
+
+            usuario.setEmail(dto.getEmail());
+        }
+
+        if (dto.getSenha() != null) {
+            if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
+                throw new RuntimeException("Senhas não coincidem ");
+            }
+            usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
+        }
+
+        if (dto.getCnpj() != null) {
+            usuario.setCnpj(dto.getCnpj());
+        }
 
         Usuario atualizado = repository.save(usuario);
 

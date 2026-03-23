@@ -1,0 +1,40 @@
+<div class="avaliacao-wrapper">
+  <div class="avaliacao-card">
+
+  <div class="home-top-login">
+    <a (click)="irPara('home')" title="Voltar ao menu">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+  </div>
+  
+    <span class="avaliacao-tag">BeachUp</span>
+    <h1 class="titulo">Faça sua avaliação</h1>
+    <p class="subtitulo">
+      Sua opinião ajuda outros jogadores a escolherem a melhor quadra.
+    </p>
+
+    <div class="estrelas">
+      <input value="5" name="nota" id="estrela5" type="radio" />
+      <label for="estrela5" title="5 estrelas"></label>
+
+      <input value="4" name="nota" id="estrela4" type="radio" />
+      <label for="estrela4" title="4 estrelas"></label>
+
+      <input value="3" name="nota" id="estrela3" type="radio" />
+      <label for="estrela3" title="3 estrelas"></label>
+
+      <input value="2" name="nota" id="estrela2" type="radio" />
+      <label for="estrela2" title="2 estrelas"></label>
+
+      <input value="1" name="nota" id="estrela1" type="radio" />
+      <label for="estrela1" title="1 estrela"></label>
+    </div>
+
+    <div class="comentario">
+      <label for="mensagem" class="label-comentario">Comentário</label>
+      <textarea id="mensagem" placeholder="Conte como foi sua experiência com a quadra..."></textarea>
+
+      <button type="button">Enviar avaliação</button>
+    </div>
+  </div>
+</div>
