@@ -1,0 +1,13 @@
+package BackAnd.BeachUp.DTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class JogadorResponseDTO {
+    private  Long id;
+    private String nome;
+    private String email;
+    private String cpf;
+}
