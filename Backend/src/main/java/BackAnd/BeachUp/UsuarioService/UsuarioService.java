@@ -89,11 +89,10 @@ public class UsuarioService implements UserDetailsService {
             usuario.setEmail(dto.getEmail());
         }
 
-        if (dto.getSenha() != null && dto.getConfirmarSenha() != null) {
+        if (dto.getSenha() != null) {
             if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
-                throw new RuntimeException("Senha inválida");
+                throw new RuntimeException("Senhas não coincidem ");
             }
-
             usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
         }
 

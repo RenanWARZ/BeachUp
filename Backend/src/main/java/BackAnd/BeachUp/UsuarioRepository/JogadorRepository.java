@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface JogadorRepository extends JpaRepository<JogadorModel, Long> {
-    Optional<Usuario> findByEmail (String email);
+    Optional<JogadorModel> findByEmail (String email);
 
     @Transactional
     void deleteByEmail(String email);

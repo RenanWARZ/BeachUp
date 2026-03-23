@@ -6,6 +6,9 @@ import BackAnd.BeachUp.UsuarioModel.JogadorModel;
 import BackAnd.BeachUp.UsuarioRepository.JogadorRepository;
 import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +16,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class JogadorService {
+public class JogadorService implements UserDetailsService {
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return repository.findByEmail(email)
+                .orElseThrow(()-> new UsernameNotFoundException("Usuário não encontrado"));
+    }
 
     @Autowired
     private JogadorRepository repository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    @Autowired
-    private Filter filter;
 
     public JogadorResponseDTO converterParaResponseDTO(JogadorModel jogadorModel) {
         return new JogadorResponseDTO(
@@ -79,9 +86,9 @@ public class JogadorService {
 
             jogadorModel.setEmail(dto.getEmail());
         }
-        if (dto.getSenha() != null && dto.getConfirmarSenha() != null) {
+        if (dto.getSenha() != null) {
             if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
-                throw new RuntimeException("Senha inválida");
+                throw new RuntimeException("Senhas não coincidem ");
             }
             jogadorModel.setSenha(passwordEncoder.encode(dto.getSenha()));
         }
