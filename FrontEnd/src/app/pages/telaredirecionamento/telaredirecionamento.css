@@ -1,0 +1,120 @@
+.redirect-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.redirect-card {
+  width: 420px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.brand {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.brand-white {
+  color: white;
+}
+
+.brand-orange {
+  color: #ff6a00;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.option-card {
+  padding: 18px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.option-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff6a00;
+  box-shadow: 0 8px 20px rgba(255, 106, 0, 0.3);
+}
+
+.option-card .title {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.option-card .desc {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Destaques diferentes */
+
+.jogar:hover {
+  background: linear-gradient(135deg, #111, #222);
+}
+
+.quadra:hover {
+  background: linear-gradient(135deg, #ff6a00, #ff8c1a);
+  color: white;
+}
+
+.quadra:hover .desc {
+  color: #fff;
+}
+
+.home-top-login {
+  position: absolute;
+  top: 20px;
+  left: 28%;
+  z-index: 10;
+}
+
+.home-top-login a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff6a00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.home-top-login i {
+  font-size: 25px;
+}
+
+.home-top-login a:hover {
+  color: #ff4500;
+}
