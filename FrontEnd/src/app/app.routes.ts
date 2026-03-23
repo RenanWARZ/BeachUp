@@ -15,6 +15,6 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'sobre', component: Sobre },
   { path: 'login', component: Login },
-  { path: 'login/cadastrar', redirectTo: '' },
+  { path: 'login/cadastrar', component: Login }, // mesma página, mas abre cadastro
   { path: '**', redirectTo: '' },
 ];

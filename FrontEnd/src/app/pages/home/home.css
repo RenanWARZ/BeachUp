@@ -809,14 +809,14 @@ html,body {
   justify-content: center;
   gap: 5px;
   font-size: 30px;
-  color: yellow;
+  color: #daa520;
 }
 
 .avaliacoes-card{
   color: white;
 }
 .avaliacoes-card .icon-star{
-  color: yellow;
+  color: #daa520;
 
 }
 
