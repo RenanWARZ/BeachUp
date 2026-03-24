@@ -6,12 +6,11 @@ import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
 import { Pagamento } from './pages/pagamento/pagamento';
 import { Telaredirecionamento } from './pages/telaredirecionamento/telaredirecionamento';
 import { Avaliacoes } from './pages/avaliacoes/avaliacoes';
-import { CriacaoDeTelas } from './pages/criacao-de-telas/criacao-de-telas';
-
+import { TelaReservaQuadras } from './pages/tela-reserva-quadras/tela-reserva-quadras';
 
 export const routes: Routes = [
-  {path: 'CriacaoDeTelas', component: CriacaoDeTelas},
   { path: 'telaredirecionamento', component: Telaredirecionamento },
+  { path: 'telaReservaQuadras', component: TelaReservaQuadras },
   { path: 'avaliacoes', component: Avaliacoes },
   { path: 'pagamento', component: Pagamento },
   { path: 'cadastroQuadra', component: CadastroQuadra },
