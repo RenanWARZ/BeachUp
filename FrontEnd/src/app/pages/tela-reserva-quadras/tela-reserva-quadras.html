@@ -1,0 +1,95 @@
+<div class="page">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-image">
+        <img src="assets/logo/image.png" alt="Logo BeachUp" class="menu-logo" />
+      </div>
+      <div class="header-info">
+        <h1 class="arena-name">Arena Beach Prime</h1>
+        <p class="info-line"><span class="icon">⏰</span> Seg a Dom • 08:00 às 22:00</p>
+        <p class="info-line">
+          <span class="icon">📍</span> Rua Cambira, 325 - Zona 08, Maringá - PR, 87050-660
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation Card -->
+  <div class="reservation-wrapper">
+    <div class="reservation-card">
+      <h2 class="card-title">Reserva de Quadra</h2>
+
+      <!-- Courts -->
+      <div class="section">
+        <label class="field-label">Quadra</label>
+        <div class="courts-row">
+          <button
+            *ngFor="let c of courts"
+            class="court-btn"
+            [class.active]="selectedCourt === c.id"
+            (click)="selectCourt(c.id)"
+          >
+            {{ c.label }}
+            <span *ngIf="c.tag" class="court-tag" [class.active-tag]="selectedCourt === c.id">
+              {{ c.tag }}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Date + Times -->
+      <div class="fields-grid">
+        <div class="field">
+          <label class="field-label">Data</label>
+          <input type="date" class="field-input" [min]="today" [(ngModel)]="selectedDate" />
+        </div>
+        <div class="field">
+          <label class="field-label">Início</label>
+          <select class="field-input" [(ngModel)]="startTime" (ngModelChange)="onStartTimeChange()">
+            <option value="">--:--</option>
+            <option *ngFor="let t of timeSlots; let last = last" [value]="t" [disabled]="last">
+              {{ t }}
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Término</label>
+          <select class="field-input" [(ngModel)]="endTime" [disabled]="!startTime">
+            <option value="">--:--</option>
+            <option *ngFor="let t of endTimeSlots" [value]="t">
+              {{ t }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Validation -->
+      <div *ngIf="validation" class="validation-msg">
+        {{ validation }}
+      </div>
+
+      <!-- Price + Button -->
+      <div class="bottom-row">
+        <div class="price-box" *ngIf="totalPrice !== null; else pricePlaceholder">
+          <div class="price-box-filled">
+            <span class="price-duration">{{ duration }}</span>
+            <span class="price-value">R$ {{ formatPrice(totalPrice!) }}</span>
+          </div>
+        </div>
+        <ng-template #pricePlaceholder>
+          <div class="price-box">
+            <div class="price-box-empty">
+              <span class="price-label">Valor</span>
+              <span class="price-placeholder">R$ --,--</span>
+            </div>
+          </div>
+        </ng-template>
+
+        <button class="btn-reservar" [disabled]="!canReserve" (click)="reservar()">Reservar</button>
+      </div>
+
+      <p class="price-hint">R$ 80,00 a cada 30 minutos</p>
+    </div>
+  </div>
+</div>
