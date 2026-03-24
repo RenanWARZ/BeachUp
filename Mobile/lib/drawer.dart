@@ -58,20 +58,17 @@ class _MenuDrawerState extends State<MenuDrawer> {
 
           SizedBox(
             width: double.infinity,
-      
-        
-      
-                  child: ElevatedButton(
-                    onPressed: () {
-                      navigatorPush(context, LoginScreen());
-                    },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.amber,
-                    padding: EdgeInsets.symmetric(vertical: 15)),
-                    child: const Text('Login'),
-                  ),
-                
-              
-            
+
+            child: ElevatedButton(
+              onPressed: () {
+                navigatorPush(context, LoginScreen());
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+                padding: EdgeInsets.symmetric(vertical: 15),
+              ),
+              child: const Text('Login'),
+            ),
           ),
         ],
       ),
