@@ -7,6 +7,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -20,35 +22,26 @@ public class TokenService {
 
     private String secret;
 
-    public String generateToken(Usuario usuario) {
+    public String generateToken(UserDetails user) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            String token = JWT.create()
+
+            String roles = user.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .findFirst()
+                    .orElse("");
+
+            return JWT.create()
                     .withIssuer("auth-api")
-                    .withSubject(usuario.getEmail())
+                    .withSubject(user.getUsername())
+                    .withClaim("role", roles)
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
-            return token;
+
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token", exception);
         }
     }
-
-    public String generateToken(JogadorModel jogadorModel) {
-        try {
-            Algorithm algorithm = Algorithm.HMAC256(secret);
-            String token = JWT.create()
-                    .withIssuer("auth-api")
-                    .withSubject(jogadorModel.getEmail())
-                    .withExpiresAt(genExpirationDate())
-                    .sign(algorithm);
-            return token;
-        } catch (JWTCreationException exception) {
-            throw new RuntimeException("Erro ao gerar token", exception);
-        }
-    }
-
-
 
     public String validarToken (String token){
         try {

@@ -16,13 +16,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService {
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return repository.findByEmail(email)
-                .orElseThrow(()-> new RuntimeException("Usuário não encontrado"));
-    }
+
 
     @Autowired
     private  UsuarioRepository repository;

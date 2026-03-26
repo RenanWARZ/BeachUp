@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,9 +30,9 @@ public class JogadorController {
         var usarnamePassword = new UsernamePasswordAuthenticationToken(data.email(),data.senha());
         var auth = this.authenticationManager.authenticate(usarnamePassword);
 
-        var token = tokenService.generateToken((JogadorModel) auth.getPrincipal());
+        var jogadortoken = tokenService.generateToken((UserDetails) auth.getPrincipal());
 
-        return  ResponseEntity.ok(new LoginResponseDTO(token));
+        return  ResponseEntity.ok(new LoginResponseDTO(jogadortoken));
     }
 
     @PostMapping("/cadastro")
