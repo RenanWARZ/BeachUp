@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utilidades.dart';
 import 'package:flutter_application_1/drawer.dart';
 import 'package:flutter_application_1/como_funciona.dart';
+import 'package:flutter_application_1/sobre_beach_up.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -36,7 +37,7 @@ class _StartScreenState extends State<StartScreen> {
             ),
           ),
 
-          //RECURSOS########################################
+          //####################RECURSOS########################################
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 25),
@@ -45,35 +46,35 @@ class _StartScreenState extends State<StartScreen> {
               children: [
                 //Botão
                 ElevatedButton(
-                  onPressed: () {
-                    
-                  },
-                  
+                  onPressed: () {},
+
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     padding: EdgeInsets.all(20),
                   ),
                   child: Text("Recursos"),
                 ),
+                SizedBox(height: 35), //ESPAÇAMENTO ENTRE O BOTÃO E O TEXTO
                 //Texto
-                Text.rich(
-                  TextSpan(
-                    text:
-                        'Uma plataforma completa para o universo do Beach Tennis',
-                    style: TextStyle(fontSize: 30, color: Colors.orange),
-
-                    children: [
-                      TextSpan(
-                        text:
-                            '\nOrganize campeonatos, gerencie quadras, acompanhe rankings e conecte jogadores em um único ecossistema digital.',
-                        style: TextStyle(fontSize: 18, color: Colors.grey),
-                      ),
-                    ],
-                  ),
+                const Text(
+                  'Uma plataforma completa para \n o universo do Beach Tennis',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
                 ),
-                SizedBox(height: 30),
-                //CARD 1######################################################
+                SizedBox(height: 20), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
+
+                const Text(
+                  '\nOrganize campeonatos, gerencie quadras, acompanhe rankings e conecte jogadores em um único\n ecossistema digital.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
+                ),
+
+                SizedBox(height: 60), //ESPAÇAMENTO ENTRE O TEXTO E OS CARDS
+                //#######################CARD 1#################################
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
@@ -126,7 +127,7 @@ class _StartScreenState extends State<StartScreen> {
                 //ESPAÇAMENTO ENTRE OS CARDS
                 SizedBox(height: 20),
                 //xxxxxxxxxxxxxxxxxxxxxxx
-                //CARD 2###########################################################
+                //######################CARD 2#################################
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
@@ -181,7 +182,7 @@ class _StartScreenState extends State<StartScreen> {
                 //ESPAÇAMENTO ENTRE OS CARDS
                 SizedBox(height: 20),
                 //xxxxxxxxxxxxxxxxxxxxxxxx
-                //CARD 3###########################################################
+                //#################CARD 3######################################
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
@@ -236,7 +237,7 @@ class _StartScreenState extends State<StartScreen> {
                 //ESPAÇAMENTO ENTRE OS CARDS
                 SizedBox(height: 20),
                 //xxxxxxxxxxxxxxxxxxxxxxx
-                //CARD 4###########################################################
+                //###################CARD 4#####################################
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
@@ -303,9 +304,10 @@ class _StartScreenState extends State<StartScreen> {
               ),
             ),
           ),
-          //Parte 4########################################
+          //#####################Parte 4########################################
           //Conectar com o arquivo como_funciona.dart
           ComoFunciona(),
+          SobreBeachUp(),
         ],
       ),
     );
