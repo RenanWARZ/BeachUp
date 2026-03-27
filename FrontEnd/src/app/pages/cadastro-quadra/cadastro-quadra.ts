@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../../shared/services/navigation';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-cadastro-quadra',
-  imports: [MatIcon],
+  imports: [],
   templateUrl: './cadastro-quadra.html',
   styleUrl: './cadastro-quadra.css',
 })

@@ -310,7 +310,7 @@ class _StartScreenState extends State<StartScreen> {
           ComoFunciona(),
           SobreBeachUp(),
           MetricaEstats(),
-          SizedBox(height: 20,),
+          
           tituloSubtitulo('Planos', 'Escolha o palno ideal para seu espaço \n esportivo ', 'Do ínicio da divulgação até')
         ],
       ),
@@ -348,11 +348,11 @@ Widget tituloSubtitulo(String info, String titulo, String subtitulo) {
           color: Colors.orange,
         ),
       ),
-      SizedBox(height: 10), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
+      SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
 
       Text(subtitulo, style: TextStyle(fontSize: 14, color: Colors.white70)),
 
-      SizedBox(height: 40),
+  
     ],
   );
 }
