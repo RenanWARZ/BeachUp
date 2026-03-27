@@ -752,9 +752,9 @@ body {
 }
 
 .status-card {
-  background-color: var(--background);
+  background: linear-gradient(145deg, #111, #1a1a1a);
   border-radius: 10px;
-  padding: 34px 22px;
+  padding: 28px 22px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1068,7 +1068,14 @@ body {
   .avaliacao-section,
   .cta-section,
   .location-section {
-    padding: 70px 5%;
+    padding: 50px 5%;
+    padding-bottom: 0px;
+  }
+
+  .status-card .icon-star {
+    display: block;
+    font-size: 30px;
+    color: #daa520;
   }
 
   .section-header h2,
@@ -1078,8 +1085,17 @@ body {
     font-size: 30px;
   }
 
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .stats-grid>* {
+    min-width: 0;
+  }
+
   .features-grid,
-  .stats-grid,
   .avaliacao-grid,
   .sobre-boxes {
     grid-template-columns: 1fr;

@@ -1,22 +1,62 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { delay, Observable, of, throwError } from 'rxjs';
 import { UsuarioCreate, LoginPayload, AuthResponse } from './models/auth.model';
 
 @Injectable({
   providedIn: 'root',
 })
 
+// export class AuthService {
+//   private http = inject(HttpClient);
+
+//   private apiUrl = 'http://localhost:8080/auth';
+
+//   criarConta(payload: UsuarioCreate): Observable<AuthResponse> {
+//     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, payload);
+//   }
+
+//   login(payload: LoginPayload): Observable<AuthResponse> {
+//     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, payload);
+//   }
+// }
+
 export class AuthService {
-  private http = inject(HttpClient);
+  usuarioDados: { nome: string; email: string; senha: string; } | null = null;
 
-  private apiUrl = 'http://localhost:8080/auth';
+  criarConta(dados: { nome: string; email: string; senha: string }): Observable<any> {
+    console.log('Mock cadastro recebido no service:', dados);
 
-  criarConta(payload: UsuarioCreate): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/register`, payload);
+     this.usuarioDados = dados;
+
+    return of({
+      message: 'Conta criada com sucesso',
+      usuario: {
+        id: 1,
+        nome: dados.nome,
+        email: dados.email,
+      },
+    }).pipe(delay(1000));
   }
 
-  login(payload: LoginPayload): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, payload);
+  login(dados: { email: string; senha: string }): Observable<any> {
+    console.log('Mock login recebido no service:', dados);
+
+    if (this.usuarioDados && dados.email === this.usuarioDados.email || dados.senha === this.usuarioDados?.senha) {
+      return of({
+        message: 'Login realizado com sucesso',
+        token: 'mock-token-123',
+        usuario: {
+          id: 1,
+          nome: 'Usuário Teste',
+          email: dados.email,
+        },
+      }).pipe(delay(1000));
+    }
+
+    return throwError(() => ({
+      error: { message: 'Email ou senha inválidos.' },
+    }));
   }
+
 }

@@ -20,6 +20,7 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
+
 export class Login implements OnInit {
   isRegister = false;
   mostrarSenha = false;
@@ -139,6 +140,8 @@ export class Login implements OnInit {
         console.log('Login realizado com sucesso:', res);
         this.mensagemSucesso = 'Login realizado com sucesso!';
         this.carregando = false;
+
+        this.navigation.irPara('home');
 
         // exemplo: salvar token
         // localStorage.setItem('token', res.token);
