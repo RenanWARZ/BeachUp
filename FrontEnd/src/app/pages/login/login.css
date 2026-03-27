@@ -283,6 +283,26 @@ input::placeholder {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
+  html,
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100dvh;
+  }
+
+  :host {
+    height: 100dvh;
+  }
+
+  .form-section {
+    height: 100dvh;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+
+
   .auth-container {
     overflow: hidden;
   }
@@ -319,12 +339,6 @@ input::placeholder {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-
-  .form-section {
-    min-height: 100dvh;
-    padding: 32px;
-    box-sizing: border-box;
   }
 
   .form-wrapper {
