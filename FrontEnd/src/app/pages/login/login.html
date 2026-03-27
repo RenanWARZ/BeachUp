@@ -1,6 +1,5 @@
 <div class="auth-container" [class.register-mode]="isRegister">
   <div class="auth-slider">
-
     <!-- ================= LOGIN ================= -->
     <div class="auth-page">
       <section class="hero-section">
@@ -23,11 +22,7 @@
           <h1>Entrar</h1>
 
           <form class="forms" [formGroup]="loginForm" (ngSubmit)="entrar()">
-            <input
-              type="email"
-              placeholder="Email"
-              formControlName="email"
-            />
+            <input type="email" placeholder="Email" formControlName="email" />
             <small class="text-danger" *ngIf="lf['email'].touched && lf['email'].invalid">
               Email inválido.
             </small>
@@ -96,20 +91,12 @@
           <h1>Criar conta</h1>
 
           <form class="forms" [formGroup]="registerForm" (ngSubmit)="criarConta()">
-            <input
-              type="text"
-              placeholder="Nome completo"
-              formControlName="nome"
-            />
+            <input type="text" placeholder="Nome completo" formControlName="nome" />
             <small class="text-danger" *ngIf="rf['nome'].touched && rf['nome'].invalid">
               Informe seu nome completo.
             </small>
 
-            <input
-              type="email"
-              placeholder="Email"
-              formControlName="email"
-            />
+            <input type="email" placeholder="Email" formControlName="email" />
             <small class="text-danger" *ngIf="rf['email'].touched && rf['email'].invalid">
               Email inválido.
             </small>
@@ -180,6 +167,5 @@
         <div class="diagonal-divider"></div>
       </section>
     </div>
-
   </div>
 </div>
