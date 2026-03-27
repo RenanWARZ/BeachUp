@@ -310,6 +310,7 @@ class _StartScreenState extends State<StartScreen> {
           ComoFunciona(),
           SobreBeachUp(),
           MetricaEstats(),
+          SizedBox(height: 20,),
           tituloSubtitulo('Planos', 'Escolha o palno ideal para seu espaço \n esportivo ', 'Do ínicio da divulgação até')
         ],
       ),
