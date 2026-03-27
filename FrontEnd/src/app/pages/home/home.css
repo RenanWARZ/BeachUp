@@ -326,6 +326,14 @@ body {
   z-index: 3;
 }
 
+.forDesktop {
+  display: block;
+}
+
+.forMobile {
+  display: none;
+}
+
 .scroll-indicator a {
   display: flex;
   flex-direction: column;
@@ -1044,6 +1052,14 @@ body {
   }
 }
 
+.forDesktop {
+  display: none;
+}
+
+.forMobile {
+  display: block;
+}
+
 @media (max-width: 768px) {
 
   .topbar-right {
@@ -1110,6 +1126,14 @@ body {
     margin-bottom: 50px;
   }
 
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
+  }
+
   .hero {
     padding: 0 16px;
   }
@@ -1155,5 +1179,13 @@ body {
   .btn-start {
     width: 100%;
     max-width: 220px;
+  }
+
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
   }
 }

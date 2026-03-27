@@ -7,13 +7,8 @@
 
   <div class="hero-topbar">
     <div class="topbar-left">
-      <button
-        type="button"
-        class="menu-btn"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#menuLateral"
-        aria-controls="menuLateral"
-      >
+      <button type="button" class="menu-btn" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"
+        aria-controls="menuLateral">
         <mat-icon>menu</mat-icon>
       </button>
 
@@ -38,12 +33,7 @@
     </div>
   </div>
 
-  <div
-    class="offcanvas offcanvas-start menu-lateral"
-    tabindex="-1"
-    id="menuLateral"
-    aria-labelledby="menuLateralLabel"
-  >
+  <div class="offcanvas offcanvas-start menu-lateral" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
     <div class="offcanvas-header menu-header">
       <div class="menu-brand">
         <img src="assets/logo/logo.png" alt="Logo BeachUp" class="menu-logo" />
@@ -53,12 +43,7 @@
         </div>
       </div>
 
-      <button
-        type="button"
-        class="btn-close btn-close-white"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <div class="offcanvas-body menu-body">
@@ -74,7 +59,7 @@
         </a>
 
         <a (click)="irPara('telaReservaQuadras')" data-bs-dismiss="offcanvas">
-          <i class="bi bi-back"></i>
+          <i class="bi bi-clock-fill"></i>
           <span>Reservar quadras</span>
         </a>
 
@@ -102,12 +87,7 @@
       <div class="menu-divider"></div>
 
       <div class="menu-actions">
-        <button
-          mat-raised-button
-          class="menu-login-btn"
-          (click)="irPara('/login')"
-          data-bs-dismiss="offcanvas"
-        >
+        <button mat-raised-button class="menu-login-btn" (click)="irPara('/login')" data-bs-dismiss="offcanvas">
           <i class="bi bi-person-circle"></i>
           Entrar
         </button>
@@ -128,7 +108,8 @@
   <div class="scroll-indicator">
     <a href="#recursos" aria-label="Descer para a próxima seção">
       <span>Rolar</span>
-      <i class="bi bi-chevron-double-down"></i>
+      <i class="bi bi-mouse forDesktop"></i>
+      <i class="bi bi-phone forMobile"></i>
     </a>
   </div>
 </section>

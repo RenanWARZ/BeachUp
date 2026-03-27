@@ -1,14 +1,17 @@
 .redirect-container {
-  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  /* importante */
   justify-content: center;
   align-items: center;
+  height: 100vh;
   background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .redirect-card {
   width: 420px;
+  height: 500px;
   padding: 40px 30px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
@@ -79,8 +82,6 @@ h1 {
   color: #aaa;
 }
 
-/* Destaques diferentes */
-
 .jogar:hover {
   background: linear-gradient(135deg, #111, #222);
 }
@@ -117,4 +118,136 @@ h1 {
 
 .home-top-login a:hover {
   color: #ff4500;
+}
+
+.extra-info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: white;
+}
+
+.link-btn {
+  margin-top: 5px;
+  background: none;
+  border: none;
+  color: #ff7a00;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100dvh;
+  }
+
+  :host {
+    height: 100dvh;
+  }
+
+  .form-section {
+    height: 100dvh;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+
+
+  .auth-container {
+    overflow: hidden;
+  }
+
+  .auth-slider {
+    width: 200%;
+  }
+
+  .auth-page,
+  .auth-page.reverse {
+    width: 50%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-section {
+    display: none;
+  }
+
+  .auth-page .form-section {
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+      url("/assets/fundo/cad.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .auth-page.reverse .form-section {
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+      url("/assets/fundo/card.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .form-wrapper {
+    max-width: 100%;
+  }
+
+  .brand {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .home-top-login,
+  .home-top-cadastro {
+    top: 25px;
+    left: 25px;
+  }
+
+  .home-top-login i {
+    font-size: 100px;
+  }
+
+  input,
+  select,
+  .btn-default,
+  .btn-google {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .login-text {
+    font-size: 13px;
+  }
+}
+
+/* ================= MOBILE PEQUENO ================= */
+@media (max-width: 480px) {
+
+  .home-top-login,
+  .home-top-cadastro {
+    top: 25px;
+    left: 25px;
+  }
+
+  .home-top-login i,
+  .home-top-cadastro i {
+    font-size: 30px;
+  }
+
+  .redirect-card {
+    width: 88%;
+  }
 }
