@@ -60,7 +60,7 @@ class _SobreBeachUpState extends State<SobreBeachUp> {
           //###########Linha para dividir#######################################
           Divider(color: Colors.grey,),
           _icones(Icons.star, 'Diferencial ',  'O BeachUp une design moderno, navegação intuitiva e soluções práticas para organizar jogos,conectar pessoas e facilitar o dia a dia dentro e fora das quadras.'),
-
+          Divider(color: Colors.grey,),
         ],
       ),
     );

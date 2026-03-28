@@ -3,6 +3,7 @@ import 'package:flutter_application_1/utilidades.dart';
 import 'package:flutter_application_1/drawer.dart';
 import 'package:flutter_application_1/como_funciona.dart';
 import 'package:flutter_application_1/sobre_beach_up.dart';
+import 'package:flutter_application_1/metrica_estats.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -308,8 +309,50 @@ class _StartScreenState extends State<StartScreen> {
           //Conectar com o arquivo como_funciona.dart
           ComoFunciona(),
           SobreBeachUp(),
+          MetricaEstats(),
+          
+          tituloSubtitulo('Planos', 'Escolha o palno ideal para seu espaço \n esportivo ', 'Do ínicio da divulgação até')
         ],
       ),
     );
   }
+}
+
+Widget tituloSubtitulo(String info, String titulo, String subtitulo) {
+  return Column(
+    children: [
+      Container(
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          border: Border.all(color: Colors.orange, width: 2),
+          borderRadius: BorderRadius.circular(20)
+        ),
+        child: Text(info,
+        style: const TextStyle(
+            color: Colors.orange,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        )
+      ),
+
+      SizedBox(height: 20), //ESPAÇAMENTO ENTRE O BOTÃO E O TEXTO
+      //Texto
+      Text(
+        titulo,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.orange,
+        ),
+      ),
+      SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
+
+      Text(subtitulo, style: TextStyle(fontSize: 14, color: Colors.white70)),
+
+  
+    ],
+  );
 }
