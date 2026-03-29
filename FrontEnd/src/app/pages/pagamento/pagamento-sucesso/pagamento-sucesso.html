@@ -1,0 +1,29 @@
+<div class="sucesso-container">
+
+  <div class="sucesso-card">
+
+    <!-- Ícone -->
+    <div class="check"><img src="assets/fundo/verificado.png" alt=""></div>
+
+    <h1>Pagamento realizado!</h1>
+
+    <p>Sua assinatura foi ativada com sucesso.</p>
+
+    <!-- Infos extras -->
+    <div class="info-box">
+      <p><strong>Plano:</strong> Gold</p>
+      <p><strong>Valor:</strong> R$ 199,90</p>
+      <p><strong>Data:</strong> {{ dataAtual }}</p>
+      <p><strong>ID da transação:</strong> {{ transacaoId }}</p>
+    </div>
+
+    <!-- Botões -->
+    <div class="actions">
+      <button class="btn" (click)="voltarHome()">
+        Voltar para o início
+      </button>
+
+    </div>
+
+  </div>
+</div>

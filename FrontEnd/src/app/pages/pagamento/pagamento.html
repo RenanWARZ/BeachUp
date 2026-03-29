@@ -7,6 +7,8 @@
   </div>
 
   <div class="payment-container">
+
+    <!-- LADO ESQUERDO -->
     <div class="payment-left">
       <span class="section-badge">Pagamento</span>
 
@@ -27,69 +29,80 @@
       </div>
     </div>
 
-    <!-- PAGAMENTO -->
+    <!-- LADO DIREITO -->
     <div class="payment-right">
       <div class="payment-card">
+
         <h3>Forma de pagamento</h3>
 
+        <!-- BOTÕES -->
         <div class="payment-methods">
-          <button class="method" [class.active]="metodoSelecionado === 'cartao'" (click)="metodoSelecionado = 'cartao'">
+          <button type="button" class="method" [class.active]="metodoSelecionado === 'cartao'"
+            (click)="metodoSelecionado = 'cartao'">
             Cartão
           </button>
 
-          <button class="method" [class.active]="metodoSelecionado === 'pix'" (click)="metodoSelecionado = 'pix'">
+          <button type="button" class="method" [class.active]="metodoSelecionado === 'pix'"
+            (click)="metodoSelecionado = 'pix'">
             PIX
           </button>
         </div>
 
+        <!-- CARTÃO -->
         <div *ngIf="metodoSelecionado === 'cartao'">
-          <form>
+
+          <form *ngIf="formPagamento" [formGroup]="formPagamento" (ngSubmit)="finalizarPagamento()">
+
             <div class="form-group">
               <label>Nome no cartão</label>
-              <input type="text" placeholder="Nome completo" />
+              <input type="text" formControlName="nome" placeholder="Nome completo" />
             </div>
 
             <div class="form-group">
               <label>Número do cartão</label>
-              <input type="text" placeholder="0000 0000 0000 0000" />
+              <input type="text" maxlength="16" formControlName="numeroCartao" placeholder="0000 0000 0000 0000" />
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label>Validade</label>
-                <input type="text" placeholder="MM/AA" />
+                <input type="text" maxlength="4" formControlName="validade" placeholder="MM/AA" />
               </div>
 
               <div class="form-group">
                 <label>CVV</label>
-                <input type="text" placeholder="123" />
+                <input type="text" formControlName="cvv" maxlength="3" placeholder="123" />
               </div>
             </div>
 
             <div class="form-group">
               <label>CPF</label>
-              <input type="text" placeholder="000.000.000-00" />
+              <input type="text" formControlName="cpf" maxlength="11" placeholder="000.000.000-00" />
             </div>
 
-            <button class="btn-pay">Finalizar pagamento</button>
+            <button class="btn-pay" type="submit">
+              Finalizar pagamento
+            </button>
           </form>
         </div>
 
+        <!-- PIX -->
         <div *ngIf="metodoSelecionado === 'pix'" class="pix-area">
 
           <h4>Pague com PIX</h4>
 
           <div class="qr-code">
-            <img src="assets/qrcode/Qrcode.jpg">
+            <img src="assets/qrcode/Qrcode.jpg" alt="QR Code PIX">
           </div>
 
-          <button class="btn-pay">
+          <button class="btn-pay" type="button" (click)="finalizarPagamento()">
             Já paguei
           </button>
 
         </div>
 
         <span class="secure">🔒 Pagamento seguro</span>
+
       </div>
     </div>
   </div>
