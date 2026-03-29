@@ -7,8 +7,10 @@ import { Pagamento } from './pages/pagamento/pagamento';
 import { Telaredirecionamento } from './pages/telaredirecionamento/telaredirecionamento';
 import { Avaliacoes } from './pages/avaliacoes/avaliacoes';
 import { TelaReservaQuadras } from './pages/tela-reserva-quadras/tela-reserva-quadras';
+import { PagamentoSucesso } from './pages/pagamento/pagamento-sucesso/pagamento-sucesso';
 
 export const routes: Routes = [
+  { path: 'pagamento-sucesso', component: PagamentoSucesso },
   { path: 'telaredirecionamento', component: Telaredirecionamento },
   { path: 'telaReservaQuadras', component: TelaReservaQuadras },
   { path: 'avaliacoes', component: Avaliacoes },

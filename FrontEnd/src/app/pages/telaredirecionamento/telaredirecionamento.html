@@ -1,5 +1,4 @@
 <div class="redirect-container">
-
   <div class="home-top-login">
     <a (click)="irPara('home')" title="Voltar ao menu">
       <i class="bi bi-arrow-left-circle-fill"></i>
@@ -7,7 +6,6 @@
   </div>
 
   <div class="redirect-card">
-
     <div class="brand">
       <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
     </div>
@@ -16,19 +14,20 @@
     <p class="subtitle">Escolha como deseja utilizar a plataforma</p>
 
     <div class="options">
-
-      <button class="option-card jogar">
+      <button class="option-card jogar" (click)="irPara('telaReservaQuadras')">
         <span class="title">Jogar</span>
         <span class="desc">Encontrar quadras e participar de partidas</span>
       </button>
 
-      <button class="option-card quadra">
+      <button class="option-card quadra" (click)="irPara('cadastroQuadra')">
         <span class="title">Cadastrar Quadra</span>
         <span class="desc">Gerenciar horários e reservas da sua quadra</span>
       </button>
-
     </div>
-
   </div>
 
+  <div class="extra-info">
+    <p>Ainda não tem certeza?</p>
+    <button class="link-btn" (click)="irPara('home')">Explorar plataforma</button>
+  </div>
 </div>
