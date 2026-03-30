@@ -8,9 +8,10 @@ import { Avaliacoes } from './pages/avaliacoes/avaliacoes';
 import { TelaReservaQuadras } from './pages/tela-reserva-quadras/tela-reserva-quadras';
 import { PagamentoSucesso } from './pages/pagamento/pagamento-sucesso/pagamento-sucesso';
 import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
-
+import { ConvidarJogadores } from './pages/convidar-jogadores/convidar-jogadores';
 
 export const routes: Routes = [
+  {path: 'convidar-jogadores', component: ConvidarJogadores},
   {path: 'cadastro-quadra', component: CadastroQuadra},
   { path: 'pagamento-sucesso', component: PagamentoSucesso },
   { path: 'telaredirecionamento', component: Telaredirecionamento },
