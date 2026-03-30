@@ -1,37 +1,60 @@
 <div class="create-team-container">
+  <div class="header-actions">
+    <a (click)="irPara('home')" class="back-link">← Voltar</a>
+    <button class="btn-toggle" (click)="toggleView()">
+      {{ exibirLista ? 'Criar Novo Time' : 'Ver Meus Times' }}
+    </button>
+  </div>
 
-
-  <div class="form-card">
-
+  <div class="form-card" *ngIf="!exibirLista">
     <h1>Criar Novo Time</h1>
-
-    <form class="form-create">
-
+    <form class="form-create" (ngSubmit)="publicarTeam()">
       <label>Nome do Time</label>
-      <input type="text" placeholder="Ex: Areia Vibes">
+      <input type="text" name="nome" [(ngModel)]="team.nome" placeholder="Ex: Areia Vibes" required>
 
       <label>Descrição</label>
-      <textarea placeholder="Sobre o time..."></textarea>
+      <textarea name="descricao" [(ngModel)]="team.descricao" placeholder="Sobre o time..."></textarea>
 
       <label>Nível</label>
-      <select>
-        <option disabled selected>Selecione</option>
-        <option>Iniciante</option>
-        <option>Intermediário</option>
-        <option>Avançado</option>
+      <select name="nivel" [(ngModel)]="team.nivel" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="Iniciante">Iniciante</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
       </select>
 
       <label>Máximo de Jogadores</label>
+      <input type="number" name="maxJogadores" [(ngModel)]="team.maxJogadores" placeholder="Ex: 10">
 
       <div class="checkbox">
-        <input type="checkbox" id="privado">
+        <input type="checkbox" id="privado" name="privado" [(ngModel)]="team.privado">
         <label for="privado">Time Privado</label>
       </div>
 
-      <button class="btn-create">Criar Time</button>
-
+      <button type="submit" class="btn-create">Criar Time</button>
     </form>
-
   </div>
 
+  <div class="list-container" *ngIf="exibirLista">
+    <h1>Meus Times</h1>
+    <div class="teams-grid" *ngIf="teams.length > 0; else emptyState">
+      <div class="team-card" *ngFor="let t of teams">
+        <div class="team-info">
+          <h3>{{ t.nome }}</h3>
+          <p class="nivel-badge">{{ t.nivel }}</p>
+          <p class="description">{{ t.descricao }}</p>
+          <div class="details">
+            <span>👥 {{ t.maxJogadores }} jogadores</span>
+            <span>{{ t.privado ? '🔒 Privado' : '🌍 Público' }}</span>
+          </div>
+        </div>
+        <button class="btn-delete" (click)="excluirTeam(t.id)">Excluir</button>
+      </div>
+    </div>
+    <ng-template #emptyState>
+      <div class="empty-msg">
+        <p>Nenhum time criado ainda.</p>
+      </div>
+    </ng-template>
+  </div>
 </div>
