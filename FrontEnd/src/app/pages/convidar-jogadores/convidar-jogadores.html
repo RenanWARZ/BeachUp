@@ -1,0 +1,161 @@
+<div class="page">
+
+  <div class="page-header">
+    <a class="btn-back" (click)="irPara('telaredirecionamento')" title="Voltar">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+    <button class="toggle-btn" (click)="toggleView()">
+      {{ exibirLista ? 'Novo Convite' : 'Ver Convites' }}
+    </button>
+  </div>
+
+  <div class="content-wrapper" *ngIf="!exibirLista">
+    <div class="card">
+
+      <div class="card-icon">🏐</div>
+      <h1 class="card-title">Convidar Jogadores</h1>
+      <p class="card-subtitle">Adicione até 3 participantes para sua partida</p>
+
+      <div class="field-group">
+        <label class="field-label">Seu nome (anfitrião)</label>
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Ex: João Silva"
+          [(ngModel)]="anfitriao"
+          maxlength="50"
+        />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">
+          Participantes
+          <span class="counter-badge">{{ jogadoresAdicionados.length }}/3</span>
+        </label>
+
+        <div class="add-player-row">
+          <input
+            type="text"
+            class="field-input"
+            placeholder="Nome do jogador"
+            [(ngModel)]="novoJogador"
+            (keyup.enter)="adicionarJogador()"
+            [disabled]="jogadoresAdicionados.length >= 3"
+            maxlength="50"
+          />
+          <button
+            class="btn-add"
+            (click)="adicionarJogador()"
+            [disabled]="!novoJogador.trim() || jogadoresAdicionados.length >= 3"
+            title="Adicionar jogador"
+          >
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </div>
+
+        <div class="players-list" *ngIf="jogadoresAdicionados.length > 0">
+          <div class="player-item" *ngFor="let jogador of jogadoresAdicionados; let i = index">
+            <div class="player-avatar">{{ getInitials(jogador.nome) }}</div>
+            <span class="player-name">{{ jogador.nome }}</span>
+            <button class="btn-remove" (click)="removerJogador(i)" title="Remover">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="players-empty" *ngIf="jogadoresAdicionados.length === 0">
+          <i class="bi bi-people"></i>
+          <span>Nenhum jogador adicionado ainda</span>
+        </div>
+      </div>
+
+      <div class="team-summary" *ngIf="jogadoresAdicionados.length > 0 && anfitriao.trim()">
+        <div class="summary-title">Time completo</div>
+        <div class="summary-players">
+          <div class="summary-player host">
+            <div class="summary-avatar host-avatar">{{ getInitials(anfitriao) }}</div>
+            <span>{{ anfitriao }}</span>
+            <span class="host-tag">Anfitrião</span>
+          </div>
+          <div class="summary-player" *ngFor="let j of jogadoresAdicionados">
+            <div class="summary-avatar">{{ getInitials(j.nome) }}</div>
+            <span>{{ j.nome }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="validation-msg" *ngIf="validationMsg">
+        {{ validationMsg }}
+      </div>
+
+      <!-- Botão de gerar convite -->
+      <button
+        class="btn-primary"
+        [disabled]="!podeCriarConvite"
+        (click)="gerarConvite()"
+      >
+        <i class="bi bi-whatsapp"></i>
+        Gerar Convite via WhatsApp
+      </button>
+
+      <div class="whatsapp-result" *ngIf="linkGerado">
+        <div class="result-header">
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Convite criado com sucesso!</span>
+        </div>
+        <a [href]="linkGerado" target="_blank" class="btn-whatsapp">
+          <i class="bi bi-whatsapp"></i>
+          Abrir no WhatsApp
+        </a>
+        <button class="btn-copy" (click)="copiarLink()">
+          <i class="bi bi-clipboard"></i>
+          {{ copiado ? 'Copiado!' : 'Copiar link' }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-wrapper" *ngIf="exibirLista">
+    <div class="list-header">
+      <h1 class="card-title">Convites Enviados</h1>
+      <p class="card-subtitle">Histórico de convites gerados</p>
+    </div>
+
+    <div class="sem-dados" *ngIf="convites.length === 0">
+      <i class="bi bi-envelope-x"></i>
+      <p>Nenhum convite gerado ainda.</p>
+    </div>
+
+    <div class="grid-convites">
+      <div class="card-convite" *ngFor="let c of convites">
+        <div class="convite-header">
+          <div class="convite-info">
+            <div class="convite-avatar">{{ getInitials(c.anfitriao) }}</div>
+            <div>
+              <h3 class="convite-anfitriao">{{ c.anfitriao }}</h3>
+              <span class="convite-data">{{ c.dataConvite }}</span>
+            </div>
+          </div>
+          <button class="btn-excluir" (click)="excluirConvite(c.id!)" title="Excluir convite">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+
+        <div class="convite-jogadores">
+          <span class="jogadores-label">Participantes:</span>
+          <div class="jogadores-chips">
+            <span class="chip host-chip">{{ c.anfitriao }}</span>
+            <span class="chip" *ngFor="let j of c.jogadores">{{ j.nome }}</span>
+          </div>
+        </div>
+
+        <a [href]="c.linkWhatsapp" target="_blank" class="btn-whatsapp-small">
+          <i class="bi bi-whatsapp"></i>
+          Reenviar convite
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
