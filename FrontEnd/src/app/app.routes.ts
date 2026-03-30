@@ -9,8 +9,11 @@ import { TelaReservaQuadras } from './pages/tela-reserva-quadras/tela-reserva-qu
 import { PagamentoSucesso } from './pages/pagamento/pagamento-sucesso/pagamento-sucesso';
 import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
 import { ConvidarJogadores } from './pages/convidar-jogadores/convidar-jogadores';
+import { CriacaoDeTelas } from './pages/criacao-de-telas/criacao-de-telas';
+
 
 export const routes: Routes = [
+  {path: 'CriacaoDeTelas', component: CriacaoDeTelas},
   {path: 'convidar-jogadores', component: ConvidarJogadores},
   {path: 'cadastro-quadra', component: CadastroQuadra},
   { path: 'pagamento-sucesso', component: PagamentoSucesso },
