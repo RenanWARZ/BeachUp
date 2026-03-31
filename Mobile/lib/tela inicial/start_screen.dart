@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/utilidades.dart';
-import 'package:flutter_application_1/drawer.dart';
-import 'package:flutter_application_1/como_funciona.dart';
-import 'package:flutter_application_1/sobre_beach_up.dart';
-import 'package:flutter_application_1/metrica_estats.dart';
+import 'package:flutter_application_1/tela%20inicial/utilidades.dart';
+import 'package:flutter_application_1/tela%20inicial/drawer.dart';
+import 'package:flutter_application_1/tela%20inicial/como_funciona.dart';
+import 'package:flutter_application_1/tela%20inicial/sobre_beach_up.dart';
+import 'package:flutter_application_1/tela%20inicial/metrica_estats.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
