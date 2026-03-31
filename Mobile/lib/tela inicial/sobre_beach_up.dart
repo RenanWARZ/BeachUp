@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tela%20inicial/start_screen.dart';
 
 class SobreBeachUp extends StatefulWidget {
   const SobreBeachUp({super.key});
@@ -15,15 +16,7 @@ class _SobreBeachUpState extends State<SobreBeachUp> {
       child: Column(
         children: [
           //Botão
-          ElevatedButton(
-            onPressed: () {},
-
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
-              padding: EdgeInsets.all(20),
-            ),
-            child: Text("Sobre o beach Up"),
-          ),
+          nomeSecao('Sobre o Beach Up'),
           SizedBox(height: 10),
           //Image.asset('assets/'),
           SizedBox(height: 20),
@@ -55,12 +48,20 @@ class _SobreBeachUpState extends State<SobreBeachUp> {
             'Tornar o esporte mais acessível, organizado e conectado, usando tecnologia para aproximar pessoas e criar experiências reais dentro das quadras.',
           ),
           //###########Linha para dividir#######################################
-          Divider(color: Colors.grey,),
-          _icones(Icons.visibility, 'Visão', 'Ser a principal plataforma digital do Beach Tennis no Brasil, impulsionando o crescimento do esporte e fortalecendo toda a comunidade ao redor dele.'),
+          Divider(color: Colors.grey),
+          _icones(
+            Icons.visibility,
+            'Visão',
+            'Ser a principal plataforma digital do Beach Tennis no Brasil, impulsionando o crescimento do esporte e fortalecendo toda a comunidade ao redor dele.',
+          ),
           //###########Linha para dividir#######################################
-          Divider(color: Colors.grey,),
-          _icones(Icons.star, 'Diferencial ',  'O BeachUp une design moderno, navegação intuitiva e soluções práticas para organizar jogos,conectar pessoas e facilitar o dia a dia dentro e fora das quadras.'),
-          Divider(color: Colors.grey,),
+          Divider(color: Colors.grey),
+          _icones(
+            Icons.star,
+            'Diferencial ',
+            'O BeachUp une design moderno, navegação intuitiva e soluções práticas para organizar jogos,conectar pessoas e facilitar o dia a dia dentro e fora das quadras.',
+          ),
+          Divider(color: Colors.grey),
         ],
       ),
     );
@@ -74,14 +75,13 @@ Widget _icones(IconData icon, String titulo, String descricao) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
-          
           children: [
             Icon(
               Icons.workspace_premium_outlined,
               color: Colors.orange,
               size: 30,
             ),
-            SizedBox(width: 10,),
+            SizedBox(width: 10),
             Text(titulo, style: TextStyle(fontSize: 22, color: Colors.white)),
           ],
         ),

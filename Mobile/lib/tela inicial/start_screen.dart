@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tela%20inicial/planos_precos.dart';
 import 'package:flutter_application_1/tela%20inicial/utilidades.dart';
 import 'package:flutter_application_1/tela%20inicial/drawer.dart';
 import 'package:flutter_application_1/tela%20inicial/como_funciona.dart';
@@ -127,7 +128,7 @@ class _StartScreenState extends State<StartScreen> {
                 ),
                 //ESPAÇAMENTO ENTRE OS CARDS
                 SizedBox(height: 20),
-                //xxxxxxxxxxxxxxxxxxxxxxx
+
                 //######################CARD 2#################################
                 Container(
                   width: double.infinity,
@@ -293,51 +294,49 @@ class _StartScreenState extends State<StartScreen> {
               ],
             ),
           ),
-          //Terceira parte########################################
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            child: const Center(
-              child: Text(
-                "Beach Tennis é um esporte de raquete jogado na areia, semelhante ao tênis tradicional...",
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
+
           //#####################Parte 4########################################
-          //Conectar com o arquivo como_funciona.dart
           ComoFunciona(),
           SobreBeachUp(),
           MetricaEstats(),
-          
-          tituloSubtitulo('Planos', 'Escolha o palno ideal para seu espaço \n esportivo ', 'Do ínicio da divulgação até')
+          PlanosPrecos(),
         ],
       ),
     );
   }
 }
 
-Widget tituloSubtitulo(String info, String titulo, String subtitulo) {
+Widget nomeSecao(String nomeSecao) {
   return Column(
     children: [
       Container(
-        padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          border: Border.all(color: Colors.orange, width: 2),
-          borderRadius: BorderRadius.circular(20)
+        padding: const EdgeInsetsDirectional.symmetric(
+          horizontal: 16,
+          vertical: 8,
         ),
-        child: Text(info,
-        style: const TextStyle(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 55, 41, 21),
+          border: Border.all(color: Colors.orange, width: 2),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          nomeSecao,
+          style: const TextStyle(
             color: Colors.orange,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 15,
           ),
-        )
+        ),
       ),
 
-      SizedBox(height: 20), //ESPAÇAMENTO ENTRE O BOTÃO E O TEXTO
+      SizedBox(height: 20),
+    ],
+  );
+}
+
+Widget tituloSubtitulo(String titulo, String subtitulo) {
+  return Column(
+    children: [
       //Texto
       Text(
         titulo,
@@ -350,9 +349,12 @@ Widget tituloSubtitulo(String info, String titulo, String subtitulo) {
       ),
       SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
 
-      Text(subtitulo, style: TextStyle(fontSize: 14, color: Colors.white70)),
-
-  
+      Text(
+        subtitulo,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 14, color: Colors.white70),
+      ),
+      SizedBox(height: 15),
     ],
   );
 }
