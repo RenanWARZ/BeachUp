@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ComoFunciona extends StatefulWidget {
-  const ComoFunciona({super.key});
+class SecaoComoFunciona extends StatefulWidget {
+  const SecaoComoFunciona({super.key});
 
   @override
-  State<ComoFunciona> createState() => _ComoFuncionaState();
+  State<SecaoComoFunciona> createState() => _ComoFuncionaState();
 }
 
-class _ComoFuncionaState extends State<ComoFunciona> {
+class _ComoFuncionaState extends State<SecaoComoFunciona> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/utilidades.dart';
+import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 setState(() {
                   resultado =
                       "Nome: $nome, Sobrenome: $sobrenome, idade: $idade"; //variável com $ é interpolação
-                });  
+                });
               },
             ),
           ),

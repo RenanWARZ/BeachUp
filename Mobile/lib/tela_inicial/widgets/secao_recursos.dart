@@ -1,45 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/utilidades.dart';
-import 'package:flutter_application_1/drawer.dart';
-import 'package:flutter_application_1/como_funciona.dart';
-import 'package:flutter_application_1/sobre_beach_up.dart';
-import 'package:flutter_application_1/metrica_estats.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class SecaoRecursos extends StatefulWidget {
+  const SecaoRecursos({super.key});
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  State<SecaoRecursos> createState() => _SecaoRecursosState();
 }
 
-class _StartScreenState extends State<StartScreen> {
+class _SecaoRecursosState extends State<SecaoRecursos> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: getStartScreenAppBar(context),
-      drawer: MenuDrawer(),
-      body: ListView(
-        children: [
-          //PARTE1########################################
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            color: Colors.blue,
-            child: const Center(
-              child: Text(
-                "Beach Tennis",
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-
-          //####################RECURSOS########################################
-          Container(
+    return  Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 25),
             color: const Color(0xFF0D0D0D),
@@ -127,7 +98,7 @@ class _StartScreenState extends State<StartScreen> {
                 ),
                 //ESPAÇAMENTO ENTRE OS CARDS
                 SizedBox(height: 20),
-                //xxxxxxxxxxxxxxxxxxxxxxx
+
                 //######################CARD 2#################################
                 Container(
                   width: double.infinity,
@@ -292,67 +263,6 @@ class _StartScreenState extends State<StartScreen> {
                 ),
               ],
             ),
-          ),
-          //Terceira parte########################################
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            child: const Center(
-              child: Text(
-                "Beach Tennis é um esporte de raquete jogado na areia, semelhante ao tênis tradicional...",
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          //#####################Parte 4########################################
-          //Conectar com o arquivo como_funciona.dart
-          ComoFunciona(),
-          SobreBeachUp(),
-          MetricaEstats(),
-          
-          tituloSubtitulo('Planos', 'Escolha o palno ideal para seu espaço \n esportivo ', 'Do ínicio da divulgação até')
-        ],
-      ),
-    );
+          );
   }
-}
-
-Widget tituloSubtitulo(String info, String titulo, String subtitulo) {
-  return Column(
-    children: [
-      Container(
-        padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          border: Border.all(color: Colors.orange, width: 2),
-          borderRadius: BorderRadius.circular(20)
-        ),
-        child: Text(info,
-        style: const TextStyle(
-            color: Colors.orange,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        )
-      ),
-
-      SizedBox(height: 20), //ESPAÇAMENTO ENTRE O BOTÃO E O TEXTO
-      //Texto
-      Text(
-        titulo,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.orange,
-        ),
-      ),
-      SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
-
-      Text(subtitulo, style: TextStyle(fontSize: 14, color: Colors.white70)),
-
-  
-    ],
-  );
 }

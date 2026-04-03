@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MetricaEstats extends StatefulWidget {
-  const MetricaEstats({super.key});
+class SecaoMetrica extends StatefulWidget {
+  const SecaoMetrica({super.key});
 
   @override
-  State<MetricaEstats> createState() => _MetricaEstatsState();
+  State<SecaoMetrica> createState() => _MetricaEstatsState();
 }
 
-class _MetricaEstatsState extends State<MetricaEstats> {
+class _MetricaEstatsState extends State<SecaoMetrica> {
   @override
   Widget build(BuildContext context) {
     // Definimos a cor laranja/dourado uma vez para reutilizar

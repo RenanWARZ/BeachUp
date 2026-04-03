@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/login_screen.dart';
+import 'package:flutter_application_1/tela_login/login_screen.dart';
 
 AppBar getAppBar(String title, {List<Widget>? actions}) {
   return AppBar(
