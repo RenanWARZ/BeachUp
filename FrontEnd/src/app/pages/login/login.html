@@ -1,5 +1,6 @@
-<div class="auth-container" [class.register-mode]="isRegister">
+<div class="auth-container" [class.register-mode]="Isregistro">
   <div class="auth-slider">
+
     <!-- ================= LOGIN ================= -->
     <div class="auth-page">
       <section class="hero-section">
@@ -28,17 +29,8 @@
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="lf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="lf['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
@@ -46,11 +38,11 @@
               A senha deve ter no mínimo 6 caracteres.
             </small>
 
-            <div *ngIf="mensagemErro && !isRegister" class="alert alert-danger">
+            <div *ngIf="mensagemErro && ! Isregistro" class="alert alert-danger">
               {{ mensagemErro }}
             </div>
 
-            <div *ngIf="mensagemSucesso && !isRegister" class="alert alert-success">
+            <div *ngIf="mensagemSucesso && ! Isregistro" class="alert alert-success">
               {{ mensagemSucesso }}
             </div>
 
@@ -92,55 +84,48 @@
 
           <form class="forms" [formGroup]="registerForm" (ngSubmit)="criarConta()">
             <input type="text" placeholder="Nome completo" formControlName="nome" />
-            <small class="text-danger" *ngIf="rf['nome'].touched && rf['nome'].invalid">
+            <small class="text-danger" *ngIf="registrar['nome'].touched && registrar['nome'].invalid">
               Informe seu nome completo.
             </small>
 
             <input type="email" placeholder="Email" formControlName="email" />
-            <small class="text-danger" *ngIf="rf['email'].touched && rf['email'].invalid">
+            <small class="text-danger" *ngIf="registrar['email'].touched && registrar['email'].invalid">
               Email inválido.
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="rf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="registrar['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
-            <small class="text-danger" *ngIf="rf['senha'].touched && rf['senha'].invalid">
+            <small class="text-danger" *ngIf="registrar['senha'].touched && registrar['senha'].invalid">
               A senha deve ter no mínimo 6 caracteres.
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Confirmar Senha"
-                formControlName="confirmarSenha"
-              />
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar Senha"
+                formControlName="confirmarSenha" />
             </div>
 
-            <div
-              *ngIf="registerForm.hasError('senhasDiferentes') && rf['confirmarSenha'].touched"
-              class="alert alert-danger"
-            >
+            <div *ngIf="registerForm.hasError('senhasDiferentes') && registrar['confirmarSenha'].touched"
+              class="alert alert-danger">
               As senhas não coincidem.
             </div>
 
-            <div *ngIf="mensagemErro && isRegister" class="alert alert-danger">
+            <div *ngIf="mensagemErro &&  Isregistro" class="alert alert-danger">
               {{ mensagemErro }}
             </div>
 
-            <div *ngIf="mensagemSucesso && isRegister" class="alert alert-success">
+            <div *ngIf="mensagemSucesso &&  Isregistro" class="alert alert-success">
               {{ mensagemSucesso }}
+            </div>
+
+            <div *ngIf="mostrarDados && dadosCadastrados?.nome" class="alert alert-info mt-3">
+              <p><strong>Nome:</strong> {{ dadosCadastrados.nome }}</p>
+              <p><strong>Email:</strong> {{ dadosCadastrados.email }}</p>
+              <p><strong>Senha:</strong> {{dadosCadastrados.senha}}</p>
+              <p><strong>Confirmar Senha:</strong> {{dadosCadastrados.confirmarSenha}}</p>
             </div>
 
             <button type="submit" class="btn-default" [disabled]="carregando">
@@ -149,9 +134,13 @@
 
             <div class="divider">ou</div>
 
-            <button type="button" class="btn-google">
+            <button type="btn" class="btn-google">
               <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo" />
               Cadastrar com Google
+            </button>
+
+            <button type="button" class="btn-default" (click)="BotaoDados()">
+              {{ mostrarDados ? 'Ocultar dados' : 'Mostrar dados' }}
             </button>
 
             <p class="login-text">

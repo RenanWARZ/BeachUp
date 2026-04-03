@@ -25,7 +25,7 @@ export class AuthService {
   usuarioDados: { nome: string; email: string; senha: string; } | null = null;
 
   criarConta(dados: { nome: string; email: string; senha: string }): Observable<any> {
-    console.log('Mock cadastro recebido no service:', dados);
+    console.log('Cadastro recebido no service:', dados);
 
      this.usuarioDados = dados;
 
