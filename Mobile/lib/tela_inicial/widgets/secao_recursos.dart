@@ -1,46 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela%20inicial/planos_precos.dart';
-import 'package:flutter_application_1/tela%20inicial/utilidades.dart';
-import 'package:flutter_application_1/tela%20inicial/drawer.dart';
-import 'package:flutter_application_1/tela%20inicial/como_funciona.dart';
-import 'package:flutter_application_1/tela%20inicial/sobre_beach_up.dart';
-import 'package:flutter_application_1/tela%20inicial/metrica_estats.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class SecaoRecursos extends StatefulWidget {
+  const SecaoRecursos({super.key});
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  State<SecaoRecursos> createState() => _SecaoRecursosState();
 }
 
-class _StartScreenState extends State<StartScreen> {
+class _SecaoRecursosState extends State<SecaoRecursos> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: getStartScreenAppBar(context),
-      drawer: MenuDrawer(),
-      body: ListView(
-        children: [
-          //PARTE1########################################
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            color: Colors.blue,
-            child: const Center(
-              child: Text(
-                "Beach Tennis",
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-
-          //####################RECURSOS########################################
-          Container(
+    return  Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 25),
             color: const Color(0xFF0D0D0D),
@@ -293,68 +263,6 @@ class _StartScreenState extends State<StartScreen> {
                 ),
               ],
             ),
-          ),
-
-          //#####################Parte 4########################################
-          ComoFunciona(),
-          SobreBeachUp(),
-          MetricaEstats(),
-          PlanosPrecos(),
-        ],
-      ),
-    );
+          );
   }
-}
-
-Widget nomeSecao(String nomeSecao) {
-  return Column(
-    children: [
-      Container(
-        padding: const EdgeInsetsDirectional.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 55, 41, 21),
-          border: Border.all(color: Colors.orange, width: 2),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          nomeSecao,
-          style: const TextStyle(
-            color: Colors.orange,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-        ),
-      ),
-
-      SizedBox(height: 20),
-    ],
-  );
-}
-
-Widget tituloSubtitulo(String titulo, String subtitulo) {
-  return Column(
-    children: [
-      //Texto
-      Text(
-        titulo,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.orange,
-        ),
-      ),
-      SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
-
-      Text(
-        subtitulo,
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 14, color: Colors.white70),
-      ),
-      SizedBox(height: 15),
-    ],
-  );
 }

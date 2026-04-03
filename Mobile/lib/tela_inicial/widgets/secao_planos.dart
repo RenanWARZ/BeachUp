@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela%20inicial/start_screen.dart';
+import 'package:flutter_application_1/tela_inicial/start_screen.dart';
 
-class PlanosPrecos extends StatefulWidget {
-  const PlanosPrecos({super.key});
+class SecaoPlanos extends StatefulWidget {
+  const SecaoPlanos({super.key});
 
   @override
-  State<PlanosPrecos> createState() => _PlanosPrecosState();
+  State<SecaoPlanos> createState() => _PlanosPrecosState();
 }
 
-class _PlanosPrecosState extends State<PlanosPrecos> {
+class _PlanosPrecosState extends State<SecaoPlanos> {
   @override
   Widget build(BuildContext context) {
     return Column(

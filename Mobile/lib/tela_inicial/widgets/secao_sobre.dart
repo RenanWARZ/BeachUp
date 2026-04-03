@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela%20inicial/start_screen.dart';
+import 'package:flutter_application_1/tela_inicial/start_screen.dart';
 
-class SobreBeachUp extends StatefulWidget {
-  const SobreBeachUp({super.key});
+class SecaoSobre extends StatefulWidget {
+  const SecaoSobre({super.key});
 
   @override
-  State<SobreBeachUp> createState() => _SobreBeachUpState();
+  State<SecaoSobre> createState() => _SobreBeachUpState();
 }
 
-class _SobreBeachUpState extends State<SobreBeachUp> {
+class _SobreBeachUpState extends State<SecaoSobre> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
