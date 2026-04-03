@@ -2,6 +2,7 @@ package BackAnd.BeachUp.Config;
 
 import BackAnd.BeachUp.UsuarioModel.Usuario;
 import BackAnd.BeachUp.UsuarioRepository.UsuarioRepository;
+import BackAnd.BeachUp.UsuarioService.CustomUserDetailsService;
 import BackAnd.BeachUp.UsuarioService.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,14 +24,14 @@ public class SecurityFilter extends OncePerRequestFilter {
     TokenService tokenService;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    CustomUserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = this.recoverToken(request);
         if (token != null){
             var login = tokenService.validarToken(token);
-            UserDetails usuario = usuarioRepository.findByEmail(login) .orElseThrow(()-> new RuntimeException("Erro ao gerar Token"));
+            UserDetails usuario = userDetailsService.loadUserByUsername(login);
 
             var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
