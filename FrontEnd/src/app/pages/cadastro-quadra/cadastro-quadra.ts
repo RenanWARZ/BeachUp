@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from '../../shared/services/navigation';
 import { QuadraService } from '../../shared/services/quadra.service';
 import { Quadra } from '../../shared/services/models/quadra.model';
@@ -8,26 +8,28 @@ import { Quadra } from '../../shared/services/models/quadra.model';
 @Component({
   selector: 'app-cadastro-quadra',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './cadastro-quadra.html',
-  styleUrl: './cadastro-quadra.css',
+  styleUrls: ['./cadastro-quadra.css'],
 })
 export class CadastroQuadra implements OnInit {
-  quadra: Quadra = {
-    nome: '',
-    descricao: '',
-    horarioInicio: '',
-    horarioFim: '',
-    valorPorHora: 0,
-  };
-
   quadras: Quadra[] = [];
   exibirLista: boolean = false;
+  quadraForm: FormGroup;
 
   constructor(
     public navigation: NavigationService,
-    private quadraService: QuadraService
-  ) {}
+    private quadraService: QuadraService,
+    private formBuilder: FormBuilder,
+  ) {
+    this.quadraForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      descricao: [''],
+      horarioInicio: [''],
+      horarioFim: [''],
+      valorPorHora: [0, [Validators.required, Validators.min(0.01)]],
+    });
+  }
 
   ngOnInit() {
     this.carregarQuadras();
@@ -38,8 +40,8 @@ export class CadastroQuadra implements OnInit {
   }
 
   publicarQuadra() {
-    if (this.quadra.nome && this.quadra.valorPorHora > 0) {
-      this.quadraService.addQuadra({ ...this.quadra });
+    if (this.quadraForm.valid) {
+      this.quadraService.addQuadra(this.quadraForm.value);
       this.carregarQuadras();
       this.limparFormulario();
       alert('Quadra publicada com sucesso!');
@@ -49,13 +51,9 @@ export class CadastroQuadra implements OnInit {
   }
 
   limparFormulario() {
-    this.quadra = {
-      nome: '',
-      descricao: '',
-      horarioInicio: '',
-      horarioFim: '',
+    this.quadraForm.reset({
       valorPorHora: 0,
-    };
+    });
   }
 
   toggleView() {
