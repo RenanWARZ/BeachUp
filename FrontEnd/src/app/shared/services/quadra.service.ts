@@ -5,7 +5,7 @@ import { Quadra } from './models/quadra.model';
   providedIn: 'root',
 })
 export class QuadraService {
-  private quadras: Quadra[] = []; 
+  private quadras: Quadra[] = [];
 
   constructor() {}
 
@@ -14,12 +14,15 @@ export class QuadraService {
   }
 
   addQuadra(quadra: Quadra): void {
-
     quadra.id = Date.now();
     this.quadras.push(quadra);
   }
 
   deleteQuadra(id: number): void {
     this.quadras = this.quadras.filter((q) => q.id !== id);
+  }
+
+  updateQuadra(quadraAtualizada: Quadra): void {
+    this.quadras = this.quadras.map((q) => (q.id === quadraAtualizada.id ? quadraAtualizada : q));
   }
 }
