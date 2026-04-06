@@ -1053,11 +1053,11 @@ body {
 }
 
 .forDesktop {
-  display: none;
+  display: block;
 }
 
 .forMobile {
-  display: block;
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -1127,11 +1127,11 @@ body {
   }
 
   .forDesktop {
-    display: none;
+    display: block;
   }
 
   .forMobile {
-    display: block;
+    display: none;
   }
 
   .hero {
@@ -1164,6 +1164,16 @@ body {
   .btn-start {
     padding: 10px 20px !important;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
   }
 }
 
