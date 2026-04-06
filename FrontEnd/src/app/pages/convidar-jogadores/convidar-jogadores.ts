@@ -11,8 +11,11 @@ import { Convite, Jogador } from '../../shared/services/models/convite.model';
   imports: [CommonModule, FormsModule],
   templateUrl: './convidar-jogadores.html',
   styleUrl: './convidar-jogadores.css',
+  
 })
 export class ConvidarJogadores implements OnInit {
+  editando: boolean = false;
+conviteEditandoId: number | null = null;
   anfitriao: string = '';
   novoJogador: string = '';
   jogadoresAdicionados: Jogador[] = [];
@@ -85,23 +88,32 @@ export class ConvidarJogadores implements OnInit {
   }
 
   gerarConvite(): void {
-    if (!this.podeCriarConvite) return;
+  if (!this.podeCriarConvite) return;
 
-    const nomesJogadores = this.jogadoresAdicionados.map((j) => j.nome);
-    const link = this.conviteService.gerarLinkWhatsapp(this.anfitriao.trim(), nomesJogadores);
+  const nomesJogadores = this.jogadoresAdicionados.map((j) => j.nome);
+  const link = this.conviteService.gerarLinkWhatsapp(
+    this.anfitriao.trim(),
+    nomesJogadores
+  );
 
-    const convite: Convite = {
-      anfitriao: this.anfitriao.trim(),
-      jogadores: [...this.jogadoresAdicionados],
-      dataConvite: this.formatarData(new Date()),
-      linkWhatsapp: link,
-    };
+  const convite: Convite = {
+    id: this.conviteEditandoId || undefined,
+    anfitriao: this.anfitriao.trim(),
+    jogadores: [...this.jogadoresAdicionados],
+    dataConvite: this.formatarData(new Date()),
+    linkWhatsapp: link,
+  };
 
+  if (this.editando && this.conviteEditandoId !== null) {
+    this.conviteService.editarConvite(convite);
+  } else {
     this.conviteService.addConvite(convite);
-    this.linkGerado = link;
-    this.validationMsg = '';
-    this.carregarConvites();
   }
+
+  this.resetForm();
+  this.linkGerado = link;
+  this.carregarConvites();
+}
 
   copiarLink(): void {
     if (!this.linkGerado) return;
@@ -138,4 +150,22 @@ export class ConvidarJogadores implements OnInit {
       minute: '2-digit',
     });
   }
+  editarConvite(convite: Convite): void {
+  this.anfitriao = convite.anfitriao;
+  this.jogadoresAdicionados = [...convite.jogadores];
+
+  this.conviteEditandoId = convite.id!;
+  this.editando = true;
+
+  this.linkGerado = '';
+  this.validationMsg = '';
+}
+resetForm(): void {
+  this.anfitriao = '';
+  this.novoJogador = '';
+  this.jogadoresAdicionados = [];
+  this.editando = false;
+  this.conviteEditandoId = null;
+}
+
 }

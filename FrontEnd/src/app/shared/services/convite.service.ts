@@ -32,4 +32,17 @@ export class ConviteService {
     );
     return `https://wa.me/?text=${mensagem}`;
   }
+    editarConvite(conviteAtualizado: Convite): Convite | null {
+  const convites = this.getConvites();
+
+  const index = convites.findIndex((c) => c.id === conviteAtualizado.id);
+
+  if (index !== -1) {
+    convites[index] = conviteAtualizado;
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(convites));
+    return conviteAtualizado;
+  }
+
+  return null;
+}
 }
