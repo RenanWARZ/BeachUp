@@ -28,7 +28,8 @@ class _StartScreenState extends State<StartScreen> {
             padding: EdgeInsets.symmetric(vertical: 40),
             child: Column(
               children: [
-                Expanded(
+                SizedBox(
+                  width: double.infinity,
                   child: Text(
                     "Sua paixão por\nBeach Tennis\nComeça Aqui",
                     style: TextStyle(
