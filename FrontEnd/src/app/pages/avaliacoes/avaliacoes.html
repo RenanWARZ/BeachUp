@@ -1,63 +1,76 @@
-<div class="avaliacao-wrapper">
-  <div class="avaliacao-card">
+<div class="pagina">
+  <div class="conteudo-avaliacao">
 
-    <div class="home-top-login">
-      <a (click)="irPara('home')" title="Voltar ao menu">
+    <div class="topo-pagina">
+      <a class="btn-voltar" (click)="irPara('home')" title="Voltar ao menu">
         <i class="bi bi-arrow-left-circle-fill"></i>
       </a>
     </div>
 
-    <span class="avaliacao-tag">BeachUp</span>
-    <h1 class="titulo">{{ editandoIndex !== null ? 'Editar avaliação' : 'Faça sua avaliação' }}</h1>
-    <p class="subtitulo">
-      Sua opinião ajuda outros jogadores a escolherem a melhor quadra.
-    </p>
+    <div class="avaliacao-card">
+      <span class="avaliacao-tag">BeachUp</span>
 
-    <input type="text" placeholder="Seu nome" [(ngModel)]="avaliacao.nome" name="nome" />
+      <h1 class="titulo">Faça sua avaliação</h1>
 
-    <div class="nota">
-      <h1 class="nota">Nota de 0 a 5</h1>
-      <input type="number" placeholder="Nota (0 a 5)" [(ngModel)]="avaliacao.nota" name="nota" min="0" max="5" />
-    </div>
+      <p class="subtitulo">
+        Sua opinião ajuda outros jogadores a escolherem a melhor quadra.
+      </p>
 
-    <div class="comentario">
-      <label for="mensagem" class="label-comentario">Comentário</label>
-      <textarea id="mensagem" [(ngModel)]="avaliacao.comentario" name="comentario"
-        placeholder="Conte como foi sua experiência com a quadra..."></textarea>
+      <input
+        type="text"
+        placeholder="Seu nome"
+        [(ngModel)]="avaliacao.nome"
+      />
 
-      <div class="botoes-form">
+      <div class="estrelas">
+        <input value="5" name="nota" id="estrela5" type="radio" [(ngModel)]="avaliacao.nota" />
+        <label for="estrela5"></label>
+
+        <input value="4" name="nota" id="estrela4" type="radio" [(ngModel)]="avaliacao.nota" />
+        <label for="estrela4"></label>
+
+        <input value="3" name="nota" id="estrela3" type="radio" [(ngModel)]="avaliacao.nota" />
+        <label for="estrela3"></label>
+
+        <input value="2" name="nota" id="estrela2" type="radio" [(ngModel)]="avaliacao.nota" />
+        <label for="estrela2"></label>
+
+        <input value="1" name="nota" id="estrela1" type="radio" [(ngModel)]="avaliacao.nota" />
+        <label for="estrela1"></label>
+      </div>
+
+      <div class="comentario">
+        <label class="label-comentario">Comentário</label>
+
+        <textarea
+          placeholder="Conte como foi sua experiência..."
+          [(ngModel)]="avaliacao.comentario"
+        ></textarea>
+
         <button type="button" (click)="salvar()">
-          {{ editandoIndex !== null ? 'Salvar alterações' : 'Enviar avaliação' }}
+          Enviar avaliação
         </button>
-        <button type="button" class="btn-cancelar" *ngIf="editandoIndex !== null" (click)="cancelarEdicao()">
-          Cancelar
-        </button>
+      </div>
+
+      <div class="lista-avaliacoes">
+        <h2 class="titulo-lista">Avaliações</h2>
+
+        <div *ngIf="avaliacoes.length === 0" class="sem-avaliacoes">
+          Nenhuma avaliação ainda.
+        </div>
+
+        <div *ngFor="let a of avaliacoes; let i = index" class="card-avaliacao">
+          <h3>{{ a.nome }}</h3>
+          <p>{{ a.comentario }}</p>
+          <strong>Nota: {{ a.nota }}</strong>
+
+          <div class="acoes-card">
+            <button class="btn-editar" (click)="editar(i)">Editar</button>
+            <button class="btn-deletar" (click)="deletar(i)">Deletar</button>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
-
-
-<div class="lista-avaliacoes">
-  <h2 class="titulo-lista">Avaliações</h2>
-
-  <div *ngIf="avaliacoes.length === 0" class="sem-avaliacoes">
-    Nenhuma avaliação ainda.
-  </div>
-
-  <div *ngFor="let a of avaliacoes; let i = index" class="card-avaliacao">
-    <h3>{{ a.nome }}</h3>
-    <p>{{ a.comentario }}</p>
-    <strong>Nota: {{ a.nota }}</strong>
-
-    <div class="acoes-card">
-      <button class="btn-editar" (click)="editar(i)">
-        <i class="bi bi-pencil-fill"></i> Editar
-      </button>
-      <button class="btn-deletar" (click)="deletar(i)">
-        <i class="bi bi-trash-fill"></i> Deletar
-      </button>
-    </div>
   </div>
 </div>
