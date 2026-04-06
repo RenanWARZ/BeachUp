@@ -137,6 +137,11 @@
               <span class="convite-data">{{ c.dataConvite }}</span>
             </div>
           </div>
+          <button
+    class="btn-editar"
+    (click)="editarConvite(c)"
+    title="Editar convite"> <i class="bi bi-pencil"></i>
+  </button>
           <button class="btn-excluir" (click)="excluirConvite(c.id!)" title="Excluir convite">
             <i class="bi bi-trash"></i>
           </button>

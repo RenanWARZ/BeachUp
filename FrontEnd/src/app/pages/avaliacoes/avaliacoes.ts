@@ -22,11 +22,11 @@ export class Avaliacoes {
   avaliacoes: Avaliacao[] = [];
 
 
+  editandoIndex: number | null = null;
+
   constructor(public navigation: NavigationService) {}
 
-
   salvar() {
-    // validação
     if (!this.avaliacao.nome || !this.avaliacao.comentario) {
       alert('Preencha todos os campos!');
       return;
@@ -37,10 +37,41 @@ export class Avaliacoes {
       return;
     }
 
-    // adiciona na lista
-    this.avaliacoes.push({ ...this.avaliacao });
+    if (this.editandoIndex !== null) {
+      this.avaliacoes[this.editandoIndex] = { ...this.avaliacao };
+      this.editandoIndex = null;
+    } else {
+      this.avaliacoes.push({ ...this.avaliacao });
+    }
 
-    // limpa formulário
+
+    this.avaliacao = {
+      nome: '',
+      comentario: '',
+      nota: 0
+    };
+  }
+
+  editar(index: number) {
+    this.avaliacao = { ...this.avaliacoes[index] };
+    this.editandoIndex = index;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  deletar(index: number) {
+    const confirmado = confirm('Tem certeza que deseja excluir esta avaliação?');
+    if (confirmado) {
+      this.avaliacoes.splice(index, 1);
+
+      if (this.editandoIndex === index) {
+        this.cancelarEdicao();
+      }
+    }
+  }
+
+  cancelarEdicao() {
+    this.editandoIndex = null;
     this.avaliacao = {
       nome: '',
       comentario: '',
@@ -53,7 +84,7 @@ export class Avaliacoes {
   }
 }
 
-//MODEL
+
 interface Avaliacao {
   nome: String;
   nota: number;

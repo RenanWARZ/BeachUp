@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from '../../shared/services/navigation';
 import { QuadraService } from '../../shared/services/quadra.service';
 import { Quadra } from '../../shared/services/models/quadra.model';
@@ -8,26 +8,30 @@ import { Quadra } from '../../shared/services/models/quadra.model';
 @Component({
   selector: 'app-cadastro-quadra',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './cadastro-quadra.html',
-  styleUrl: './cadastro-quadra.css',
+  styleUrls: ['./cadastro-quadra.css'],
 })
 export class CadastroQuadra implements OnInit {
-  quadra: Quadra = {
-    nome: '',
-    descricao: '',
-    horarioInicio: '',
-    horarioFim: '',
-    valorPorHora: 0,
-  };
-
   quadras: Quadra[] = [];
   exibirLista: boolean = false;
+  quadraForm: FormGroup;
+  editando: boolean = false;
+  idEditando: number | null = null;
 
   constructor(
     public navigation: NavigationService,
-    private quadraService: QuadraService
-  ) {}
+    private quadraService: QuadraService,
+    private formBuilder: FormBuilder,
+  ) {
+    this.quadraForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      descricao: [''],
+      horarioInicio: [''],
+      horarioFim: [''],
+      valorPorHora: [0, [Validators.required, Validators.min(0.01)]],
+    });
+  }
 
   ngOnInit() {
     this.carregarQuadras();
@@ -38,8 +42,8 @@ export class CadastroQuadra implements OnInit {
   }
 
   publicarQuadra() {
-    if (this.quadra.nome && this.quadra.valorPorHora > 0) {
-      this.quadraService.addQuadra({ ...this.quadra });
+    if (this.quadraForm.valid) {
+      this.quadraService.addQuadra(this.quadraForm.value);
       this.carregarQuadras();
       this.limparFormulario();
       alert('Quadra publicada com sucesso!');
@@ -49,13 +53,9 @@ export class CadastroQuadra implements OnInit {
   }
 
   limparFormulario() {
-    this.quadra = {
-      nome: '',
-      descricao: '',
-      horarioInicio: '',
-      horarioFim: '',
+    this.quadraForm.reset({
       valorPorHora: 0,
-    };
+    });
   }
 
   toggleView() {
@@ -71,5 +71,40 @@ export class CadastroQuadra implements OnInit {
 
   irPara(rota: string) {
     this.navigation.irPara(rota);
+  }
+  editarQuadra(quadra: Quadra) {
+    this.editando = true;
+    this.idEditando = quadra.id || null;
+
+    this.quadraForm.patchValue({
+      nome: quadra.nome,
+      descricao: quadra.descricao,
+      horarioInicio: quadra.horarioInicio,
+      horarioFim: quadra.horarioFim,
+      valorPorHora: quadra.valorPorHora,
+    });
+
+    this.exibirLista = false;
+  }
+
+  atualizarQuadra() {
+    if (this.quadraForm.valid && this.idEditando !== null) {
+      const quadraAtualizada: Quadra = {
+        ...this.quadraForm.value,
+        id: this.idEditando,
+      };
+
+      this.quadraService.updateQuadra(quadraAtualizada);
+
+      this.carregarQuadras();
+      this.limparFormulario();
+
+      this.editando = false;
+      this.idEditando = null;
+
+      alert('Quadra atualizada com sucesso!');
+    } else {
+      alert('Erro ao atualizar quadra.');
+    }
   }
 }
