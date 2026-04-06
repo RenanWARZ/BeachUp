@@ -1,16 +1,10 @@
-export interface UsuarioCreate {
-  nome: string;
-  email: string;
-  senha: string;
-}
-
 export interface LoginPayload {
   email: string;
   senha: string;
 }
 
-export interface AuthResponse {
-  token: string;
+export interface LoginResponse {
+  message: string;
   usuario: {
     id: number;
     nome: string;
