@@ -16,6 +16,8 @@ export class CadastroQuadra implements OnInit {
   quadras: Quadra[] = [];
   exibirLista: boolean = false;
   quadraForm: FormGroup;
+  editando: boolean = false;
+  idEditando: number | null = null;
 
   constructor(
     public navigation: NavigationService,
@@ -69,5 +71,40 @@ export class CadastroQuadra implements OnInit {
 
   irPara(rota: string) {
     this.navigation.irPara(rota);
+  }
+  editarQuadra(quadra: Quadra) {
+    this.editando = true;
+    this.idEditando = quadra.id || null;
+
+    this.quadraForm.patchValue({
+      nome: quadra.nome,
+      descricao: quadra.descricao,
+      horarioInicio: quadra.horarioInicio,
+      horarioFim: quadra.horarioFim,
+      valorPorHora: quadra.valorPorHora,
+    });
+
+    this.exibirLista = false;
+  }
+
+  atualizarQuadra() {
+    if (this.quadraForm.valid && this.idEditando !== null) {
+      const quadraAtualizada: Quadra = {
+        ...this.quadraForm.value,
+        id: this.idEditando,
+      };
+
+      this.quadraService.updateQuadra(quadraAtualizada);
+
+      this.carregarQuadras();
+      this.limparFormulario();
+
+      this.editando = false;
+      this.idEditando = null;
+
+      alert('Quadra atualizada com sucesso!');
+    } else {
+      alert('Erro ao atualizar quadra.');
+    }
   }
 }

@@ -20,24 +20,46 @@
     </section>
 
     <section class="form-section">
-      <form class="form" (ngSubmit)="publicarQuadra()">
+      <form class="form" [formGroup]="quadraForm">
+
         <label class="upload-box">
           <span>📸 Adicionar fotos da quadra</span>
           <input type="file" multiple hidden />
         </label>
 
-        <input type="text" name="nome" [(ngModel)]="quadra.nome" placeholder="Nome da quadra" required />
+        <input
+          type="text"
+          formControlName="nome"
+          placeholder="Nome da quadra"
+          required
+        />
 
-        <textarea name="descricao" [(ngModel)]="quadra.descricao" placeholder="Descrição da quadra (estrutura, iluminação, areia, etc)"></textarea>
+        <textarea
+          formControlName="descricao"
+          placeholder="Descrição da quadra (estrutura, iluminação, areia, etc)">
+        </textarea>
 
         <div class="horarios">
-          <input type="time" name="horarioInicio" [(ngModel)]="quadra.horarioInicio" />
-          <input type="time" name="horarioFim" [(ngModel)]="quadra.horarioFim" />
+          <input type="time" formControlName="horarioInicio" />
+          <input type="time" formControlName="horarioFim" />
         </div>
 
-        <input type="number" name="valorPorHora" [(ngModel)]="quadra.valorPorHora" placeholder="Valor por hora (R$)" required />
+        <input
+          type="number"
+          formControlName="valorPorHora"
+          placeholder="Valor por hora (R$)"
+          required
+        />
 
-        <button type="submit">Publicar Quadra</button>
+        <!-- BOTÕES -->
+        <button type="button" (click)="publicarQuadra()" *ngIf="!editando">
+          Publicar Quadra
+        </button>
+
+        <button type="button" (click)="atualizarQuadra()" *ngIf="editando">
+          Atualizar Quadra
+        </button>
+
       </form>
     </section>
   </div>
@@ -46,16 +68,25 @@
     <div *ngIf="quadras.length === 0" class="sem-dados">
       <p>Nenhuma quadra cadastrada ainda.</p>
     </div>
-    
+
     <div class="grid-quadras">
       <div *ngFor="let q of quadras" class="card-quadra">
         <div class="card-header">
           <h3>{{ q.nome }}</h3>
-          <button class="btn-excluir" (click)="excluirQuadra(q.id)">
-            <i class="bi bi-trash"></i>
-          </button>
+
+          <div>
+            <button class="btn-editar" (click)="editarQuadra(q)">
+              ✏️
+            </button>
+
+            <button class="btn-excluir" (click)="excluirQuadra(q.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </div>
+
         <p class="descricao">{{ q.descricao }}</p>
+
         <div class="detalhes">
           <span><strong>Horário:</strong> {{ q.horarioInicio }} - {{ q.horarioFim }}</span>
           <span><strong>Valor:</strong> R$ {{ q.valorPorHora | number:'1.2-2' }}/h</span>
