@@ -1,95 +1,102 @@
 <div class="quadra-container">
+
   <div class="home-top-login">
-    <a (click)="irPara('home')" title="Voltar ao menu">
+    <a (click)="irPara('home')">
       <i class="bi bi-arrow-left-circle-fill"></i>
     </a>
+
     <button class="toggle-btn" (click)="toggleView()">
-      {{ exibirLista ? 'Voltar ao Cadastro' : 'Ver Quadras Cadastradas' }}
+      {{ exibirLista ? '⬅ Voltar ao Cadastro' : ' Ver Quadras' }}
     </button>
+
   </div>
 
-  <div class="titulo">
-    <h1>{{ exibirLista ? 'Quadras Cadastradas' : 'Cadastre sua Quadra' }}</h1>
-  </div>
+  <div class="card-principal">
 
-  <div *ngIf="!exibirLista">
-    <section class="hero-section">
-      <div class="carousel-preview">
-        <span>Pré-visualização das fotos</span>
-      </div>
-    </section>
-
-    <section class="form-section">
-      <form class="form" [formGroup]="quadraForm">
-
-        <label class="upload-box">
-          <span>📸 Adicionar fotos da quadra</span>
-          <input type="file" multiple hidden />
-        </label>
-
-        <input
-          type="text"
-          formControlName="nome"
-          placeholder="Nome da quadra"
-          required
-        />
-
-        <textarea
-          formControlName="descricao"
-          placeholder="Descrição da quadra (estrutura, iluminação, areia, etc)">
-        </textarea>
-
-        <div class="horarios">
-          <input type="time" formControlName="horarioInicio" />
-          <input type="time" formControlName="horarioFim" />
-        </div>
-
-        <input
-          type="number"
-          formControlName="valorPorHora"
-          placeholder="Valor por hora (R$)"
-          required
-        />
-
-        <!-- BOTÕES -->
-        <button type="button" (click)="publicarQuadra()" *ngIf="!editando">
-          Publicar Quadra
-        </button>
-
-        <button type="button" (click)="atualizarQuadra()" *ngIf="editando">
-          Atualizar Quadra
-        </button>
-
-      </form>
-    </section>
-  </div>
-
-  <div *ngIf="exibirLista" class="lista-quadras">
-    <div *ngIf="quadras.length === 0" class="sem-dados">
-      <p>Nenhuma quadra cadastrada ainda.</p>
+    <div class="titulo">
+      <h1>{{ exibirLista ? 'Quadras Cadastradas' : 'Cadastre sua Quadra' }}</h1>
     </div>
 
-    <div class="grid-quadras">
-      <div *ngFor="let q of quadras" class="card-quadra">
-        <div class="card-header">
-          <h3>{{ q.nome }}</h3>
+    <div *ngIf="!exibirLista">
 
-          <div>
-            <button class="btn-editar" (click)="editarQuadra(q)">
-              ✏️
-            </button>
+      <section class="hero-section">
+        <div class="carousel-preview">
+          <span>Pré-visualização das fotos</span>
+        </div>
+      </section>
 
-            <button class="btn-excluir" (click)="excluirQuadra(q.id)">
-              <i class="bi bi-trash"></i>
-            </button>
+      <section class="form-section">
+        <form class="form" [formGroup]="quadraForm">
+
+          <label class="upload-box">
+            <span>📸 Adicionar fotos da quadra</span>
+            <small>Toque para selecionar imagens</small>
+            <input type="file" multiple hidden />
+          </label>
+
+          <label for="nome">Nome da quadra</label>
+          <input id="nome" type="text" placeholder="Quadra" formControlName="nome" />
+
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" placeholder="Digite sobre a quadra..." formControlName="descricao"></textarea>
+
+          <div class="horarios">
+            <div class="campo">
+              <label>Início</label>
+              <input type="time" formControlName="horarioInicio" />
+            </div>
+
+            <div class="campo">
+              <label>Fim</label>
+              <input type="time" formControlName="horarioFim" />
+            </div>
           </div>
+
+          <label>Valor por hora</label>
+          <input type="number" step="0.01" formControlName="valorPorHora" placeholder="R$ 0,00" />
+        </form>
+
+        <div class="button">
+          <button type="button" (click)="publicarQuadra()" *ngIf="!editando">
+            Publicar Quadra
+          </button>
+
+          <button type="button" (click)="atualizarQuadra()" *ngIf="editando">
+            Atualizar Quadra
+          </button>
         </div>
 
-        <p class="descricao">{{ q.descricao }}</p>
+      </section>
+    </div>
 
-        <div class="detalhes">
-          <span><strong>Horário:</strong> {{ q.horarioInicio }} - {{ q.horarioFim }}</span>
-          <span><strong>Valor:</strong> R$ {{ q.valorPorHora | number:'1.2-2' }}/h</span>
+    <div *ngIf="exibirLista" class="lista-quadras">
+
+      <div *ngIf="quadras.length === 0" class="sem-dados">
+        <p>Nenhuma quadra cadastrada ainda.</p>
+      </div>
+
+      <div class="grid-quadras">
+
+        <div *ngFor="let q of quadras" class="card-quadra">
+
+          <div class="card-header">
+            <h3>{{ q.nome }}</h3>
+
+            <div>
+              <button class="btn-editar" (click)="editarQuadra(q)">✏️</button>
+              <button class="btn-excluir" (click)="excluirQuadra(q.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+
+          <p class="descricao">{{ q.descricao }}</p>
+
+          <div class="detalhes">
+            <span>{{ q.horarioInicio }} - {{ q.horarioFim }}</span>
+            <span>R$ {{ q.valorPorHora | number:'1.2-2' }}/h</span>
+          </div>
+
         </div>
       </div>
     </div>
