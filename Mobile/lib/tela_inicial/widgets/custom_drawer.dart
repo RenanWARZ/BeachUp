@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela_login/login_screen.dart';
+import 'package:flutter_application_1/tela_cadastro/login_screen.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 
 class MenuDrawer extends StatefulWidget {

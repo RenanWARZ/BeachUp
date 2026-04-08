@@ -15,7 +15,7 @@ class _PlanosPrecosState extends State<SecaoPlanos> {
       children: [
         nomeSecao('Planos'),
         tituloSubtitulo(
-          'Escolha o palno ideal para seu espaço \n esportivo ',
+          'Escolha o plano ideal para seu espaço \n esportivo ',
           'Do ínicio da divulgação até a gestão completa \nde reservas, visibilidade e eventos.',
         ),
         planoCard(
@@ -110,7 +110,7 @@ Widget planoCard({
 
             SizedBox(height: 20),
 
-            // 🔥 BOTÃO
+            // BOTÃO
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 15),
@@ -132,7 +132,7 @@ Widget planoCard({
         ),
       ),
 
-      // 🔥 FAIXA DIAGONAL (Gold)
+      //  FAIXA DIAGONAL (Gold)
       if (destaque)
         Positioned(
           child: Container(decoration: BoxDecoration(color: Colors.orange)),

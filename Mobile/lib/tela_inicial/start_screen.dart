@@ -4,8 +4,10 @@ import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_drawer.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_como_funciona.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_recursos.dart';
+import 'package:flutter_application_1/tela_inicial/widgets/secao_rodape.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_sobre.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_metrica.dart';
+
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -61,6 +63,7 @@ class _StartScreenState extends State<StartScreen> {
           SecaoSobre(),
           SecaoMetrica(),
           SecaoPlanos(),
+          SecaoRodape(),
         ],
       ),
     );
