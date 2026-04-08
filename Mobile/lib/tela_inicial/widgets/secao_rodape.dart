@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class SecaoRodape extends StatelessWidget {
@@ -22,7 +23,7 @@ class SecaoRodape extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          'asset/logo.png',
+                          'asset/logo1.png',
                           height: 35,
                         ),
                         SizedBox(width: 10),
