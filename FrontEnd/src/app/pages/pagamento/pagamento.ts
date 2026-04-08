@@ -11,9 +11,13 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
   styleUrls: ['./pagamento.css'],
 })
 export class Pagamento {
+
   metodoSelecionado: 'cartao' | 'pix' = 'cartao';
   formPagamento!: FormGroup;
   mensagem: string = '';
+
+  cartao: any = null;
+  editando: boolean = false;
 
   constructor(
     public navigation: NavigationService,
@@ -30,29 +34,53 @@ export class Pagamento {
     });
   }
 
-  finalizarPagamento() {
-    console.log('clicou');
-
-    if (this.metodoSelecionado === 'cartao' && this.formPagamento.invalid) {
-      this.mensagem = '❌ Preencha os campos!';
+  salvarCartao() {
+    if (this.formPagamento.invalid) {
+      this.mensagem = 'Preencha todos os campos!';
       return;
     }
 
     const dados = this.formPagamento.value;
 
-    console.log('Dados do formulário:', dados);
-    console.log('Nome:', dados.nome);
-    console.log('Cartão:', dados.numeroCartao);
-    console.log('Validade:', dados.validade);
-    console.log('Cpf:', dados.cpf);
+    this.cartao = {
+      nome: dados.nome,
+      numero: '**** **** **** ' + dados.numeroCartao.slice(-4)
+    };
 
-    this.mensagem = '⏳ Processando...';
+    this.editando = false;
+    this.formPagamento.reset();
+    this.mensagem = 'Cartão salvo!';
+  }
+
+  editarCartao() {
+    this.editando = true;
+
+    if (this.cartao) {
+      this.formPagamento.patchValue({
+        nome: this.cartao.nome
+      });
+    }
+  }
+
+  deletarCartao() {
+    this.cartao = null;
+    this.editando = false;
+    this.mensagem = 'Cartão removido!';
+  }
+
+  finalizarPagamento() {
+    if (this.metodoSelecionado === 'cartao' && !this.cartao) {
+      this.mensagem = 'Adicione um cartão!';
+      return;
+    }
+
+    this.mensagem = 'Processando...';
 
     setTimeout(() => {
-      console.log('indo para sucesso');
       this.navigation.irPara('pagamento-sucesso');
     }, 1000);
   }
+
   irPara(rota: string) {
     this.navigation.irPara(rota);
   }

@@ -69,6 +69,52 @@
   font-weight: bold;
 }
 
+.saved-card {
+  background: #1a1a1a;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-bottom: 15px;
+}
+
+.saved-card p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.saved-card .actions {
+  display: flex;
+  gap: 8px;
+}
+
+.saved-card button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.saved-card button:first-child {
+  background: #ffa500;
+  color: #000;
+}
+
+.saved-card button:first-child:hover {
+  background: #ffbb33;
+}
+
+.saved-card button:last-child {
+  background: #ff4444;
+  color: #fff;
+}
+
+.saved-card button:last-child:hover {
+  background: #ff6666;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -128,29 +174,6 @@
 .qr-code img {
   width: 180px;
   margin: 20px 0;
-}
-
-.pix-key {
-  display: flex;
-  margin-top: 15px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.pix-key input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
-  color: white;
-}
-
-.pix-key button {
-  padding: 10px;
-  background: #ff8c00;
-  border: none;
-  cursor: pointer;
 }
 
 .home-top-login {
