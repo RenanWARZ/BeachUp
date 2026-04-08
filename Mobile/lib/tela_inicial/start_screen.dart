@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tela_inicial/widgets/secao_depoimentos.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_planos.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_drawer.dart';
@@ -61,6 +62,7 @@ class _StartScreenState extends State<StartScreen> {
           SecaoSobre(),
           SecaoMetrica(),
           SecaoPlanos(),
+          SecaoDepoimentos(),
         ],
       ),
     );
