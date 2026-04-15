@@ -1,6 +1,12 @@
 <div class="page">
   <!-- Header -->
-  <div class="header">
+  <div class="home-top-login">
+    <a (click)="navigation.irPara('home')" title="Voltar ao menu">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+  </div>
+
+    <div class="header">
     <div class="header-inner">
       <div class="header-image">
         <img src="assets/logo/image.png" alt="Logo BeachUp" class="menu-logo" />
@@ -24,12 +30,8 @@
       <div class="section">
         <label class="field-label">Quadra</label>
         <div class="courts-row">
-          <button
-            *ngFor="let c of courts"
-            class="court-btn"
-            [class.active]="selectedCourt === c.id"
-            (click)="selectCourt(c.id)"
-          >
+          <button *ngFor="let c of courts" class="court-btn" [class.active]="selectedCourt === c.id"
+            (click)="selectCourt(c.id)">
             {{ c.label }}
             <span *ngIf="c.tag" class="court-tag" [class.active-tag]="selectedCourt === c.id">
               {{ c.tag }}

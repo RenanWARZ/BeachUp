@@ -1,4 +1,12 @@
-/* ===== Page ===== */
+.home-top-login {
+  margin-left: 24%;
+  margin-top: 2%;
+  font-size: 29px;
+  color: #ff6a00;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
 .page {
   height: 100vh;
   display: flex;
@@ -10,9 +18,8 @@
   background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00);
 }
 
-/* ===== Header ===== */
 .header {
-  margin-top: 70px;
+  margin-top: 60px;
   padding: 16px 16px 8px;
   flex-shrink: 0;
 }
@@ -72,7 +79,6 @@
   flex-shrink: 0;
 }
 
-/* ===== Reservation ===== */
 .reservation-wrapper {
   flex: 1;
   display: flex;
@@ -101,7 +107,6 @@
   margin: 0 0 16px;
 }
 
-/* ===== Courts ===== */
 .section {
   margin-bottom: 16px;
 }
@@ -155,7 +160,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ===== Fields Grid ===== */
 .fields-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -192,7 +196,6 @@
   color: #e5e5e5;
 }
 
-/* ===== Validation ===== */
 .validation-msg {
   background: rgba(239, 68, 68, 0.1);
   color: #ef4444;
@@ -204,7 +207,6 @@
   margin-bottom: 12px;
 }
 
-/* ===== Bottom Row ===== */
 .bottom-row {
   display: flex;
   gap: 12px;
@@ -297,14 +299,99 @@
   margin: 12px 0 0;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 640px) {
-  .header-image {
-    height: 100px;
+
+/* Desktop menor / notebook */
+@media (max-width: 1100px) {
+
+  .home-top-login {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 29px;
+    color: #ff6a00;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .header {
+    margin-top: 40px;
+    padding: 16px;
+  }
+
+  .header-inner,
+  .reservation-card {
+    max-width: 90%;
   }
 
   .arena-name {
+    font-size: 2rem;
+  }
+
+  .info-line {
+    font-size: 1.05rem;
+  }
+
+  .header-image {
+    height: 180px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .home-top-login {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 29px;
+    color: #ff6a00;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .page {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .header {
+    margin-top: 24px;
+    padding: 16px 14px 8px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .header-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .header-info {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .arena-name {
+    font-size: 1.8rem;
+  }
+
+  .info-line {
+    justify-content: center;
     font-size: 1rem;
+    text-align: center;
+  }
+
+  .reservation-wrapper {
+    padding: 12px 14px 20px;
+  }
+
+  .reservation-card {
+    max-width: 100%;
+    padding: 18px;
   }
 
   .courts-row {
@@ -312,15 +399,210 @@
   }
 
   .court-btn {
-    flex: 1 1 calc(33% - 8px);
-    min-width: 80px;
+    flex: 1 1 calc(50% - 8px);
+    min-width: 120px;
   }
 
   .fields-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .bottom-row {
     flex-direction: column;
+  }
+
+  .btn-reservar,
+  .price-box {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  .home-top-login {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 29px;
+    color: #ff6a00;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .header {
+    margin-top: 16px;
+    padding: 12px 12px 6px;
+  }
+
+  .header-inner {
+    gap: 12px;
+  }
+
+  .header-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+  }
+
+  .header-info {
+    gap: 8px;
+  }
+
+  .arena-name {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  .info-line {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .reservation-wrapper {
+    padding: 10px 12px 18px;
+  }
+
+  .reservation-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .card-title {
+    font-size: 0.75rem;
+    margin-bottom: 14px;
+  }
+
+  .field-label {
+    font-size: 0.68rem;
+  }
+
+  .courts-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .court-btn {
+    flex: 1 1 calc(50% - 8px);
+    min-width: unset;
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+
+  .court-tag {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 0.55rem;
+  }
+
+  .fields-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .field-input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .validation-msg {
+    font-size: 0.72rem;
+    padding: 10px;
+  }
+
+  .bottom-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-value {
+    font-size: 1.3rem;
+  }
+
+  .btn-reservar {
+    width: 100%;
+    padding: 16px;
+    font-size: 0.92rem;
+  }
+
+  .price-hint {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+
+  .home-top-login {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 29px;
+    color: #ff6a00;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .header {
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .header-image {
+    height: 150px;
+  }
+
+  .arena-name {
+    font-size: 1.2rem;
+  }
+
+  .info-line {
+    font-size: 0.82rem;
+    gap: 4px;
+  }
+
+  .reservation-wrapper {
+    padding: 8px 10px 16px;
+  }
+
+  .reservation-card {
+    padding: 14px 12px;
+  }
+
+  .card-title {
+    font-size: 0.7rem;
+  }
+
+  .court-btn {
+    flex: 1 1 100%;
+    font-size: 0.78rem;
+    padding: 10px;
+  }
+
+  .field-input {
+    font-size: 0.85rem;
+    padding: 11px;
+  }
+
+  .price-box-filled,
+  .price-box-empty {
+    padding: 10px 12px;
+  }
+
+  .price-value {
+    font-size: 1.15rem;
+  }
+
+  .btn-reservar {
+    padding: 14px;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  .price-hint {
+    font-size: 0.65rem;
   }
 }

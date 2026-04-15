@@ -27,9 +27,9 @@ export class CadastroQuadra implements OnInit {
     this.quadraForm = this.formBuilder.group({
       nome: ['', Validators.required],
       descricao: [''],
-      horarioInicio: [''],
-      horarioFim: [''],
-      valorPorHora: [0, [Validators.required, Validators.min(0.01)]],
+      horarioInicio: ['00:00'],
+      horarioFim: ['00:00'],
+      valorPorHora: ['', [Validators.required, Validators.min(0.01)]],
     });
   }
 

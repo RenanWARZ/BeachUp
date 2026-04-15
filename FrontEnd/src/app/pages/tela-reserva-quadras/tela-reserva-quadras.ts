@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavigationService } from '../../shared/services/navigation';
 
 interface Court {
   id: number;
@@ -16,6 +17,7 @@ interface Court {
   styleUrls: ['./tela-reserva-quadras.css'],
 })
 export class TelaReservaQuadras {
+
   readonly PRICE_PER_30_MIN = 80;
 
   courts: Court[] = [
@@ -35,7 +37,7 @@ export class TelaReservaQuadras {
   endTime = '';
   today = '';
 
-  constructor() {
+  constructor(public navigation: NavigationService) {
     // Gerar slots de 08:00 a 22:00
     for (let h = 8; h <= 22; h++) {
       this.timeSlots.push(this.pad(h) + ':00');
@@ -43,6 +45,7 @@ export class TelaReservaQuadras {
     }
     this.endTimeSlots = [...this.timeSlots];
     this.today = new Date().toISOString().split('T')[0];
+
   }
 
   private pad(n: number): string {
@@ -115,3 +118,4 @@ export class TelaReservaQuadras {
     );
   }
 }
+
