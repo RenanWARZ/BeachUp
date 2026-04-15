@@ -46,175 +46,86 @@ class _ComoFuncionaState extends State<SecaoComoFunciona> {
           ),
 
           SizedBox(height: 60), //ESPAÇAMENTO ENTRE O TEXTO E OS CARDS
-
-          //CARD 1######################################################);
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
-
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 37, 36, 36),
-              border: Border.all(color: Colors.orange),
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.orange,
-                  blurRadius: 10,
-                  offset: Offset(0, 10),
-                ),
-              ],
-            ),
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    '#01',
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 10),
-                //Título
-                Text(
-                  "Crie sua conta\n",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 2),
-                Text(
-                  "Crie e administre torneios com categorias, confrontos, resultados e organização profissional.",
-                  style: TextStyle(fontSize: 14, color: Colors.white),
-                ),
-              ],
-            ),
+          //####################CARD 1######################################################);
+          _card(
+            numero: '#01',
+            titulo: 'titulo',
+            descricao:
+                'Crie e administre torneios com categorias, confrontos, resultados e organização profissional.',
           ),
           //ESPAÇAMENTO ENTRE OS CARDS
           SizedBox(height: 20),
           //xxxxxxxxxxxxxxxxxxxxxxx
-          //CARD 2###########################################################
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
-
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 37, 36, 36),
-              border: Border.all(color: Colors.orange),
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.orange,
-                  blurRadius: 10,
-                  offset: Offset(0, 10),
-                ),
-              ],
-            ),
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    '#02',
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 10),
-                //Título
-                Text(
-                  "Gerencie sua operação\n",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 2),
-                Text(
-                  "Centralize jogadores, partidas, torneios, reservas e informações em um só lugar.",
-                  style: TextStyle(fontSize: 14, color: Colors.white),
-                ),
-              ],
-            ),
+          //###################CARD 2###########################################################
+          _card(
+            numero: '#02',
+            titulo: 'Gerencie sua operação',
+            descricao:
+                'Centralize jogadores, partidas, torneios, reservas e informações em um só lugar.',
           ),
           //ESPAÇAMENTO ENTRE OS CARDS
           SizedBox(height: 20),
-          //CARD 3
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
-
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 37, 36, 36),
-              border: Border.all(color: Colors.orange),
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.orange,
-                  blurRadius: 10,
-                  offset: Offset(0, 10),
-                ),
-              ],
-            ),
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    '#03',
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 10),
-                //Título
-                Text(
-                  "Ganhe visibilidade\n",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                //Espaçamento
-                SizedBox(height: 2),
-                Text(
-                  "Fortaleça sua presença no esporte e entregue uma experiência mais profissional para todos.",
-                  style: TextStyle(fontSize: 14, color: Colors.white),
-                ),
-              ],
-            ),
+          //####################CARD 3###################################
+          _card(
+            numero: "#03",
+            titulo: 'Ganhe visibilidade',
+            descricao:
+                'Fortaleça sua presença no esporte e entregue uma experiência mais profissional para todos.',
           ),
-          //ESPAÇAMENTO ENTRE OS CARDS
-          SizedBox(height: 20),
         ],
       ),
     );
   }
+}
+
+Widget _card({
+  required String numero,
+  required String titulo,
+  required String descricao,
+}) {
+  return Container(
+    width: double.infinity,
+    padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
+
+    decoration: BoxDecoration(
+      color: const Color.fromARGB(255, 37, 36, 36),
+      border: Border.all(color: Colors.orange),
+      borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(color: Colors.orange, blurRadius: 10, offset: Offset(0, 10)),
+      ],
+    ),
+
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(),
+          child: Text(
+            numero,
+            style: TextStyle(
+              color: Colors.orange,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        //Espaçamento
+        SizedBox(height: 10),
+        //Título
+        Text(
+          titulo,
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        //Espaçamento
+        SizedBox(height: 20),
+        Text(descricao, style: TextStyle(fontSize: 14, color: Colors.white)),
+      ],
+    ),
+  );
 }

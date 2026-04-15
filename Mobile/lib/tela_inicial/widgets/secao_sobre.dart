@@ -35,7 +35,7 @@ class _SobreBeachUpState extends State<SecaoSobre> {
           SizedBox(height: 19), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
 
           const Text(
-            'O BeachUp nasce para integrar atletas, quadras e organizadores em uma plataforma \n moderna, intuitiva e escalável, criada para evoluir junto com a comunidade. Mais do \n que conectar pessoas, buscamos estruturar e simplificar toda a jornada do esporte, desde a \n organização de jogos até a gestão completa de eventos e espaços. Nosso propósito é \n elevar a gestão esportiva a um novo padrão — mais eficiente, profissional e alinhado à \n dinâmica real do Beach Tennis. Com soluções inteligentes e foco na experiência do usuário, \n a BeachUp transforma desafios operacionais em processos simples, promovendo mais \n conexão, organização e crescimento para todo o ecossistema esportivo.',
+            'O BeachUp nasce para integrar atletas, quadras e organizadores em\n uma plataforma moderna, intuitiva e escalável, criada para evoluir junto com a comunidade. Mais do que conectar pessoas, \nbuscamos estruturar e simplificar toda a jornada do esporte, desde a \n organização de jogos até a gestão completa de eventos e espaços.\n Nosso propósito é elevar a gestão esportiva a um novo padrão \n— mais eficiente, profissional e alinhado à  dinâmica real do\n Beach Tennis. Com soluções inteligentes e foco na experiência\n do usuário, a BeachUp transforma desafios operacionais em processos\n simples, promovendo mais conexão, organização\n e crescimento para todo o ecossistema esportivo.',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 15, color: Colors.white70),
           ),
