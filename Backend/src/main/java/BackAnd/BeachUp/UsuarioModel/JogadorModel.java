@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-public class JogadorModel implements UserDetails {
+public class  JogadorModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

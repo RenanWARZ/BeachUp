@@ -29,16 +29,6 @@ public class UsuarioController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping ("/login")
-    public ResponseEntity login(@RequestBody AutenticacaoDTO data){
-        var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(),data.senha());
-        var auth = this.authenticationManager.authenticate(usernamePassword);
-
-        var token = tokenService.generateToken((UserDetails) auth.getPrincipal());
-
-        return ResponseEntity.ok(new LoginResponseDTO(token));
-    }
-
     @PostMapping("/cadastro")
     public UsuarioResponseDTO create(@RequestBody UsuarioCadastroDTO dto){
         return service.create(dto);
