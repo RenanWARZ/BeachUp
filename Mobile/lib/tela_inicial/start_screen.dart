@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tela_inicial/widgets/secao_comece_agora.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_depoimentos.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_planos.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_drawer.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_como_funciona.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_recursos.dart';
+import 'package:flutter_application_1/tela_inicial/widgets/secao_rodape.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_sobre.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/secao_metrica.dart';
 
@@ -45,7 +47,7 @@ class _StartScreenState extends State<StartScreen> {
                 Text(
                   "Organize campeonatos, acompanhe rankings\n e conecte jogadores em um só lugar.",
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -63,6 +65,8 @@ class _StartScreenState extends State<StartScreen> {
           SecaoMetrica(),
           SecaoPlanos(),
           SecaoDepoimentos(),
+          SecaoComeceAgora(),
+          SecaoRodape(),
         ],
       ),
     );
@@ -110,8 +114,9 @@ Widget tituloSubtitulo(String titulo, String subtitulo) {
           color: Colors.orange,
         ),
       ),
-      SizedBox(height: 4), //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
+      SizedBox(height: 4),
 
+      //ESPAÇAMENTO ENTRE O TÍTULO E O SUBTÍTULO
       Text(
         subtitulo,
         textAlign: TextAlign.center,

@@ -13,65 +13,109 @@ class _MenuDrawerState extends State<MenuDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
+      backgroundColor: Colors.black,
+      child: Column(
         children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.orange),
-            child: Text(
-              'Beach Up\n Beach Tennis Plataform',
-              style: TextStyle(color: Colors.white, fontSize: 24),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: Row(
+              children: [
+                Image.asset('asset/logo1.png', height: 40),
+                const SizedBox(width: 40),
+
+                //TEXTO
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'BeachUp',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Beach Tennis Platform',
+                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+
+                //BOTÃO FECHAR
+                IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
             ),
           ),
 
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Início'),
-            onTap: () {
-              Navigator.pop(context); //fecha menu
-            },
+          const Divider(color: Colors.white24),
+
+          //LISTA
+          Expanded(
+            child: ListView(
+              children: [
+                _item(Icons.home, 'Início', () {
+                  Navigator.pop(context);
+                }),
+
+                _item(Icons.grid_view, "Redirecionamento", () {}),
+
+                _item(Icons.access_time, "Reservar quadras", () {}),
+
+                _item(Icons.star, "Avaliações", () {}),
+
+                _item(Icons.credit_card, "Pagamentos", () {}),
+
+                _item(Icons.add_box, "Cadastre sua quadra", () {}),
+
+                _item(Icons.info, "Sobre-nos", () {}),
+              ],
+            ),
+          ),
+          //LINHA LARANJA
+          Container(
+            height: 1,
+            color: Colors.orange,
+            margin: const EdgeInsets.symmetric(horizontal: 20),
           ),
 
-          ListTile(
-            leading: Icon(Icons.info),
-            title: Text('Recursos'),
-            onTap: () {},
-          ),
+          const SizedBox(height: 20),
 
-          ListTile(
-            leading: Icon(Icons.air),
-            title: Text('Como funicona'),
-            onTap: () {},
-          ),
-
-          ListTile(
-            leading: Icon(Icons.abc),
-            title: Text('Planos'),
-            onTap: () {},
-          ),
-
-          ListTile(
-            leading: Icon(Icons.local_activity),
-            title: Text('Localização'),
-          ),
-
-          SizedBox(height: 210),
-
-          SizedBox(
-            width: double.infinity,
-
-            child: ElevatedButton(
-              onPressed: () {
-                navigatorPush(context, LoginScreen());
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
-                padding: EdgeInsets.symmetric(vertical: 15),
+          //BOTÃO
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  navigatorPush(context, LoginScreen());
+                },
+                icon: const Icon(Icons.login, color: Colors.white),
+                label: const Text("Entrar"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
               ),
-              child: const Text('Login'),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _item(IconData icon, String title, VoidCallback onTap) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.white),
+      title: Text(title, style: const TextStyle(color: Colors.white)),
+      onTap: onTap,
     );
   }
 }
