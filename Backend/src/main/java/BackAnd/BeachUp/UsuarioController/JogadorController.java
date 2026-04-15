@@ -25,16 +25,6 @@ public class JogadorController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AutenticacaoDTO data){
-        var usarnamePassword = new UsernamePasswordAuthenticationToken(data.email(),data.senha());
-        var auth = this.authenticationManager.authenticate(usarnamePassword);
-
-        var jogadortoken = tokenService.generateToken((UserDetails) auth.getPrincipal());
-
-        return  ResponseEntity.ok(new LoginResponseDTO(jogadortoken));
-    }
-
     @PostMapping("/cadastro")
     public JogadorResponseDTO create(@RequestBody JogadorCadastroDTO dto){
         return service.create(dto);
