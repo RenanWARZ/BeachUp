@@ -16,6 +16,7 @@ export class CriacaoDeTelas implements OnInit {
   public team: Team = this.limparFormulario();
   public teams: Team[] = [];
   public exibirLista: boolean = false;
+  public editando: boolean = false;
 
   constructor(
     private teamService: TeamService,
@@ -32,11 +33,16 @@ export class CriacaoDeTelas implements OnInit {
 
   publicarTeam(): void {
     if (this.team.nome && this.team.nivel) {
-      this.teamService.addTeam(this.team);
+      if (this.editando) {
+        this.teamService.updateTeam(this.team);
+        alert('Time atualizado com sucesso!');
+      } else {
+        this.teamService.addTeam(this.team);
+        alert('Time criado com sucesso!');
+      }
       this.carregarTeams();
-      this.team = this.limparFormulario();
+      this.cancelarEdicao();
       this.exibirLista = true;
-      alert('Time criado com sucesso!');
     } else {
       alert('Por favor, preencha o nome e o nível do time.');
     }
@@ -47,13 +53,27 @@ export class CriacaoDeTelas implements OnInit {
       nome: '',
       descricao: '',
       nivel: '',
-      maxJogadores: 0,
+      maxJogadores: 4,
       privado: false
     };
   }
 
+  editarTeam(t: Team): void {
+    this.team = { ...t };
+    this.editando = true;
+    this.exibirLista = false;
+  }
+
+  cancelarEdicao(): void {
+    this.team = this.limparFormulario();
+    this.editando = false;
+  }
+
   toggleView(): void {
     this.exibirLista = !this.exibirLista;
+    if (!this.exibirLista && !this.editando) {
+      this.cancelarEdicao();
+    }
   }
 
   excluirTeam(id: number | undefined): void {
