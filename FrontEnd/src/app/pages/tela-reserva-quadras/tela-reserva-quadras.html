@@ -1,5 +1,13 @@
 <div class="page">
-  <!-- Header -->
+
+  <!-- Botão Voltar -->
+  <div class="home-top-login">
+    <a (click)="navigation.irPara('home')" title="Voltar ao menu">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+  </div>
+
+  <!-- Cabeçalho -->
   <div class="header">
     <div class="header-inner">
       <div class="header-image">
@@ -15,66 +23,70 @@
     </div>
   </div>
 
-  <!-- Reservation Card -->
+  <!-- Cartão de Reserva -->
   <div class="reservation-wrapper">
     <div class="reservation-card">
-      <h2 class="card-title">Reserva de Quadra</h2>
 
-      <!-- Courts -->
+      <!-- Título muda quando está editando -->
+      <h2 class="card-title">
+        {{ editandoId ? 'Editando Reserva' : 'Reserva de Quadra' }}
+      </h2>
+
+      <!-- Seleção de Quadra -->
       <div class="section">
         <label class="field-label">Quadra</label>
         <div class="courts-row">
           <button
-            *ngFor="let c of courts"
+            *ngFor="let q of quadras"
             class="court-btn"
-            [class.active]="selectedCourt === c.id"
-            (click)="selectCourt(c.id)"
+            [class.active]="quadraSelecionada === q.id"
+            (click)="selecionarQuadra(q.id)"
           >
-            {{ c.label }}
-            <span *ngIf="c.tag" class="court-tag" [class.active-tag]="selectedCourt === c.id">
-              {{ c.tag }}
+            {{ q.label }}
+            <span *ngIf="q.tag" class="court-tag" [class.active-tag]="quadraSelecionada === q.id">
+              {{ q.tag }}
             </span>
           </button>
         </div>
       </div>
 
-      <!-- Date + Times -->
+      <!-- Data e Horários -->
       <div class="fields-grid">
         <div class="field">
           <label class="field-label">Data</label>
-          <input type="date" class="field-input" [min]="today" [(ngModel)]="selectedDate" />
+          <input type="date" class="field-input" [min]="hoje" [(ngModel)]="dataSelecionada" />
         </div>
         <div class="field">
           <label class="field-label">Início</label>
-          <select class="field-input" [(ngModel)]="startTime" (ngModelChange)="onStartTimeChange()">
+          <select class="field-input" [(ngModel)]="horaInicio" (ngModelChange)="aoMudarHoraInicio()">
             <option value="">--:--</option>
-            <option *ngFor="let t of timeSlots; let last = last" [value]="t" [disabled]="last">
+            <option *ngFor="let t of todosHorarios; let last = last" [value]="t" [disabled]="last">
               {{ t }}
             </option>
           </select>
         </div>
         <div class="field">
           <label class="field-label">Término</label>
-          <select class="field-input" [(ngModel)]="endTime" [disabled]="!startTime">
+          <select class="field-input" [(ngModel)]="horaFim" [disabled]="!horaInicio">
             <option value="">--:--</option>
-            <option *ngFor="let t of endTimeSlots" [value]="t">
+            <option *ngFor="let t of horariosFim" [value]="t">
               {{ t }}
             </option>
           </select>
         </div>
       </div>
 
-      <!-- Validation -->
-      <div *ngIf="validation" class="validation-msg">
-        {{ validation }}
+      <!-- Mensagem de Validação -->
+      <div *ngIf="validacao" class="validation-msg">
+        {{ validacao }}
       </div>
 
-      <!-- Price + Button -->
+      <!-- Preço e Botão -->
       <div class="bottom-row">
-        <div class="price-box" *ngIf="totalPrice !== null; else pricePlaceholder">
+        <div class="price-box" *ngIf="precoTotal !== null; else pricePlaceholder">
           <div class="price-box-filled">
-            <span class="price-duration">{{ duration }}</span>
-            <span class="price-value">R$ {{ formatPrice(totalPrice!) }}</span>
+            <span class="price-duration">{{ duracao }}</span>
+            <span class="price-value">R$ {{ formatarPreco(precoTotal!) }}</span>
           </div>
         </div>
         <ng-template #pricePlaceholder>
@@ -86,10 +98,68 @@
           </div>
         </ng-template>
 
-        <button class="btn-reservar" [disabled]="!canReserve" (click)="reservar()">Reservar</button>
+        <!-- Botão muda de "Reservar" para "Salvar" quando está editando -->
+        <button class="btn-reservar" [disabled]="!podeReservar" (click)="reservar()">
+          {{ editandoId ? 'Salvar' : 'Reservar' }}
+        </button>
+      </div>
+
+      <!-- Botão Cancelar Edição (só aparece quando está editando) -->
+      <div *ngIf="editandoId" class="cancelar-edicao-wrapper">
+        <button class="btn-cancelar-edicao" (click)="cancelarEdicao()">
+          Cancelar edição
+        </button>
       </div>
 
       <p class="price-hint">R$ 80,00 a cada 30 minutos</p>
     </div>
   </div>
+
+  <!-- Lista de Reservas -->
+  <div class="reservation-wrapper reservas-section">
+    <div class="reservation-card">
+      <h2 class="card-title">Minhas Reservas ({{ reservas.length }})</h2>
+
+      <!-- Quando não tem reservas -->
+      <p *ngIf="reservas.length === 0" class="sem-reservas">
+        Nenhuma reserva ainda. Faça sua primeira reserva acima!
+      </p>
+
+      <!-- Lista de cada reserva -->
+      <div *ngFor="let r of reservas" class="reserva-item">
+        <div class="reserva-info">
+          <p class="reserva-quadra">{{ r.quadraNome }}</p>
+          <p class="reserva-detalhe">
+            📅 {{ formatarDataBR(r.data) }} • ⏰ {{ r.horaInicio }} - {{ r.horaFim }} ({{ r.duracao }})
+          </p>
+        </div>
+        <div class="reserva-acoes">
+          <span class="reserva-preco">R$ {{ formatarPreco(r.preco) }}</span>
+          <button class="btn-editar" (click)="editarReserva(r)" title="Editar reserva">✏️</button>
+          <button class="btn-excluir" (click)="abrirDialogExclusao(r)" title="Excluir reserva">🗑️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialog de Confirmação de Exclusão -->
+  <div class="dialog-overlay" *ngIf="mostrarDialogExclusao" (click)="cancelarExclusao()">
+    <div class="dialog-box" (click)="$event.stopPropagation()">
+      <h3 class="dialog-titulo">Excluir reserva?</h3>
+      <p class="dialog-mensagem">
+        Tem certeza que deseja excluir a reserva da
+        <strong>{{ reservaParaExcluir?.quadraNome }}</strong> no dia
+        <strong>{{ reservaParaExcluir ? formatarDataBR(reservaParaExcluir.data) : '' }}</strong>
+        das <strong>{{ reservaParaExcluir?.horaInicio }}</strong> às
+        <strong>{{ reservaParaExcluir?.horaFim }}</strong>?
+        <br />
+        Essa ação não pode ser desfeita.
+      </p>
+      <div class="dialog-botoes">
+        <button class="btn-dialog-cancelar" (click)="cancelarExclusao()">Cancelar</button>
+        <button class="btn-dialog-excluir" (click)="confirmarExclusao()">Excluir</button>
+      </div>
+    </div>
+  </div>
+
 </div>
