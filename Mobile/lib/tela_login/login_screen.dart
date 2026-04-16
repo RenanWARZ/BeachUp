@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,11 +25,13 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           getTextField(labelText: "nome", controller: txtNomeController),
-          getTextField(labelText: "sobrenome", controller: txtNomeController),
-          getTextField(labelText: "idade", controller: txtNomeController),
+          getTextField(
+            labelText: "sobrenome",
+            controller: txtSobrenomeController,
+          ),
+          getTextField(labelText: "idade", controller: txtIdadeController),
 
           SizedBox(
-            //caixa redimensionável
             width: double.infinity,
             child: FloatingActionButton(
               child: Text('Cadastrar'),
@@ -52,4 +53,18 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+//Widget reutilizável
+Widget getTextField({String? labelText, TextEditingController? controller}) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        labelText: labelText,
+      ),
+    ),
+  );
 }

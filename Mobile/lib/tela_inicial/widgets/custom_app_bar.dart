@@ -3,15 +3,21 @@ import 'package:flutter_application_1/tela_login/login_screen.dart';
 
 AppBar getAppBar(String title, {List<Widget>? actions}) {
   return AppBar(
-    backgroundColor: Colors.blue,
-    title: Text(title),
+    backgroundColor: Colors.black,
+    title: Row(
+      children: [
+        Image.asset('asset/logo1.png', height: 35),
+        const SizedBox(width: 10),
+        Text(title, style: TextStyle(color: Colors.white)),
+      ],
+    ),
     actions: actions,
   );
 }
 
 AppBar getStartScreenAppBar(BuildContext context) {
   return getAppBar(
-    "Beach Tennis",
+    "BeachUp",
     actions: [
       Hero(
         tag: "login",
@@ -29,18 +35,4 @@ AppBar getStartScreenAppBar(BuildContext context) {
 
 void navigatorPush(BuildContext context, Widget route) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => route));
-}
-
-
-Widget getTextField({String? labelText, TextEditingController? controller}) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        labelText: labelText,
-      ),
-    ),
-  );
 }

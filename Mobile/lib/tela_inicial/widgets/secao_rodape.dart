@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SecaoRodape extends StatelessWidget {
@@ -22,10 +21,7 @@ class SecaoRodape extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Image.asset(
-                          'asset/logo1.png',
-                          height: 35,
-                        ),
+                        Image.asset('asset/logo1.png', height: 35),
                         SizedBox(width: 10),
                         Text(
                           'BeachUp',
@@ -68,9 +64,9 @@ class SecaoRodape extends StatelessWidget {
                     }),
 
                     _itemNav(context, Icons.info, 'Sobre', () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Ir para Sobre')),
-                      );
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text('Ir para Sobre')));
                     }),
                   ],
                 ),
@@ -137,10 +133,7 @@ class SecaoRodape extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.orange, size: 18),
             SizedBox(width: 8),
-            Text(
-              texto,
-              style: TextStyle(color: Colors.white70),
-            ),
+            Text(texto, style: TextStyle(color: Colors.white70)),
           ],
         ),
       ),
@@ -148,8 +141,6 @@ class SecaoRodape extends StatelessWidget {
   }
 
   void _mensagem(BuildContext context, String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(msg)),
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 }
