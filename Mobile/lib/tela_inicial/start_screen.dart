@@ -29,6 +29,12 @@ class _StartScreenState extends State<StartScreen> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(vertical: 40),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('asset/beach_tela_inicial.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Column(
               children: [
                 SizedBox(
