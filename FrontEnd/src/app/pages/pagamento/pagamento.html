@@ -11,10 +11,14 @@
     <div class="payment-left">
       <span class="section-badge">Pagamento</span>
 
+
       <h2>Finalize sua assinatura</h2>
       <p>Ative o plano premium e leve sua quadra para o próximo nível.</p>
 
       <div class="plan-highlight">
+
+        <div class="faixa">Mais popular</div>
+
         <h3>Plano Gold</h3>
         <p class="price">R$ 199,90 <span>/mês</span></p>
 
@@ -25,31 +29,34 @@
           <li>✔ Ranking completo</li>
           <li>✔ Maior visibilidade</li>
         </ul>
+
+        <!-- <p id="descricao">
+        🎯 Desbloqueie todo o potencial do seu perfil com o Plano Gold. <br>
+        📌 Tenha mais visibilidade, uploads ilimitados <br>
+        🏆 Participação em torneios e liberdade total de horários.</p> -->
+
       </div>
     </div>
 
     <div class="payment-right">
       <div class="payment-card">
 
-        <h3>Forma de pagamento</h3>
+        <h3 class="h3">Forma de pagamento</h3>
 
         <div class="payment-methods">
-          <button type="button"
-            class="method"
-            [class.active]="metodoSelecionado === 'cartao'"
+          <button type="button" class="method" [class.active]="metodoSelecionado === 'cartao'"
             (click)="metodoSelecionado = 'cartao'">
             Cartão
           </button>
 
-          <button type="button"
-            class="method"
-            [class.active]="metodoSelecionado === 'pix'"
+          <button type="button" class="method" [class.active]="metodoSelecionado === 'pix'"
             (click)="metodoSelecionado = 'pix'">
             PIX
           </button>
         </div>
 
         <div *ngIf="metodoSelecionado === 'cartao'">
+
 
           <div *ngIf="cartao" class="saved-card">
             <p><strong>Cartão salvo:</strong> {{ cartao.numero }}</p>
@@ -60,9 +67,14 @@
             </div>
           </div>
 
-          <form *ngIf="formPagamento && (editando || !cartao)"
-                [formGroup]="formPagamento"
-                (ngSubmit)="salvarCartao()">
+          <form *ngIf="formPagamento && (editando || !cartao)" [formGroup]="formPagamento" (ngSubmit)="salvarCartao()">
+
+            <div class="cartoes">
+              <img src="assets/cartoes/visa.png" alt="Visa">
+              <img src="assets/cartoes/mastercard.png" alt="Mastercard">
+              <img src="assets/cartoes/elo.png" alt="Elo">
+              <img src="assets/cartoes/hipercard.png" alt="Hipercard">
+            </div>
 
             <div class="form-group">
               <label>Nome no cartão</label>
@@ -91,38 +103,41 @@
               <input type="text" maxlength="14" formControlName="cpf" placeholder="000.000.000-00" />
             </div>
 
-            <button class="btn-pay" type="submit">
+            <button class="btn-cartao" type="submit">
               {{ editando ? 'Salvar alterações' : 'Salvar cartão' }}
             </button>
 
           </form>
 
-          <!--botao comcluir-->
-          <button 
-            class="btn-pay"
-            type="button"
-            *ngIf="cartao && !editando"
-            (click)="finalizarPagamento()">
-            Concluir pagamento
+          <button class="btn-cartaoF" type="button" *ngIf="cartao && !editando" (click)="finalizarPagamento()">
+            Concluir pagamento ✅
           </button>
 
         </div>
 
         <div *ngIf="metodoSelecionado === 'pix'" class="pix-area">
 
-          <h4>Pague com PIX</h4>
+          <div class="pix">
+            <img src="assets/cartoes/pix.png" alt="Pix">
+          </div>
+          <h3 id="h3"> Escaneie o QR Code </h3>
+          <h3>para pagar com o pix:</h3>
 
           <div class="qr-code">
             <img src="assets/qrcode/Qrcode.jpg" alt="QR Code PIX">
           </div>
 
+          <button class="btn-pix" type="button" (click)="finalizarPagamento()">
+            <i class="bi bi-copy"></i>  Pix copia e cola
+          </button>
+
           <button class="btn-pay" type="button" (click)="finalizarPagamento()">
-            Já paguei
+            Já paguei ✅
           </button>
 
         </div>
 
-        <span class="secure">🔒 Pagamento seguro</span>
+        <span class="secure"> 🔒 Pagamento seguro</span>
 
       </div>
     </div>
