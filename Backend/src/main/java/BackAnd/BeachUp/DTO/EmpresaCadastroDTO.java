@@ -1,16 +1,15 @@
 package BackAnd.BeachUp.DTO;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-@AllArgsConstructor
-public class UsuarioResponseDTO {
+@Setter
 
-    private  Long id;
+public class EmpresaCadastroDTO {
     private String nome;
     private String email;
+    private String senha;
+    private String confirmarSenha;
     private String cnpj;
-
 }

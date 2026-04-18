@@ -1,9 +1,9 @@
-package BackAnd.BeachUp.UsuarioService;
+package BackAnd.BeachUp.Services;
 
-import BackAnd.BeachUp.UsuarioModel.JogadorModel;
-import BackAnd.BeachUp.UsuarioModel.Usuario;
-import BackAnd.BeachUp.UsuarioRepository.JogadorRepository;
-import BackAnd.BeachUp.UsuarioRepository.UsuarioRepository;
+import BackAnd.BeachUp.Models.JogadorModel;
+import BackAnd.BeachUp.Models.Empresa;
+import BackAnd.BeachUp.Repositorys.JogadorRepository;
+import BackAnd.BeachUp.Repositorys.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private EmpresaRepository empresaRepository;
 
     @Autowired
     private JogadorRepository jogadorRepository;
@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
 
-        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        Optional<Empresa> usuario = empresaRepository.findByEmail(email);
         if (usuario.isPresent()) {
             return usuario.get();
         }

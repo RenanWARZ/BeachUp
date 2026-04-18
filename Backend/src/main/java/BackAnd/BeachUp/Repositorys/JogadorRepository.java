@@ -1,7 +1,6 @@
-package BackAnd.BeachUp.UsuarioRepository;
+package BackAnd.BeachUp.Repositorys;
 
-import BackAnd.BeachUp.UsuarioModel.JogadorModel;
-import BackAnd.BeachUp.UsuarioModel.Usuario;
+import BackAnd.BeachUp.Models.JogadorModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

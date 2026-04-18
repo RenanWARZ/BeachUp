@@ -1,14 +1,10 @@
-package BackAnd.BeachUp.UsuarioService;
+package BackAnd.BeachUp.Services;
 
 import BackAnd.BeachUp.DTO.JogadorCadastroDTO;
 import BackAnd.BeachUp.DTO.JogadorResponseDTO;
-import BackAnd.BeachUp.UsuarioModel.JogadorModel;
-import BackAnd.BeachUp.UsuarioRepository.JogadorRepository;
-import jakarta.servlet.Filter;
+import BackAnd.BeachUp.Models.JogadorModel;
+import BackAnd.BeachUp.Repositorys.JogadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,6 @@
-package BackAnd.BeachUp.UsuarioModel;
+package BackAnd.BeachUp.Models;
 
 import jakarta.persistence.*;
-
 import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,14 +11,14 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table (name = "contratante")
+@Table (name = "Jogador")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-public class Usuario implements UserDetails {
+public class  JogadorModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,11 +36,11 @@ public class Usuario implements UserDetails {
     private String senha;
 
     @Column(nullable = false, unique = true, length = 18)
-    private String cnpj;
+    private String cpf;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"));
+        return List.of(new SimpleGrantedAuthority("ROLE_JOGADOR"));
     }
 
     @Override

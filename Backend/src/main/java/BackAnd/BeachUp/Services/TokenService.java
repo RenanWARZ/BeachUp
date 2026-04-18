@@ -1,7 +1,5 @@
-package BackAnd.BeachUp.UsuarioService;
+package BackAnd.BeachUp.Services;
 
-import BackAnd.BeachUp.UsuarioModel.JogadorModel;
-import BackAnd.BeachUp.UsuarioModel.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

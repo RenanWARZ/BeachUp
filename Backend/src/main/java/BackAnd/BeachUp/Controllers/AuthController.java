@@ -1,9 +1,9 @@
-package BackAnd.BeachUp.UsuarioController;
+package BackAnd.BeachUp.Controllers;
 
 
 import BackAnd.BeachUp.DTO.AutenticacaoDTO;
 import BackAnd.BeachUp.DTO.LoginResponseDTO;
-import BackAnd.BeachUp.UsuarioService.TokenService;
+import BackAnd.BeachUp.Services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

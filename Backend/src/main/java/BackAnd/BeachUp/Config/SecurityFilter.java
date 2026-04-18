@@ -1,9 +1,7 @@
 package BackAnd.BeachUp.Config;
 
-import BackAnd.BeachUp.UsuarioModel.Usuario;
-import BackAnd.BeachUp.UsuarioRepository.UsuarioRepository;
-import BackAnd.BeachUp.UsuarioService.CustomUserDetailsService;
-import BackAnd.BeachUp.UsuarioService.TokenService;
+import BackAnd.BeachUp.Services.CustomUserDetailsService;
+import BackAnd.BeachUp.Services.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
