@@ -29,9 +29,12 @@ public class ArenaModel {
 
     @ManyToOne
     @JoinColumn(name = "empresa_id")
-    @JsonIgnoreProperties("arena")
+    @JsonIgnoreProperties("arenas")
     private Empresa empresa;
 
     @OneToMany(mappedBy = "arena", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FotoModel> fotoModel;
+
+    @OneToMany(mappedBy = "arena", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuadraModel> quadraModel;
 }
