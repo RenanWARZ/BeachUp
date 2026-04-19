@@ -1,5 +1,6 @@
 package BackAnd.BeachUp.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -38,6 +39,12 @@ public class Empresa implements UserDetails {
 
     @Column(nullable = false, unique = true, length = 18)
     private String cnpj;
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<ArenaModel> arenaModel;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
