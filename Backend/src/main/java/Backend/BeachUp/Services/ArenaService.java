@@ -32,6 +32,14 @@ public class ArenaService {
         return arenaRepository.findAll();
     }
 
+    public ArenaModel update(Long id, ArenaModel arenaModel){
+        ArenaModel novaarena = arenaRepository.findById(id).get();
+        novaarena.setNome(arenaModel.getNome());
+        novaarena.setDescricao(arenaModel.getDescricao());
+
+        return arenaRepository.save(novaarena);
+    }
+
     public void delete(Long id){
         arenaRepository.findById(id);
     }
