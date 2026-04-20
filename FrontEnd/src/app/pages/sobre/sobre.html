@@ -1,48 +1,60 @@
 <section class="sobre">
 
-  <div class="btn">
-    <div class="card-btn">
-      <a (click)="irPara('home')"> <i class="bi bi-arrow-left"></i> Voltar para home</a>
-    </div>
+  <div class="home-top-login">
+    <a (click)="irPara('home')" title="Voltar ao menu">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
   </div>
 
   <div class="container">
     <div class="hero">
       <span class="badge">Sobre nós</span>
 
-      <img src="assets/logo/logo-2.png" alt="Logo" class="hero-logo" />
+      <div class="logo">
+        <img src="assets/logo/logo-2.png" alt="Logo BeachUp" class="hero-logo" />
+      </div>
 
-      <h1>Conheça o projeto e a equipe por trás do BeachUp</h1>
+      <h1>Conectando jogadores e fortalecendo a comunidade do Beach Tennis</h1>
 
-      <p style="text-decoration: dotted;">
-        O BeachUp é um projeto desenvolvido com o propósito de conectar pessoas
-        apaixonadas por Beach Tennis, facilitar a organização de partidas e
-        oferecer uma experiência prática, moderna e acessível para a comunidade esportiva.
+      <p>
+        O BeachUp é uma plataforma criada para simplificar a forma como jogadores de Beach Tennis se conectam, organizam
+        partidas e participam da comunidade.
+        Nosso foco é oferecer uma experiência moderna, prática e acessível para todos os níveis de jogadores.
       </p>
     </div>
 
     <div class="bloco bloco-projeto">
       <div class="texto">
+
+        <div class="devs">
         <span class="secao-tag">O projeto</span>
-        <h2>Uma solução pensada para aproximar esporte, tecnologia e comunidade</h2>
+        </div>
+
+        <h2>Tecnologia aplicada ao esporte de forma simples e eficiente</h2>
+
         <p>
-          O BeachUp surgiu a partir da ideia de desenvolver uma plataforma que
-          facilite a interação entre jogadores, incentive a prática esportiva e
-          contribua para a organização de partidas e eventos.
+          O BeachUp nasceu com o objetivo de resolver uma dificuldade comum entre jogadores: encontrar parceiros e
+          organizar partidas de forma rápida.
         </p>
+
         <p>
-          Mais do que uma aplicação, o projeto representa a união entre inovação,
-          usabilidade e a proposta de fortalecer a comunidade do Beach Tennis por
-          meio da tecnologia.
+          A plataforma centraliza essa experiência, permitindo que usuários se conectem, combinem jogos e participem de
+          um ambiente colaborativo voltado ao crescimento da comunidade esportiva.
+        </p>
+
+        <p>
+          Mais do que um sistema, o BeachUp é uma iniciativa que une esporte, tecnologia e interação social em um único
+          lugar.
         </p>
       </div>
 
       <div class="projeto-card">
-        <img src="assets/logo/logo.png" alt="Logo" class="brand-logo" />
+        <img src="assets/logo/logo.png" alt="Logo BeachUp" class="brand-logo" />
         <h1 class="brand-name">BeachUp</h1>
+
         <p>
-          Um projeto com identidade esportiva, foco em experiência do usuário
-          e proposta moderna para o universo do Beach Tennis.
+          Plataforma digital focada em organização de partidas, conexão entre jogadores e fortalecimento da comunidade
+          de Beach Tennis.
         </p>
       </div>
     </div>
@@ -50,31 +62,88 @@
     <div class="equipe">
       <div class="titulo-secao">
         <span class="secao-tag">Nossa equipe</span>
-        <h2>Quem desenvolveu o projeto</h2>
+        <h2>Quem está por trás do BeachUp</h2>
+
         <p>
-          Conheça a equipe responsável pelo desenvolvimento e construção
-          desta proposta.
+          Projeto desenvolvido de forma colaborativa, reunindo conhecimentos em desenvolvimento, design e experiência do
+          usuário.
         </p>
       </div>
 
       <div class="card-equipe">
         <div class="foto-equipe">
-          <img src="assets/equipe/equipe.jpeg" alt="Foto da equipe" />
+          <img src="assets/equipe/equipe.jpeg" alt="Equipe BeachUp" />
         </div>
 
         <div class="texto-equipe">
-          <h3 style="color: #ff7a00;">Equipe BeachUp</h3>
+          <h3>Equipe BeachUp</h3>
+
           <p>
-            Este projeto foi desenvolvido de forma colaborativa, unindo ideias,
-            planejamento e conhecimentos técnicos para criar uma solução voltada
-            ao universo do Beach Tennis.
+            O BeachUp foi construído por uma equipe dedicada, focada em criar soluções digitais úteis e alinhadas às
+            necessidades reais dos jogadores.
           </p>
+
           <p>
-            A proposta do BeachUp é entregar uma experiência moderna, intuitiva
-            e funcional, aproximando tecnologia, esporte e comunidade em uma
-            única plataforma.
+            Cada etapa do projeto foi pensada para entregar uma experiência intuitiva, funcional e alinhada com o
+            crescimento do Beach Tennis.
+          </p>
+
+          <p>
+            Este projeto representa não apenas desenvolvimento técnico, mas também colaboração, aprendizado e inovação.
           </p>
         </div>
+      </div>
+    </div>
+
+    <div class="devs">
+      <span class="secao-tag">Desenvolvedores</span>
+    </div>
+
+    <div class="equipe">
+      <div class="grid-equipe">
+
+        <div id="menbro1" class="membro">
+          <img src="assets/equipe/Caio.jpeg">
+          <h3>Caio Bruno Toledo</h3>
+          <span>Backend Developer</span>
+        </div>
+
+        <div id="membro2" class="membro">
+          <img src="assets/equipe/Felipe.jpeg">
+          <h4>Felipe Ferrari da Silva</h4>
+          <span>Desenvolvedor SQL</span>
+        </div>
+
+        <div id="membro3" class="membro">
+          <img src="assets/equipe/Giulia.jpeg">
+          <h4>Giulia Lempe</h4>
+          <span>Documentação e gerenciamento</span>
+        </div>
+
+        <div id="membro4" class="membro">
+          <img src="assets/equipe/Malu.jpeg">
+          <h4>Malu Dias</h4>
+          <span>UX/UI <br> Designer</span>
+        </div>
+
+        <div id="membro5" class="membro">
+          <img src="assets/equipe/Matheus.jpeg">
+          <h4>Mathues Solokviski</h4>
+          <span>Mobile Developer</span>
+        </div>
+
+        <div id="membro6" class="membro">
+          <img src="assets/equipe/Renan_ido.jpeg">
+          <h4>Renan Hidemi Tomo Ido</h4>
+          <span>Mobile Developer</span>
+        </div>
+
+        <div id="membro7" class="membro">
+          <img src="assets/equipe/Renan_pilan.jpeg">
+          <h4>Renan Pilan Neiro</h4>
+          <span>Frontend Developer</span>
+        </div>
+
       </div>
     </div>
 
@@ -82,41 +151,40 @@
       <div class="valor-card">
         <h3>🚩 Missão</h3>
         <p>
-          Criar uma plataforma que aproxime jogadores e incentive a prática do
-          Beach Tennis de forma simples, eficiente e acessível.
+          Facilitar a conexão entre jogadores e incentivar a prática do Beach Tennis através de uma plataforma simples e
+          eficiente.
         </p>
       </div>
 
       <div class="valor-card">
         <h3>🌍 Visão</h3>
         <p>
-          Ser uma referência em conexão e organização dentro da comunidade de
-          Beach Tennis, unindo tecnologia e esporte.
+          Tornar-se uma referência digital na organização e conexão da comunidade de Beach Tennis.
         </p>
       </div>
 
       <div class="valor-card">
         <h3>🎯 Objetivo</h3>
         <p>
-          Oferecer uma experiência intuitiva, moderna e útil para usuários que
-          desejam participar mais ativamente do universo esportivo.
+          Proporcionar uma experiência moderna, intuitiva e relevante para jogadores que desejam participar ativamente
+          do esporte.
         </p>
       </div>
     </div>
 
     <div class="encerramento">
       <div class="brand-header">
-        <img src="assets/logo/logo.png" alt="Logo" class="brand-logo" />
+        <img src="assets/logo/logo.png" alt="Logo BeachUp" class="brand-logo" />
         <span class="brand-name">BeachUp</span>
       </div>
 
       <p>
-        Um projeto construído com dedicação, criatividade e foco em entregar
-        uma solução relevante para a comunidade do Beach Tennis.
+        Uma plataforma construída com foco em usabilidade, comunidade e inovação no esporte.
       </p>
 
-      <button class="btn-start" mat-raised-button (click)="irPara('/')">Começar agora </button>
-
+      <button class="btn-start" mat-raised-button (click)="irPara('/')">
+        Começar agora
+      </button>
     </div>
   </div>
 </section>
