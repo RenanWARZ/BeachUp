@@ -3,6 +3,40 @@ body {
   scroll-behavior: smooth;
 }
 
+.sobre {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000, #1a1a1a, #ff6a00);
+  padding: 60px 20px;
+  color: #1f2937;
+}
+
+.home-top-login {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.home-top-login a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff6a00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.home-top-login i {
+  font-size: 25px;
+}
+
+.home-top-login a:hover {
+  color: #ff4500;
+  transform: scale(1.05);
+}
+
 :host {
   display: block;
 }
@@ -18,16 +52,11 @@ body {
 .card-btn:hover {
   background: #ff9500b5;
   color: white;
-  transform: scale(1.08); /* aumenta levemente */
+  transform: scale(1.08);
+  /* aumenta levemente */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.sobre {
-  min-height: 100vh;
-  background: black;
-  padding: 60px 20px;
-  color: #1f2937;
-}
 
 .container {
   max-width: 1200px;
@@ -40,12 +69,15 @@ body {
   margin: 0 auto 50px;
 }
 
-.hero-logo {
-  width: 180px;
-  height: auto;
-  margin-left: 40%;
+.logo {
   display: flex;
-  object-fit: contain;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.hero-logo {
+  width: 30%;
+  height: auto;
 }
 
 .badge {
@@ -92,12 +124,48 @@ body {
 }
 
 .encerramento {
-  background: linear-gradient(314deg, #00000091 0%, #ff8000 100%);
+  background: linear-gradient(320deg, #000000, #1a1a1a, #ff6a00);
   border: 1px solid rgba(15, 60, 102, 0.08);
   box-shadow: 0 10px 30px rgba(15, 60, 102, 0.08);
   border-radius: 22px;
   text-align: center;
   padding: 40px 28px;
+}
+
+.grid-equipe {
+  color: #d96a00;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+}
+
+.membro {
+  text-align: center;
+  background: linear-gradient(292deg, #000000, #1a1a1a, #ff6a00);
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.2s ease;
+}
+
+.membro:hover {
+  transform: translateY(-5px);
+}
+
+.membro img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.membro h4 {
+  margin: 5px 0;
+}
+
+.membro span {
+  color: #aaa;
+  font-size: 14px;
 }
 
 .texto {
@@ -121,8 +189,12 @@ body {
 .titulo-secao h2,
 .texto-equipe h3 {
   font-size: 30px;
-  color: #d96a00;
   margin-bottom: 16px;
+}
+
+h3,
+h2 {
+  color: #ff6a00 !important;
 }
 
 .texto p,
@@ -136,7 +208,7 @@ body {
 
 .projeto-card {
   padding: 34px 28px;
-  background: linear-gradient(156deg, #00000091 0%, #ff8100 100%);
+  background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00);
   color: white;
   display: ruby;
 }
@@ -168,7 +240,6 @@ body {
   grid-template-columns: 1.2fr 1fr;
   gap: 30px;
   align-items: center;
-  padding: 28px;
 }
 
 .foto-equipe img {
@@ -198,6 +269,7 @@ body {
 }
 
 .valor-card {
+  background-color: #1a1a1a !important;
   padding: 28px;
 }
 
@@ -211,7 +283,7 @@ body {
 .valor-card p {
   font-size: 15px;
   line-height: 1.7;
-  color: #607080;
+  color: white;
   display: inline-block;
   padding-left: 10px;
 }
@@ -260,6 +332,11 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2)
 }
 
+.devs {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 992px) {
   .hero h1 {
     font-size: 34px;
@@ -276,6 +353,32 @@ body {
   .valores {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 768px) {
+  .home-top-login {
+    padding: 12px;
+    display: block;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .home-top-login i {
+    font-size: 25px;
+  }
+
+  .hero-logo{
+    width: 80%;
+    height: auto;
+  }
+
+  .grid-equipe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
 }
 
 @media (max-width: 576px) {

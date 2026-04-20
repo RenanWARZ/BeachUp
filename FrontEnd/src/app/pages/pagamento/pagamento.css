@@ -1,4 +1,5 @@
 .payment-section {
+  display: block;
   min-height: 100vh;
   background: #0b0b0b;
   color: #fff;
@@ -6,6 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
+  background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00);
 }
 
 .payment-container {
@@ -14,6 +16,7 @@
   max-width: 1100px;
   width: 100%;
   gap: 40px;
+  margin-top: 35px;
 }
 
 .payment-left h2 {
@@ -31,6 +34,24 @@
   border-radius: 14px;
   background: #111;
   border: 1px solid #222;
+  position: relative;
+  overflow: hidden;
+}
+
+.faixa {
+  position: absolute;
+  top: 20px;
+  right: -65px;
+  background: linear-gradient(45deg, #ff8c00, #ff6a00);
+  color: transparent;
+  padding: 8px 80px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  transform: rotate(45deg);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .plan-highlight .price {
@@ -143,7 +164,7 @@
   gap: 10px;
 }
 
-.btn-pay {
+.btn-cartao {
   width: 100%;
   padding: 14px;
   border-radius: 10px;
@@ -154,6 +175,63 @@
   cursor: pointer;
   margin-top: 15px;
   transition: 0.2s;
+  margin-bottom: 15px;
+}
+
+.btn-cartaoF {
+  width: 80%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  background: rgb(0, 163, 0);
+  color: #000;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.2s;
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+
+.pix{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.pix img {
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+.btn-pix{
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: bold;
+      background: #ff8c00;
+      color: #000;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.2s;
+}
+
+.btn-pay {
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.2s;
+  margin-bottom: 15px;
 }
 
 .btn-pay:hover {
@@ -177,10 +255,10 @@
 }
 
 .home-top-login {
-  position: fixed;
+  position: absolute;
   top: 20px;
-  left: 350px;
-  z-index: 1000;
+  left: 20px;
+  z-index: 10;
 }
 
 .home-top-login a {
@@ -191,18 +269,76 @@
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
+
+.h3 {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#h3{
+  color: #ff6a00;
+}
+
+/* #descricao{
+  color: #ccc;
+  margin-top: 50px;
+} */
 
 .home-top-login i {
   font-size: 25px;
 }
 
-.home-top-login a:hover {
+.home-top-login a:hover a:hover {
   color: #ff4500;
+  transform: scale(1.05);
+}
+
+.toggle-btn {
+  background: #ff8c00;
+  color: #000;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cartoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.cartoes img {
+  width: 40px;
+  height: auto;
 }
 
 @media (max-width: 768px) {
   .payment-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-top-login {
+    padding: 12px;
+    display: block;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .home-top-login i {
+    font-size: 25px;
+  }
+
+  .toggle-btn {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
