@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/tela_perfil_jogador.dart';
+import 'package:flutter_application_1/tela_inicial/start_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -7,60 +9,167 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+//Controllers para Captura do texto
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController txtNomeController = TextEditingController();
-  TextEditingController txtSobrenomeController = TextEditingController();
-  TextEditingController txtIdadeController = TextEditingController();
+  TextEditingController txtEmailController = TextEditingController();
+  TextEditingController txtSenhaController = TextEditingController();
+  TextEditingController txtConfSenhaController = TextEditingController();
 
-  String resultado = '';
+  //Liberar memória
+  @override
+  void dispose() {
+    txtNomeController.dispose();
+    txtEmailController.dispose();
+    txtSenhaController.dispose();
+    txtConfSenhaController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Botão voltar
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => StartScreen()),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    shape: BoxShape.circle,
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Icon(Icons.arrow_back, color: Colors.black),
+                ),
+              ),
+              SizedBox(height: 30),
 
-        title: Center(child: Text('Beach Up')),
-      ),
-      body: Column(
-        children: [
-          getTextField(labelText: "nome", controller: txtNomeController),
-          getTextField(
-            labelText: "sobrenome",
-            controller: txtSobrenomeController,
+              //Logo
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Beach',
+                      style: TextStyle(color: Colors.white, fontSize: 28),
+                    ),
+                    TextSpan(
+                      text: 'Up',
+                      style: TextStyle(color: Colors.orange, fontSize: 28),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 40),
+              Text(
+                'Criar conta',
+                style: TextStyle(color: Colors.orange, fontSize: 32),
+              ),
+              getTextField(
+                labelText: "Nome completo",
+                controller: txtNomeController,
+              ),
+              getTextField(labelText: "E-mail", controller: txtEmailController),
+              getTextField(labelText: "Senha", controller: txtSenhaController),
+              getTextField(
+                labelText: "Confirmar Senha",
+                controller: txtConfSenhaController,
+              ),
+              SizedBox(height: 20),
+              //Botão cadastrar
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    minimumSize: Size(double.infinity, 55),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    String nome = txtNomeController.text;
+                    String email = txtEmailController.text;
+
+                    if (nome.isEmpty || email.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Preencha todos os campos')),
+                      );
+                      return;
+                    }
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            TelaPerfilJogador(nome: nome, email: email),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Cadastrar',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: Text('ou', style: TextStyle(color: Colors.grey)),
+              ),
+              SizedBox(height: 20),
+              //Botão cadastrar com Google
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+
+                  minimumSize: Size(double.infinity, 55),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(12),
+                  ),
+                ),
+                onPressed: () {},
+                icon: Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/300/300221.png',
+                  height: 20,
+                ),
+                label: Text('Cadastrar com Google'),
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Já tem conta?', style: TextStyle(color: Colors.white)),
+                  Text('Entrar', style: TextStyle(color: Colors.orange)),
+                ],
+              ),
+            ],
           ),
-          getTextField(labelText: "idade", controller: txtIdadeController),
-
-          SizedBox(
-            width: double.infinity,
-            child: FloatingActionButton(
-              child: Text('Cadastrar'),
-              onPressed: () {
-                String nome = txtNomeController.text;
-                String sobrenome = txtSobrenomeController.text;
-                String idade = txtIdadeController.text;
-
-                setState(() {
-                  resultado =
-                      "Nome: $nome, Sobrenome: $sobrenome, idade: $idade"; //variável com $ é interpolação
-                });
-              },
-            ),
-          ),
-
-          Text(resultado),
-        ],
+        ),
       ),
     );
   }
 }
 
-//Widget reutilizável
-Widget getTextField({String? labelText, TextEditingController? controller}) {
+//Widget reutilizável de campo de texto
+Widget getTextField({
+  String? labelText,
+  TextEditingController? controller,
+  TextInputType? keyboardType,
+}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: TextField(
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         labelText: labelText,
