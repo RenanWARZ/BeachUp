@@ -14,39 +14,99 @@ class _TelaPerfilJogadorState extends State<TelaPerfilJogador> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Perfil do jogador')),
       backgroundColor: Colors.black,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            child: Column(
-              children: [
-                Text(
-                  'Nome: ${widget.nome}',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              decoration: BoxDecoration(
+                color: Color(0xFF1A1A1A),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
                 ),
-              ],
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Perfil do jogador',
+                    style: TextStyle(color: Colors.orange, fontSize: 40),
+                  ),
+                  SizedBox(height: 30),
+                  Text(
+                    'Nome: ${widget.nome}',
+                    style: TextStyle(color: Colors.white, fontSize: 28),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'E-mail: ${widget.email}',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 15),
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              children: [_campos(Icons.grid_view, 'Minhas reservas', () {})],
+            SizedBox(height: 30),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                children: [
+                  _campos(
+                    Icons.location_on,
+                    'Campos',
+                    'Ver quadras disponíveis',
+                    () {},
+                  ),
+                  _campos(
+                    Icons.emoji_events,
+                    'Campeonato',
+                    'Inscrições e chaves',
+                    () {},
+                  ),
+                  _campos(
+                    Icons.history,
+                    'Histórico de partidas',
+                    'Resultados recentes',
+                    () {},
+                  ),
+                  _campos(
+                    Icons.groups,
+                    'Meu time',
+                    'Gestão de parceiros',
+                    () {},
+                  ),
+                  _campos(
+                    Icons.event_available,
+                    'Minhas reservas',
+                    'Horários agendados',
+                    () {},
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
-Widget _campos(IconData icone, String titulo, VoidCallback onTap) {
+//widget reutilizável
+Widget _campos(
+  IconData icone,
+  String titulo,
+  String subtitulo,
+  VoidCallback onTap,
+) {
   return ListTile(
     leading: Icon(icone, color: Colors.white),
     title: Text(titulo, style: TextStyle(color: Colors.white)),
+    subtitle: Text(
+      subtitulo,
+      style: TextStyle(color: Colors.white, fontSize: 12),
+    ),
     onTap: onTap,
   );
 }
