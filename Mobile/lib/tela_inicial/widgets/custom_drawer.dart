@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela_login/login_screen.dart';
+import 'package:flutter_application_1/cadastro_contratante/cadastro_contratante_screen.dart';
+//import 'package:flutter_application_1/tela_login/login_screen.dart';
 import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
 
 class MenuDrawer extends StatefulWidget {
@@ -92,7 +93,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  navigatorPush(context, LoginScreen());
+                  navigatorPush(context, CadastroContratanteScreen());
                 },
                 icon: const Icon(Icons.login, color: Colors.white),
                 label: const Text("Entrar"),

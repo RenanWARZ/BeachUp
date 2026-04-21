@@ -23,6 +23,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/beach_tela_inicial.png
-    - asset/logo1.png
-    
+    - assets/beach_tela_inicial.png
+    - assets/logo1.png
+    - assets/fundo1.png
