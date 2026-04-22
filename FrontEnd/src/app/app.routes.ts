@@ -10,12 +10,13 @@ import { PagamentoSucesso } from './pages/pagamento/pagamento-sucesso/pagamento-
 import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
 import { ConvidarJogadores } from './pages/convidar-jogadores/convidar-jogadores';
 import { CriacaoDeTelas } from './pages/criacao-de-telas/criacao-de-telas';
-
+import { Perfil } from './pages/perfil/perfil';
 
 export const routes: Routes = [
-  {path: 'CriacaoDeTelas', component: CriacaoDeTelas},
-  {path: 'convidar-jogadores', component: ConvidarJogadores},
-  {path: 'cadastro-quadra', component: CadastroQuadra},
+  { path: 'perfil', component: Perfil },
+  { path: 'CriacaoDeTelas', component: CriacaoDeTelas },
+  { path: 'convidar-jogadores', component: ConvidarJogadores },
+  { path: 'cadastro-quadra', component: CadastroQuadra },
   { path: 'pagamento-sucesso', component: PagamentoSucesso },
   { path: 'telaredirecionamento', component: Telaredirecionamento },
   { path: 'telaReservaQuadras', component: TelaReservaQuadras },
