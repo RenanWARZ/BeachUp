@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tela_login/login_screen.dart';
+import 'package:flutter_application_1/screens/cadastro_jogador.dart';
 
 AppBar getAppBar(String title, {List<Widget>? actions}) {
   return AppBar(
@@ -23,7 +23,7 @@ AppBar getStartScreenAppBar(BuildContext context) {
         tag: "login",
         child: ElevatedButton(
           onPressed: () {
-            navigatorPush(context, LoginScreen());
+            navigatorPush(context, CadastroJogador());
           },
           style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
           child: const Text("Cadastrar-se"),
