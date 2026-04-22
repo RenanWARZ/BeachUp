@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      //propriedade do widget AppBar que decide se o Flutter deve tentar adivinhar se precisa colocar um botão no início da barra (o lado esquerdo) automaticamente.
       automaticallyImplyLeading: true,
       iconTheme: const IconThemeData(color: Colors.white),
       title: Row(

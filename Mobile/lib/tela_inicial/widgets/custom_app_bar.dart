@@ -4,9 +4,10 @@ import 'package:flutter_application_1/screens/cadastro_jogador.dart';
 AppBar getAppBar(String title, {List<Widget>? actions}) {
   return AppBar(
     backgroundColor: Colors.black,
+    iconTheme: const IconThemeData(color: Colors.white),
     title: Row(
       children: [
-        Image.asset('asset/logo1.png', height: 35),
+        Image.asset('assets/logo1.png', height: 35),
         const SizedBox(width: 10),
         Text(title, style: TextStyle(color: Colors.white)),
       ],
