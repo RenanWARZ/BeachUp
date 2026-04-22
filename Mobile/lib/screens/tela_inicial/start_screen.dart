@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/reservar_quadras.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_comece_agora.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_depoimentos.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_planos.dart';
@@ -18,63 +20,85 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  int _indiceAtual = 0;
+
+  //Lista das páginas a serem inclusas
+  final List<Widget> _paginas = [
+    const StartScreen(),
+    const ReservarQuadras(),
+    const CadastroContratanteScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: getStartScreenAppBar(context),
       drawer: MenuDrawer(),
-      body: ListView(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('asset/beach_tela_inicial.png'),
-                fit: BoxFit.cover,
-              ),
+      body: ListView(children: [
+          
+            
+        ],
+      ),
+    );
+  }
+}
+
+class ConteudoInicial extends StatelessWidget {
+  const ConteudoInicial({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(vertical: 40),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/beach_tela_inicial.png'),
+              fit: BoxFit.cover,
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    "Sua paixão por\nBeach Tennis\nComeça Aqui",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Organize campeonatos, acompanhe rankings\n e conecte jogadores em um só lugar.",
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  "Sua paixão por\nBeach Tennis\nComeça Aqui",
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(onPressed: () {}, child: Text('Começar agora')),
-              ],
-            ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                "Organize campeonatos, acompanhe rankings\n e conecte jogadores em um só lugar.",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: () {}, child: Text('Começar agora')),
+            ],
           ),
+        ),
 
-          SecaoRecursos(),
-          SecaoComoFunciona(),
-          SecaoSobre(),
-          SecaoMetrica(),
-          SecaoPlanos(),
-          SecaoDepoimentos(),
-          SecaoComeceAgora(),
-          SecaoRodape(),
-        ],
-      ),
+        SecaoRecursos(),
+        SecaoComoFunciona(),
+        SecaoSobre(),
+        SecaoMetrica(),
+        SecaoPlanos(),
+        SecaoDepoimentos(),
+        SecaoComeceAgora(),
+        SecaoRodape(),
+      ],
     );
   }
 }
