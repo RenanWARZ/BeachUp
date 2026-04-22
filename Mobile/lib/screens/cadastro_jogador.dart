@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/tela_perfil_jogador.dart';
-import 'package:flutter_application_1/tela_inicial/start_screen.dart';
+import 'package:flutter_application_1/screens/widgets/custom_appbar.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CadastroJogador extends StatefulWidget {
+  const CadastroJogador({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<CadastroJogador> createState() => _LoginScreenState();
 }
 
 //Controllers para Captura do texto
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<CadastroJogador> {
   TextEditingController txtNomeController = TextEditingController();
   TextEditingController txtEmailController = TextEditingController();
   TextEditingController txtSenhaController = TextEditingController();
@@ -29,30 +29,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(),
       backgroundColor: Colors.black,
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //Botão voltar
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => StartScreen()),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Icon(Icons.arrow_back, color: Colors.black),
-                ),
-              ),
               SizedBox(height: 30),
 
               //Logo

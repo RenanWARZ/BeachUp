@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/widgets/custom_appbar.dart';
 
 class CadastroContratanteScreen extends StatefulWidget {
   const CadastroContratanteScreen({super.key});
@@ -8,9 +9,7 @@ class CadastroContratanteScreen extends StatefulWidget {
       _CadastroContratanteScreenState();
 }
 
-class _CadastroContratanteScreenState
-    extends State<CadastroContratanteScreen> {
-
+class _CadastroContratanteScreenState extends State<CadastroContratanteScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final nomeEmpresaController = TextEditingController();
@@ -18,24 +17,24 @@ class _CadastroContratanteScreenState
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
 
-  void cadastrar() {
-    if (_formKey.currentState!.validate()) {
-      final data = {
-        "nomeEmpresa": nomeEmpresaController.text,
-        "cnpj": cnpjController.text,
-        "email": emailController.text,
-        "senha": senhaController.text,
-        "tipo": "contratante"
-      };
-        
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Cadastro realizado com sucesso!"),
-        ),
-      );
+  //void cadastrar() {
+  //if (_formKey.currentState!.validate()) {
+  //final data = {
+  //"nomeEmpresa": nomeEmpresaController.text,
+  //"cnpj": cnpjController.text,
+  //"email": emailController.text,
+  //"senha": senhaController.text,
+  //"tipo": "contratante"
+  //};
 
-    }
-  }
+  //ScaffoldMessenger.of(context).showSnackBar(
+  //const SnackBar(
+  //content: Text("Cadastro realizado com sucesso!"),
+  // ),
+  //);
+
+  //}
+  //}
 
   @override
   void dispose() {
@@ -50,40 +49,7 @@ class _CadastroContratanteScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 243, 241, 241),
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/logo1.png',
-              height: 28,
-            ),
-            const SizedBox(width: 6),
-            const Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Beach ',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'Up',
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: CustomAppBar(),
 
       body: Container(
         decoration: const BoxDecoration(
@@ -103,7 +69,6 @@ class _CadastroContratanteScreenState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     const SizedBox(height: 10),
 
                     const Text(
@@ -120,8 +85,9 @@ class _CadastroContratanteScreenState
                     _campo(
                       controller: nomeEmpresaController,
                       label: "Nome da empresa",
-                      validator: (value) =>
-                          value == null || value.isEmpty ? "Nome é obrigatório" : null,
+                      validator: (value) => value == null || value.isEmpty
+                          ? "Nome é obrigatório"
+                          : null,
                     ),
 
                     _campo(
@@ -129,7 +95,8 @@ class _CadastroContratanteScreenState
                       label: "CNPJ",
                       keyboard: TextInputType.number,
                       validator: (value) {
-                        if (value == null || value.isEmpty) return "CNPJ é obrigatório";
+                        if (value == null || value.isEmpty)
+                          return "CNPJ é obrigatório";
                         if (value.length < 14) return "CNPJ inválido";
                         return null;
                       },
@@ -139,7 +106,8 @@ class _CadastroContratanteScreenState
                       controller: emailController,
                       label: "Email",
                       validator: (value) {
-                        if (value == null || value.isEmpty) return "Email é obrigatório";
+                        if (value == null || value.isEmpty)
+                          return "Email é obrigatório";
                         if (!value.contains("@")) return "Email inválido";
                         return null;
                       },
@@ -150,7 +118,8 @@ class _CadastroContratanteScreenState
                       label: "Senha",
                       isSenha: true,
                       validator: (value) {
-                        if (value == null || value.isEmpty) return "Senha obrigatória";
+                        if (value == null || value.isEmpty)
+                          return "Senha obrigatória";
                         return null;
                       },
                     ),
@@ -164,7 +133,7 @@ class _CadastroContratanteScreenState
                           backgroundColor: Colors.orange,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                         ),
-                        onPressed: cadastrar,
+                        onPressed: () {},
                         child: const Text("Cadastrar"),
                       ),
                     ),
@@ -181,7 +150,10 @@ class _CadastroContratanteScreenState
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/login'); ////rota tela de login
+                              Navigator.pushNamed(
+                                context,
+                                '/login',
+                              ); ////rota tela de login
                             },
                             child: const Text(
                               "Login",
@@ -218,10 +190,7 @@ class _CadastroContratanteScreenState
         obscureText: isSenha,
         keyboardType: keyboard,
         validator: validator,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-        ),
+        style: const TextStyle(color: Colors.white, fontSize: 14),
         decoration: InputDecoration(
           labelText: label,
           labelStyle: const TextStyle(color: Colors.orange),
@@ -237,9 +206,7 @@ class _CadastroContratanteScreenState
             borderSide: const BorderSide(color: Colors.orange, width: 2),
             borderRadius: BorderRadius.circular(12),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         ),
       ),
     );

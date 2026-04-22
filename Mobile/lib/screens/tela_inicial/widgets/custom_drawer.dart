@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cadastro_contratante/cadastro_contratante_screen.dart';
-//import 'package:flutter_application_1/tela_login/login_screen.dart';
-import 'package:flutter_application_1/tela_inicial/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/tela_inicial/widgets/custom_app_bar.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});
@@ -21,7 +20,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: Row(
               children: [
-                Image.asset('asset/logo1.png', height: 40),
+                Image.asset('assets/logo1.png', height: 40),
                 const SizedBox(width: 40),
 
                 //TEXTO

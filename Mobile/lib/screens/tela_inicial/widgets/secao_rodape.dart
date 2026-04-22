@@ -21,7 +21,7 @@ class SecaoRodape extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Image.asset('asset/logo1.png', height: 35),
+                        Image.asset('assets/logo1.png', height: 35),
                         SizedBox(width: 10),
                         Text(
                           'BeachUp',
