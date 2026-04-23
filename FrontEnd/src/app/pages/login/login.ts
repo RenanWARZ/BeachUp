@@ -1,15 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
-
+import {FormBuilder,FormGroup,ReactiveFormsModule,Validators,AbstractControl,ValidationErrors,} from '@angular/forms';
 import { NavigationService } from '../../shared/services/navigation';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -22,13 +14,15 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 
 export class Login implements OnInit {
-  isRegister = false;
+  Isregistro = false;
   mostrarSenha = false;
   carregando = false;
   mensagemErro = '';
   mensagemSucesso = '';
+  mostrarDados = false;
+  dadosCadastrados: any = null;
 
-  private fb = inject(FormBuilder);
+  private forms = inject(FormBuilder);
   private route = inject(ActivatedRoute);
   private authService = inject(AuthService);
 
@@ -41,18 +35,18 @@ export class Login implements OnInit {
     this.inicializarForms();
 
     this.route.url.subscribe((url) => {
-      this.isRegister = url.some((segment) => segment.path === 'cadastrar');
+      this.Isregistro = url.some((segment) => segment.path === 'cadastrar');
       this.limparMensagens();
     });
   }
 
   inicializarForms(): void {
-    this.loginForm = this.fb.group({
+    this.loginForm = this.forms.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-    this.registerForm = this.fb.group(
+    this.registerForm = this.forms.group(
       {
         nome: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.required, Validators.email]],
@@ -73,11 +67,13 @@ export class Login implements OnInit {
   }
 
   toggle(): void {
-    this.isRegister = !this.isRegister;
+    this.Isregistro = !this.Isregistro;
     this.limparMensagens();
     this.loginForm.reset();
-    this.registerForm.reset();
+    // this.registerForm.reset();
     this.mostrarSenha = false;
+    this.mostrarDados = false;
+    this.dadosCadastrados = null;
   }
 
   irPara(rota: string): void {
@@ -93,6 +89,7 @@ export class Login implements OnInit {
     this.mensagemSucesso = '';
   }
 
+  /********************************************** */
   criarConta(): void {
     this.limparMensagens();
 
@@ -103,17 +100,22 @@ export class Login implements OnInit {
 
     this.carregando = true;
 
-    const { nome, email, senha } = this.registerForm.value;
+    const { nome, email, senha, confirmarSenha } = this.registerForm.value;
+    this.dadosCadastrados = { nome, email, senha, confirmarSenha };
 
     this.authService.criarConta({ nome, email, senha }).subscribe({
-      next: (res) => {
-        console.log('Usuário criado com sucesso:', res);
+      next: (resposta) => {
+        console.log('Usuário criado com sucesso:', resposta);
         this.mensagemSucesso = 'Conta criada com sucesso!';
-        this.registerForm.reset();
-        this.carregando = false;
 
-        // opcional: voltar para login
-        this.isRegister = false;
+        // SALVA ANTES DE RESETAR
+        const { nome, email, senha, confirmarSenha } = this.registerForm.value;
+        this.dadosCadastrados = { nome, email, senha, confirmarSenha };
+        this.mostrarDados = false;
+
+        // this.registerForm.reset();
+        this.carregando = false;
+        this.mostrarDados = true;
       },
       error: (err) => {
         console.error('Erro ao criar conta:', err);
@@ -121,6 +123,15 @@ export class Login implements OnInit {
         this.carregando = false;
       },
     });
+  }
+  /********************************************** */
+
+  BotaoDados(): void {
+    this.mostrarDados = true;
+    this.limparMensagens();
+
+    const { nome, email, senha, confirmarSenha } = this.registerForm.value;
+    this.dadosCadastrados = { nome, email, senha, confirmarSenha };
   }
 
   entrar(): void {
@@ -142,12 +153,6 @@ export class Login implements OnInit {
         this.carregando = false;
 
         this.navigation.irPara('home');
-
-        // exemplo: salvar token
-        // localStorage.setItem('token', res.token);
-
-        // navegar após login
-        // this.navigation.irPara('home');
       },
       error: (err) => {
         console.error('Erro no login:', err);
@@ -161,7 +166,7 @@ export class Login implements OnInit {
     return this.loginForm.controls;
   }
 
-  get rf() {
+  get registrar() {
     return this.registerForm.controls;
   }
 }
