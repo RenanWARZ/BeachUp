@@ -1,6 +1,5 @@
 <div class="auth-container" [class.register-mode]="isRegister">
   <div class="auth-slider">
-    <!-- ================= LOGIN ================= -->
     <div class="auth-page">
       <section class="hero-section">
         <img src="assets/fundo/cad.jpeg" class="hero-image" />
@@ -28,20 +27,12 @@
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="lf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="lf['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
+
             <small class="text-danger" *ngIf="lf['senha'].touched && lf['senha'].invalid">
               A senha deve ter no mínimo 6 caracteres.
             </small>
@@ -58,13 +49,6 @@
               {{ carregando ? 'Entrando...' : 'Entrar' }}
             </button>
 
-            <div class="divider">ou</div>
-
-            <button type="button" class="btn-google">
-              <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo" />
-              Entrar com Google
-            </button>
-
             <p class="login-text">
               Não tem conta?
               <a class="link-action" id="btn" (click)="toggle()">Criar conta</a>
@@ -74,7 +58,6 @@
       </section>
     </div>
 
-    <!-- ================= CADASTRO ================= -->
     <div class="auth-page reverse">
       <section class="form-section">
         <div class="home-top-cadastro">
@@ -88,9 +71,9 @@
             <span class="brand-white">Beach</span><span class="brand-orange">Up</span>
           </div>
 
-          <h1>Criar conta</h1>
+          <h1>{{ modoEdicao ? 'Editar usuário' : 'Criar conta' }}</h1>
 
-          <form class="forms" [formGroup]="registerForm" (ngSubmit)="criarConta()">
+          <form class="forms" [formGroup]="registerForm" (ngSubmit)="criarOuAtualizarConta()">
             <input type="text" placeholder="Nome completo" formControlName="nome" />
             <small class="text-danger" *ngIf="rf['nome'].touched && rf['nome'].invalid">
               Informe seu nome completo.
@@ -102,36 +85,23 @@
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="rf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="rf['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
+
             <small class="text-danger" *ngIf="rf['senha'].touched && rf['senha'].invalid">
               A senha deve ter no mínimo 6 caracteres.
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Confirmar Senha"
-                formControlName="confirmarSenha"
-              />
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar senha"
+                formControlName="confirmarSenha" />
             </div>
 
-            <div
-              *ngIf="registerForm.hasError('senhasDiferentes') && rf['confirmarSenha'].touched"
-              class="alert alert-danger"
-            >
+            <div *ngIf="registerForm.hasError('senhasDiferentes') && rf['confirmarSenha'].touched"
+              class="alert alert-danger">
               As senhas não coincidem.
             </div>
 
@@ -144,14 +114,12 @@
             </div>
 
             <button type="submit" class="btn-default" [disabled]="carregando">
-              {{ carregando ? 'Cadastrando...' : 'Cadastrar' }}
+              {{ carregando ? 'Salvando...' : (modoEdicao ? 'Atualizar' : 'Cadastrar') }}
             </button>
 
-            <div class="divider">ou</div>
-
-            <button type="button" class="btn-google">
-              <img src="assets/logo/google-icon.png" alt="Google logo" class="google-logo" />
-              Cadastrar com Google
+            <button *ngIf="modoEdicao" type="button" class="btn-default"
+              (click)="cancelarEdicao(); registerForm.reset()" style="margin-top: 10px;">
+              Cancelar edição
             </button>
 
             <p class="login-text">
@@ -159,6 +127,32 @@
               <a class="link-action" id="btn" (click)="toggle()">Entrar</a>
             </p>
           </form>
+
+          <hr style="margin: 20px 0; opacity: 0.3;" />
+
+          <h2 style="color: #ff6a00;">Usuários cadastrados</h2>
+
+          <div *ngIf="usuarios.length === 0">
+            <p>Nenhum usuário cadastrado.</p>
+          </div>
+
+          <div *ngFor="let usuario of usuarios"
+            style="margin-bottom: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;">
+
+            <p><strong>ID:</strong> {{ usuario.id }}</p>
+            <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+              <button type="button" class="btn-default btn-acao" (click)="editarUsuario(usuario)">
+                Editar
+              </button>
+
+              <button type="button" class="btn-default btn-acao" (click)="excluirUsuario(usuario.id)">
+                Excluir
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

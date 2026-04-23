@@ -1,17 +1,21 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {
+  AbstractControl,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
-  AbstractControl,
   ValidationErrors,
+  Validators,
 } from '@angular/forms';
 
 import { NavigationService } from '../../shared/services/navigation';
 import { AuthService } from '../../shared/services/auth.service';
+import { UsuarioService } from '../../shared/services/usuario.service';
+
+import { LoginPayload } from '../../shared/services/models/auth.model';
+import { Usuario, UsuarioCreate, UsuarioUpdate } from '../../shared/services/models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +24,6 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
-
 export class Login implements OnInit {
   isRegister = false;
   mostrarSenha = false;
@@ -28,25 +31,25 @@ export class Login implements OnInit {
   mensagemErro = '';
   mensagemSucesso = '';
 
-  private fb = inject(FormBuilder);
-  private route = inject(ActivatedRoute);
-  private authService = inject(AuthService);
-
-  constructor(public navigation: NavigationService) {}
-
   loginForm!: FormGroup;
   registerForm!: FormGroup;
 
+  usuarios: Usuario[] = [];
+  modoEdicao = false;
+  usuarioEmEdicaoId: number | null = null;
+
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private usuarioService = inject(UsuarioService);
+
+  constructor(public navigation: NavigationService) {}
+
   ngOnInit(): void {
     this.inicializarForms();
-
-    this.route.url.subscribe((url) => {
-      this.isRegister = url.some((segment) => segment.path === 'cadastrar');
-      this.limparMensagens();
-    });
+    this.carregarUsuarios();
   }
 
-  inicializarForms(): void {
+  private inicializarForms(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
@@ -67,25 +70,39 @@ export class Login implements OnInit {
     const senha = form.get('senha')?.value;
     const confirmarSenha = form.get('confirmarSenha')?.value;
 
-    if (!senha || !confirmarSenha) return null;
+    if (!senha || !confirmarSenha) {
+      return null;
+    }
 
     return senha === confirmarSenha ? null : { senhasDiferentes: true };
   }
 
-  toggle(): void {
-    this.isRegister = !this.isRegister;
-    this.limparMensagens();
-    this.loginForm.reset();
-    this.registerForm.reset();
-    this.mostrarSenha = false;
+  carregarUsuarios(): void {
+    this.usuarioService.listarUsuarios().subscribe({
+      next: (usuarios) => {
+        this.usuarios = usuarios;
+      },
+      error: () => {
+        this.mensagemErro = 'Erro ao carregar usuários.';
+      },
+    });
   }
 
-  irPara(rota: string): void {
-    this.navigation.irPara(rota);
+  toggle(): void {
+    this.isRegister = !this.isRegister;
+    this.mostrarSenha = false;
+    this.limparMensagens();
+    this.cancelarEdicao();
+    this.loginForm.reset();
+    this.registerForm.reset();
   }
 
   toggleSenha(): void {
     this.mostrarSenha = !this.mostrarSenha;
+  }
+
+  irPara(rota: string): void {
+    this.navigation.irPara(rota);
   }
 
   limparMensagens(): void {
@@ -93,7 +110,7 @@ export class Login implements OnInit {
     this.mensagemSucesso = '';
   }
 
-  criarConta(): void {
+  criarOuAtualizarConta(): void {
     this.limparMensagens();
 
     if (this.registerForm.invalid) {
@@ -103,22 +120,81 @@ export class Login implements OnInit {
 
     this.carregando = true;
 
-    const { nome, email, senha } = this.registerForm.value;
+    if (this.modoEdicao && this.usuarioEmEdicaoId !== null) {
+      const payload: UsuarioUpdate = {
+        id: this.usuarioEmEdicaoId,
+        nome: this.registerForm.value.nome,
+        email: this.registerForm.value.email,
+        senha: this.registerForm.value.senha,
+      };
 
-    this.authService.criarConta({ nome, email, senha }).subscribe({
-      next: (res) => {
-        console.log('Usuário criado com sucesso:', res);
-        this.mensagemSucesso = 'Conta criada com sucesso!';
-        this.registerForm.reset();
+      this.usuarioService.atualizarUsuario(payload).subscribe({
+        next: (response) => {
+          this.carregando = false;
+          this.mensagemSucesso = response.message;
+          this.carregarUsuarios();
+          this.cancelarEdicao();
+          this.registerForm.reset();
+        },
+        error: (err) => {
+          this.carregando = false;
+          this.mensagemErro = err?.error?.message || 'Erro ao atualizar usuário.';
+        },
+      });
+
+      return;
+    }
+
+    const payload: UsuarioCreate = {
+      nome: this.registerForm.value.nome,
+      email: this.registerForm.value.email,
+      senha: this.registerForm.value.senha,
+    };
+
+    this.usuarioService.criarUsuario(payload).subscribe({
+      next: (response) => {
         this.carregando = false;
-
-        // opcional: voltar para login
-        this.isRegister = false;
+        this.mensagemSucesso = response.message;
+        this.carregarUsuarios();
+        this.registerForm.reset();
       },
       error: (err) => {
-        console.error('Erro ao criar conta:', err);
-        this.mensagemErro = err?.error?.message || 'Erro ao cadastrar usuário.';
         this.carregando = false;
+        this.mensagemErro = err?.error?.message || 'Erro ao cadastrar usuário.';
+      },
+    });
+  }
+
+  editarUsuario(usuario: Usuario): void {
+    this.isRegister = true;
+    this.modoEdicao = true;
+    this.usuarioEmEdicaoId = usuario.id;
+
+    this.registerForm.patchValue({
+      nome: usuario.nome,
+      email: usuario.email,
+      senha: usuario.senha,
+      confirmarSenha: usuario.senha,
+    });
+
+    this.limparMensagens();
+  }
+
+  cancelarEdicao(): void {
+    this.modoEdicao = false;
+    this.usuarioEmEdicaoId = null;
+  }
+
+  excluirUsuario(id: number): void {
+    this.limparMensagens();
+
+    this.usuarioService.excluirUsuario(id).subscribe({
+      next: () => {
+        this.mensagemSucesso = 'Usuário excluído com sucesso!';
+        this.carregarUsuarios();
+      },
+      error: (err) => {
+        this.mensagemErro = err?.error?.message || 'Erro ao excluir usuário.';
       },
     });
   }
@@ -131,28 +207,25 @@ export class Login implements OnInit {
       return;
     }
 
+    const payload: LoginPayload = {
+      email: this.loginForm.value.email,
+      senha: this.loginForm.value.senha,
+    };
+
     this.carregando = true;
 
-    const { email, senha } = this.loginForm.value;
-
-    this.authService.login({ email, senha }).subscribe({
-      next: (res) => {
-        console.log('Login realizado com sucesso:', res);
-        this.mensagemSucesso = 'Login realizado com sucesso!';
+    this.authService.login(payload).subscribe({
+      next: (response) => {
         this.carregando = false;
+        this.mensagemSucesso = response.message || 'Login realizado com sucesso!';
+
+        localStorage.setItem('sessao', JSON.stringify(response.usuario));
 
         this.navigation.irPara('home');
-
-        // exemplo: salvar token
-        // localStorage.setItem('token', res.token);
-
-        // navegar após login
-        // this.navigation.irPara('home');
       },
       error: (err) => {
-        console.error('Erro no login:', err);
-        this.mensagemErro = err?.error?.message || 'Email ou senha inválidos.';
         this.carregando = false;
+        this.mensagemErro = err?.error?.message || 'Email ou senha inválidos.';
       },
     });
   }
