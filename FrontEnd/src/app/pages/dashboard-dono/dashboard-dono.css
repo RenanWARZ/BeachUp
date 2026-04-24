@@ -16,7 +16,7 @@ body {
 
 .dash {
   background: linear-gradient(135deg, #000000, #1a1a1a, #ff6a00) !important;
-  
+
   min-height: 100vh;
   padding: 24px;
 }
@@ -80,9 +80,8 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px;
-  margin-bottom: 22px;
 }
 
 .card {
@@ -142,7 +141,7 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 1.8fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -338,4 +337,72 @@ body {
   border-radius: 50%;
   display: inline-block;
   margin-right: 5px;
+}
+
+
+/* RESPONSIVE */
+
+@media (min-width: 1025px) {
+  .main {
+    grid-template-columns: 1.8fr 1fr;
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .agenda-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .img {
+    width: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dash {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .img {
+    width: 40%;
+  }
+
+  .card-value {
+    font-size: 20px;
+  }
 }
