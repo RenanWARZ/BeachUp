@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/reservar_quadras.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_comece_agora.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_depoimentos.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_planos.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_recurso
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_rodape.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_sobre.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_metrica.dart';
+import 'package:flutter_application_1/screens/widgets/navbar.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -18,63 +21,90 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  int _indiceAtual = 0;
+
+  //Lista das telas no navbar
+  final List<Widget> _telas = [
+    const TelaInicial(),
+    const ReservarQuadras(),
+    const CadastroContratanteScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: getStartScreenAppBar(context),
       drawer: MenuDrawer(),
-      body: ListView(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 40),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('asset/beach_tela_inicial.png'),
-                fit: BoxFit.cover,
-              ),
+      //body dinâmico, troca conforme índice
+      body: _telas[_indiceAtual],
+      bottomNavigationBar: Navbar(
+        currentIndex: _indiceAtual,
+        onTap: (index) {
+          setState(() {
+            _indiceAtual = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class TelaInicial extends StatelessWidget {
+  const TelaInicial({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(vertical: 40),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/beach_tela_inicial.png'),
+              fit: BoxFit.cover,
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    "Sua paixão por\nBeach Tennis\nComeça Aqui",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Organize campeonatos, acompanhe rankings\n e conecte jogadores em um só lugar.",
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  "Sua paixão por\nBeach Tennis\nComeça Aqui",
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(onPressed: () {}, child: Text('Começar agora')),
-              ],
-            ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                "Organize campeonatos, acompanhe rankings\n e conecte jogadores em um só lugar.",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: () {}, child: Text('Começar agora')),
+            ],
           ),
+        ),
 
-          SecaoRecursos(),
-          SecaoComoFunciona(),
-          SecaoSobre(),
-          SecaoMetrica(),
-          SecaoPlanos(),
-          SecaoDepoimentos(),
-          SecaoComeceAgora(),
-          SecaoRodape(),
-        ],
-      ),
+        SecaoRecursos(),
+        SecaoComoFunciona(),
+        SecaoSobre(),
+        SecaoMetrica(),
+        SecaoPlanos(),
+        SecaoDepoimentos(),
+        SecaoComeceAgora(),
+        SecaoRodape(),
+      ],
     );
   }
 }

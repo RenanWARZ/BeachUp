@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/tela_perfil_jogador.dart';
+import 'package:flutter_application_1/screens/perfil_jogador.dart';
 import 'package:flutter_application_1/screens/widgets/custom_appbar.dart';
 
 class CadastroJogador extends StatefulWidget {

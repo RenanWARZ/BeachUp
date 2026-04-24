@@ -102,7 +102,7 @@ Widget _campos(
 ) {
   return Card(
     color: const Color(0xFF1E1E1E),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+    margin: const EdgeInsets.only(bottom: 15),
     child: ListTile(
       leading: Icon(icone, color: Colors.white),
       title: Text(titulo, style: TextStyle(color: Colors.white)),
