@@ -18,23 +18,17 @@ class Navbar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
 
       items: [
-        //Home
+        //1. Tela Inicial
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         //2. QUADRAS
         BottomNavigationBarItem(
-          icon: Badge(
-            label: Text(
-              '!',
-              style: TextStyle(color: Colors.white, fontSize: 10),
-            ),
-            child: Icon(Icons.location_on_outlined),
-          ),
+          icon: Icon(Icons.location_on_outlined),
           activeIcon: Icon(Icons.location_on),
           label: 'Quadras',
         ),
 
         //3. CAMPEONATOS
-        BottomNavigationBarItem(
+        /*BottomNavigationBarItem(
           icon: Badge(
             label: Text(
               '2',
@@ -45,13 +39,9 @@ class Navbar extends StatelessWidget {
           activeIcon: Icon(Icons.emoji_events),
           label: 'Campeoantos',
         ),
-
+        */
         //4. PERFIL
-        BottomNavigationBarItem(
-          icon: Badge(isLabelVisible: false, child: Icon(Icons.person_outline)),
-          activeIcon: Icon(Icons.person),
-          label: 'Perfil',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
       ],
     );
   }

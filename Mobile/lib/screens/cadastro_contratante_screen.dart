@@ -17,24 +17,24 @@ class _CadastroContratanteScreenState extends State<CadastroContratanteScreen> {
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
 
-  //void cadastrar() {
-  //if (_formKey.currentState!.validate()) {
-  //final data = {
-  //"nomeEmpresa": nomeEmpresaController.text,
-  //"cnpj": cnpjController.text,
-  //"email": emailController.text,
-  //"senha": senhaController.text,
-  //"tipo": "contratante"
-  //};
+  /*void cadastrar() {
+  if (_formKey.currentState!.validate()) {
+  final data = {
+ "nomeEmpresa": nomeEmpresaController.text,
+  "cnpj": cnpjController.text,
+  "email": emailController.text,
+  "senha": senhaController.text,
+ "tipo": "contratante"
+  };
 
-  //ScaffoldMessenger.of(context).showSnackBar(
-  //const SnackBar(
-  //content: Text("Cadastro realizado com sucesso!"),
-  // ),
-  //);
+ ScaffoldMessenger.of(context).showSnackBar(
+ const SnackBar(
+ content: Text("Cadastro realizado com sucesso!"),
+  ),
+ );
 
-  //}
-  //}
+  }
+  }*/
 
   @override
   void dispose() {

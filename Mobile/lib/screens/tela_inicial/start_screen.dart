@@ -11,6 +11,7 @@ import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_recurso
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_rodape.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_sobre.dart';
 import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_metrica.dart';
+import 'package:flutter_application_1/screens/widgets/navbar.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -22,9 +23,9 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   int _indiceAtual = 0;
 
-  //Lista das páginas a serem inclusas
-  final List<Widget> _paginas = [
-    const StartScreen(),
+  //Lista das telas no navbar
+  final List<Widget> _telas = [
+    const TelaInicial(),
     const ReservarQuadras(),
     const CadastroContratanteScreen(),
   ];
@@ -35,17 +36,22 @@ class _StartScreenState extends State<StartScreen> {
       backgroundColor: Colors.black,
       appBar: getStartScreenAppBar(context),
       drawer: MenuDrawer(),
-      body: ListView(children: [
-          
-            
-        ],
+      //body dinâmico, troca conforme índice
+      body: _telas[_indiceAtual],
+      bottomNavigationBar: Navbar(
+        currentIndex: _indiceAtual,
+        onTap: (index) {
+          setState(() {
+            _indiceAtual = index;
+          });
+        },
       ),
     );
   }
 }
 
-class ConteudoInicial extends StatelessWidget {
-  const ConteudoInicial({super.key});
+class TelaInicial extends StatelessWidget {
+  const TelaInicial({super.key});
 
   @override
   Widget build(BuildContext context) {
