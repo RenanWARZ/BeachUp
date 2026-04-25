@@ -20,7 +20,6 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
-
 export class Login implements OnInit {
   isRegister = false;
   mostrarSenha = false;
@@ -55,6 +54,7 @@ export class Login implements OnInit {
     this.registerForm = this.fb.group(
       {
         nome: ['', [Validators.required, Validators.minLength(3)]],
+        cpf: ['', [Validators.required, Validators.minLength(11)]],
         email: ['', [Validators.required, Validators.email]],
         senha: ['', [Validators.required, Validators.minLength(6)]],
         confirmarSenha: ['', [Validators.required]],
@@ -103,21 +103,23 @@ export class Login implements OnInit {
 
     this.carregando = true;
 
-    const { nome, email, senha } = this.registerForm.value;
+    const { nome, cpf, email, senha, confirmarSenha } = this.registerForm.value;
 
-    this.authService.criarConta({ nome, email, senha }).subscribe({
+    this.authService.criarConta({ nome, cpf, email, senha, confirmarSenha }).subscribe({
       next: (res) => {
         console.log('Usuário criado com sucesso:', res);
+
         this.mensagemSucesso = 'Conta criada com sucesso!';
         this.registerForm.reset();
         this.carregando = false;
 
-        // opcional: voltar para login
         this.isRegister = false;
       },
       error: (err) => {
         console.error('Erro ao criar conta:', err);
-        this.mensagemErro = err?.error?.message || 'Erro ao cadastrar usuário.';
+
+        this.mensagemErro = err?.error?.message || err?.error || 'Erro ao cadastrar usuário.';
+
         this.carregando = false;
       },
     });
@@ -138,20 +140,19 @@ export class Login implements OnInit {
     this.authService.login({ email, senha }).subscribe({
       next: (res) => {
         console.log('Login realizado com sucesso:', res);
+
+        localStorage.setItem('token', res.token);
+
         this.mensagemSucesso = 'Login realizado com sucesso!';
         this.carregando = false;
 
         this.navigation.irPara('home');
-
-        // exemplo: salvar token
-        // localStorage.setItem('token', res.token);
-
-        // navegar após login
-        // this.navigation.irPara('home');
       },
       error: (err) => {
         console.error('Erro no login:', err);
-        this.mensagemErro = err?.error?.message || 'Email ou senha inválidos.';
+
+        this.mensagemErro = err?.error?.message || err?.error || 'Email ou senha inválidos.';
+
         this.carregando = false;
       },
     });

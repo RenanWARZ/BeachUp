@@ -35,6 +35,7 @@ public class  JogadorModel implements UserDetails {
     @Column(nullable = false)
     private String senha;
 
+
     @Column(nullable = false, unique = true, length = 18)
     private String cpf;
 

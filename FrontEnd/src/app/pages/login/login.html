@@ -28,17 +28,8 @@
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="lf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="lf['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
@@ -96,23 +87,20 @@
               Informe seu nome completo.
             </small>
 
+            <input type="text" placeholder="CPF" formControlName="cpf" />
+
+            <small class="text-danger" *ngIf="rf['cpf'].touched && rf['cpf'].invalid">
+              Informe um CPF válido.
+            </small>
+
             <input type="email" placeholder="Email" formControlName="email" />
             <small class="text-danger" *ngIf="rf['email'].touched && rf['email'].invalid">
               Email inválido.
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Senha"
-                formControlName="senha"
-              />
-              <button
-                *ngIf="rf['senha'].value"
-                type="button"
-                (click)="toggleSenha()"
-                class="eye-btn-cadastrar"
-              >
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Senha" formControlName="senha" />
+              <button *ngIf="rf['senha'].value" type="button" (click)="toggleSenha()" class="eye-btn-cadastrar">
                 <i [class]="mostrarSenha ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
               </button>
             </div>
@@ -121,17 +109,12 @@
             </small>
 
             <div class="input-password">
-              <input
-                [type]="mostrarSenha ? 'text' : 'password'"
-                placeholder="Confirmar Senha"
-                formControlName="confirmarSenha"
-              />
+              <input [type]="mostrarSenha ? 'text' : 'password'" placeholder="Confirmar Senha"
+                formControlName="confirmarSenha" />
             </div>
 
-            <div
-              *ngIf="registerForm.hasError('senhasDiferentes') && rf['confirmarSenha'].touched"
-              class="alert alert-danger"
-            >
+            <div *ngIf="registerForm.hasError('senhasDiferentes') && rf['confirmarSenha'].touched"
+              class="alert alert-danger">
               As senhas não coincidem.
             </div>
 
