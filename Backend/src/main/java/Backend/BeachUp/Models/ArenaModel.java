@@ -32,9 +32,9 @@ public class ArenaModel {
     @JsonIgnoreProperties("arenas")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "arena", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FotoModel> fotoModel;
+    @OneToMany(mappedBy = "arenas", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FotoModel> foto;
 
-    @OneToMany(mappedBy = "arena", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "arenas", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuadraModel> quadraModel;
 }

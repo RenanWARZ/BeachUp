@@ -19,7 +19,7 @@ public class FotoModel {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "arena_id")
+    @JoinColumn(name = "arenas_id")
     @JsonIgnoreProperties("foto")
-    private ArenaModel arenaModel;
+    private ArenaModel arenas;
 }

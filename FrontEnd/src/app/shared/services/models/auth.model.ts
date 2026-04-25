@@ -1,7 +1,9 @@
 export interface UsuarioCreate {
   nome: string;
+  cpf: string;
   email: string;
   senha: string;
+  confirmarSenha: string;
 }
 
 export interface LoginPayload {
@@ -11,9 +13,4 @@ export interface LoginPayload {
 
 export interface AuthResponse {
   token: string;
-  usuario: {
-    id: number;
-    nome: string;
-    email: string;
-  };
 }

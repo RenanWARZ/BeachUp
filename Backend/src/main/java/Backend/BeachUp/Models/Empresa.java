@@ -42,7 +42,7 @@ public class Empresa implements UserDetails {
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<ArenaModel> arenaModel;
+    private List<ArenaModel> arenas;
 
 
 

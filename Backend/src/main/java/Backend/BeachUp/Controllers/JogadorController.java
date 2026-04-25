@@ -1,6 +1,5 @@
 package Backend.BeachUp.Controllers;
 
-import BackAnd.BeachUp.DTO.*;
 import Backend.BeachUp.DTO.JogadorCadastroDTO;
 import Backend.BeachUp.DTO.JogadorResponseDTO;
 import Backend.BeachUp.Services.JogadorService;
