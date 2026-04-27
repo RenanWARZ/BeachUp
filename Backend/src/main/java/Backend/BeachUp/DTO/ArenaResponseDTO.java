@@ -6,9 +6,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class EmpresaResponseDTO {
-    private  Long id;
+public class ArenaResponseDTO {
+    private Long id;
     private String nome;
-    private String email;
-    private String cnpj;
+    private String descricao;
+    private EmpresaResponseDTO empresa;
 }
