@@ -1,5 +1,7 @@
 package Backend.BeachUp.Controllers;
 
+import Backend.BeachUp.DTO.ArenaCadastroDTO;
+import Backend.BeachUp.DTO.ArenaResponseDTO;
 import Backend.BeachUp.Models.ArenaModel;
 import Backend.BeachUp.Services.ArenaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,9 @@ public class ArenaController {
     private ArenaService arenaService;
 
     @PostMapping("/{empresaid}")
-    public ResponseEntity create(@PathVariable Long empresaid, @RequestBody ArenaModel arenaModel){
-        return ResponseEntity.ok().body(arenaService.create(empresaid, arenaModel));
+    public ResponseEntity<ArenaResponseDTO> create(@PathVariable Long empresaid, @RequestBody ArenaCadastroDTO dto){
+        ArenaModel arena = arenaService.create(empresaid, dto);
+        return ResponseEntity.ok(arenaService.converterparaDTO(arena));
     }
 
     @GetMapping
