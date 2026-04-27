@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/perfil_jogador.dart';
-import 'package:flutter_application_1/screens/widgets/custom_appbar.dart';
+import 'package:flutter_application_1/screens/perfil/perfil_jogador.dart';
+import 'package:flutter_application_1/widgets/custom_appbar.dart';
 
 class CadastroJogador extends StatefulWidget {
   const CadastroJogador({super.key});
