@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/home/widgets/custom_app_bar.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});

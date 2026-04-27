@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
-import 'package:flutter_application_1/screens/cadastro_jogador.dart';
-import 'package:flutter_application_1/screens/reservar_quadras.dart';
-import 'package:flutter_application_1/screens/tela_inicial/start_screen.dart';
-import 'package:flutter_application_1/screens/widgets/navbar.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_jogador.dart';
+import 'package:flutter_application_1/screens/quadras/reservar_quadras.dart';
+import 'package:flutter_application_1/screens/home/start_screen.dart';
+import 'package:flutter_application_1/widgets/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
