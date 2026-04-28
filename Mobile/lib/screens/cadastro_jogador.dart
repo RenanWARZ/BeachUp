@@ -16,8 +16,8 @@ class _LoginScreenState extends State<CadastroJogador> {
   TextEditingController txtSenhaController = TextEditingController();
   TextEditingController txtConfSenhaController = TextEditingController();
 
-  //Liberar memória
   @override
+  //Liberar memória
   void dispose() {
     txtNomeController.dispose();
     txtEmailController.dispose();
