@@ -1,5 +1,8 @@
 package Backend.BeachUp.Services;
 
+import Backend.BeachUp.DTO.ArenaCadastroDTO;
+import Backend.BeachUp.DTO.ArenaResponseDTO;
+import Backend.BeachUp.DTO.EmpresaResponseDTO;
 import Backend.BeachUp.Models.ArenaModel;
 import Backend.BeachUp.Models.Empresa;
 import Backend.BeachUp.Repositorys.ArenaRepository;
@@ -18,10 +21,32 @@ public class ArenaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public ArenaModel create (Long empresaid, ArenaModel arenaModel){
-        Empresa empresa = empresaRepository.findById(empresaid).orElseThrow(()-> new RuntimeException("Erro ao cadastrar arena(Usuário não encontrado)"));
-        arenaModel.setEmpresa(empresa);
-        return arenaRepository.save(arenaModel);
+    public ArenaResponseDTO converterparaDTO(ArenaModel arena){
+
+        Empresa empresa = arena.getEmpresa();
+
+        EmpresaResponseDTO empresaDTO =
+                new EmpresaResponseDTO(
+                        empresa.getId(),
+                        empresa.getNome(),
+                        empresa.getEmail(),
+                        empresa.getCnpj()
+                );
+
+        return new ArenaResponseDTO(arena.getId(),arena.getNome(),arena.getDescricao(), empresaDTO);
+    }
+
+    public ArenaModel create(Long empresaid, ArenaCadastroDTO dto){
+
+        Empresa empresa = empresaRepository.findById(empresaid)
+                .orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
+
+        ArenaModel arena = new ArenaModel();
+        arena.setNome(dto.getNome());
+        arena.setDescricao(dto.getDescricao());
+        arena.setEmpresa(empresa);
+
+        return arenaRepository.save(arena);
     }
 
     public ArenaModel getId (Long id){

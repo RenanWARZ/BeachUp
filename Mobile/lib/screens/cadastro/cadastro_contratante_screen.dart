@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/widgets/custom_appbar.dart';
+import 'package:flutter_application_1/widgets/custom_appbar.dart';
 
 class CadastroContratanteScreen extends StatefulWidget {
   const CadastroContratanteScreen({super.key});

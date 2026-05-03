@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/avaliacoes.dart';
-import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/screens/avaliacoes_screen.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/home/widgets/custom_app_bar.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});
@@ -68,7 +68,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
                 _item(Icons.access_time, "Reservar quadras", () {}),
 
                 _item(Icons.star, "Avaliações", () {
-                  navigatorPush(context, Avaliacoes());
+                  navigatorPush(context, AvaliacoesScreen());
                 }),
 
                 _item(Icons.credit_card, "Pagamentos", () {}),

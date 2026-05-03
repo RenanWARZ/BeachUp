@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/tela_inicial/start_screen.dart';
+import 'package:flutter_application_1/screens/home/start_screen.dart';
 
 class SecaoDepoimentos extends StatefulWidget {
   const SecaoDepoimentos({super.key});

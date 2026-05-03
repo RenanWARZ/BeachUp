@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/cadastro_contratante_screen.dart';
-import 'package:flutter_application_1/screens/reservar_quadras.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_comece_agora.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_depoimentos.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_planos.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/custom_app_bar.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/custom_drawer.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_como_funciona.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_recursos.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_rodape.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_sobre.dart';
-import 'package:flutter_application_1/screens/tela_inicial/widgets/secao_metrica.dart';
-import 'package:flutter_application_1/screens/widgets/navbar.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_contratante_screen.dart';
+import 'package:flutter_application_1/screens/quadras/reservar_quadras_screen.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_comece_agora.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_depoimentos.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_planos.dart';
+import 'package:flutter_application_1/screens/home/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/screens/home/widgets/custom_drawer.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_como_funciona.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_recursos.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_rodape.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_sobre.dart';
+import 'package:flutter_application_1/screens/home/widgets/secao_metrica.dart';
+import 'package:flutter_application_1/widgets/navbar.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -62,7 +62,7 @@ class TelaInicial extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 40),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('asset/beach_tela_inicial.png'),
+              image: AssetImage('assets/beach_tela_inicial.png'),
               fit: BoxFit.cover,
             ),
           ),

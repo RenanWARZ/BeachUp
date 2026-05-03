@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/cadastro_jogador.dart';
+import 'package:flutter_application_1/screens/cadastro/cadastro_jogador_screen.dart';
 
 AppBar getAppBar(String title, {List<Widget>? actions}) {
   return AppBar(

@@ -11,8 +11,10 @@ import { CadastroQuadra } from './pages/cadastro-quadra/cadastro-quadra';
 import { ConvidarJogadores } from './pages/convidar-jogadores/convidar-jogadores';
 import { CriacaoDeTelas } from './pages/criacao-de-telas/criacao-de-telas';
 import { Perfil } from './pages/perfil/perfil';
+import { DashboardDono } from './pages/dashboard-dono/dashboard-dono';
 
 export const routes: Routes = [
+  { path: 'dashboard-dono', component: DashboardDono },
   { path: 'perfil', component: Perfil },
   { path: 'CriacaoDeTelas', component: CriacaoDeTelas },
   { path: 'convidar-jogadores', component: ConvidarJogadores },
