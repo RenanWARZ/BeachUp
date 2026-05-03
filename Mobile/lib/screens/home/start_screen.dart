@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/cadastro/cadastro_contratante_screen.dart';
-import 'package:flutter_application_1/screens/quadras/reservar_quadras.dart';
+import 'package:flutter_application_1/screens/quadras/reservar_quadras_screen.dart';
 import 'package:flutter_application_1/screens/home/widgets/secao_comece_agora.dart';
 import 'package:flutter_application_1/screens/home/widgets/secao_depoimentos.dart';
 import 'package:flutter_application_1/screens/home/widgets/secao_planos.dart';

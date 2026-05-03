@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/perfil/perfil_jogador.dart';
+import 'package:flutter_application_1/screens/perfil/perfil_jogador_screen.dart';
 import 'package:flutter_application_1/widgets/custom_appbar.dart';
 
 class CadastroJogador extends StatefulWidget {
@@ -16,8 +16,8 @@ class _LoginScreenState extends State<CadastroJogador> {
   TextEditingController txtSenhaController = TextEditingController();
   TextEditingController txtConfSenhaController = TextEditingController();
 
-  //Liberar memória
   @override
+  //Liberar memória
   void dispose() {
     txtNomeController.dispose();
     txtEmailController.dispose();
