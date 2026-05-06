@@ -11,9 +11,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true, 
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
         elevation: 0,                         
       title: RichText(                        
   text: TextSpan(                       
@@ -35,6 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
     ],
+    
   ),
 ),
 
@@ -50,12 +51,78 @@ class _DashboardScreenState extends State<DashboardScreen> {
             color: Colors.white,
             fontWeight: FontWeight.bold
           ),
-        ),
-       ),
-       )
-       
-    ],       
+              ),
+            ),
+          ),
+        ],
       ),
-    );
+
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Stack(
+          children: [
+
+            Positioned.fill(
+            child: Image.asset(
+              'assets/fundodashboard1.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+         Positioned.fill(
+            child: Container(
+              color: const Color.fromARGB(255, 255, 241, 181).withValues(alpha: 0.75), 
+            ),
+          ),
+
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Olá, João!',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF121212)
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Veja como estão suas quadras hoje',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Color(0xFF121212)
+                          ),
+                        )
+                      ],
+                    )
+                     
+                  
+                    ],
+
+                  )
+                ],
+              ),
+            )
+            
+          )
+        ],
+      ),
+    
+    ));
+
   }
 }
+
+         
